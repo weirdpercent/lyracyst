@@ -1,1 +1,0 @@
-rails g beautiful_scaffold product title:string capabilities:string developer:string formats:string link:string platform:string productlink:string summary:richtext taglist:text

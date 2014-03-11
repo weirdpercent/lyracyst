@@ -1,9 +1,4 @@
-.travis.yml
-.coveralls.yml
-thesaurus.key
-
-## Ruby ##
-
+# Ruby   
 *.gem
 *.rbc
 /.config
@@ -15,54 +10,19 @@ thesaurus.key
 /test/version_tmp/
 /tmp/
 
-## Documentation cache and generated files:
+# Documentation                           
 /.yardoc/
 /_yardoc/
 /doc/
 /rdoc/
 
-## Environment normalisation:
+# Environment               
 /.bundle/
 /lib/bundler/man/
 
-# for a library or gem, you might want to ignore these files since the code is
-# intended to run in multiple environments; otherwise, check them in:
-# Gemfile.lock
-# .ruby-version
-# .ruby-gemset
-
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+# Optional
+#.ruby-version
+#.ruby-gemset
+Gemfile.lock
 .rvmrc
-
-
-## Ruby ##
-
-*.gem
-*.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/test/tmp/
-/test/version_tmp/
-/tmp/
-
-## Documentation cache and generated files:
-/.yardoc/
-/_yardoc/
-/doc/
-/rdoc/
-
-## Environment normalisation:
-/.bundle/
-/lib/bundler/man/
-
-# for a library or gem, you might want to ignore these files since the code is
-# intended to run in multiple environments; otherwise, check them in:
-# Gemfile.lock
-# .ruby-version
-# .ruby-gemset
-
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-.rvmrc
+/keys/thesaurus.key
