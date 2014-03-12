@@ -96,9 +96,24 @@ desc "Get rhymes from arpabet.heroku.com"
 task :rhy => :environment do
   require 'multi_json'
   require 'open-uri/cached'
-  delimited=false; full=false; limit=0; searchword='test'; skip=0; #declarations
+  delimited=false; full=false; limit=0; param=false; searchword='test'; skip=0; #declarations
   OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
   data="http://arpabet.heroku.com/words/#{searchword}"
-  if full == true then data="#{data}?full=1"; end
+  if full == true then param=true; end
+  if delimited == true then param=true; end
+  if limit > 0 then param=true; end
+  if skip > 0 then param=true; end
+  if param == true
+    data << "?"
+    if full == true then data << "full=1&" end
+    if delimited == true then data << "delimited=1&"; end
+    if limit > 0 then data << "limit=#{limit}&"; end
+    if skip > 0 then data << "skip=#{skip}&"
+  end
   uri=open(data).read #submit search query
+  if uri.class == string
+    #handle semicolon-delimited string
+  else
+    #treat as array of strings or array of hashes
+  end
 end
