@@ -1,9 +1,10 @@
+# -*- encoding: utf-8 -*-
 # Query parameters are preceded by a question mark ("?") and separated by ampersands ("&") and consist of the parameter name,
 # an equals sign ("="), and a value.
 # Each application can perform upto 5000 queries per day.
 
-desc "Open data URI"
-task :open => :environment do
+desc "Search thesaurus.altervista.com for synonyms"
+task :syn => :environment do
   require 'multi_json'
   require 'nokogiri'
   require 'open-uri/cached'
@@ -59,16 +60,13 @@ task :open => :environment do
   puts 'done.'
 end
 
-desc "Add product entries to database"
-task :addjson => :environment do
+desc "Inject entries into ActiveRecord"
+task :inj => :environment do
   require 'multi_json'
   print 'Adding products to database'
   fa=[]
   Dir.glob('json/*.json').select {|f| fa.push f}
-  pa={}
-  x=0
-  y=fa.length
-  y-=1
+  pa={}; x=0; y=fa.length; y-=1; #declarations
   fa.sort
   while x <= y
     file=File.readlines(fa[x])
@@ -92,4 +90,15 @@ task :addjson => :environment do
     x+=1
   end
   puts 'done.'
+end
+
+desc "Get rhymes from arpabet.heroku.com"
+task :rhy => :environment do
+  require 'multi_json'
+  require 'open-uri/cached'
+  delimited=false; full=false; limit=0; searchword='test'; skip=0; #declarations
+  OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
+  data="http://arpabet.heroku.com/words/#{searchword}"
+  if full == true then data="#{data}?full=1"; end
+  uri=open(data).read #submit search query
 end

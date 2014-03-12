@@ -3,10 +3,12 @@ source 'http://rubygems.org'
 gem 'beautiful_scaffold'
 gem 'bundler'
 gem 'coveralls', require: false
+gem 'gdefine'
 gem 'multi_json'
 gem 'nokogiri'
 gem 'open-uri-cached'
 gem 'pry'
+gem 'urban'
 gem 'rake'
 
 group :development do
