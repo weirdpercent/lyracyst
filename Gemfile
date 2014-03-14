@@ -1,15 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'beautiful_scaffold'
 gem 'bundler'
+gem 'commander'
 gem 'coveralls', require: false
-gem 'gdefine'
 gem 'multi_json'
 gem 'nokogiri'
 gem 'open-uri-cached'
 gem 'pry'
-gem 'urban'
 gem 'rake'
+gem 'wordnik'
 
 group :development do
   gem 'cucumber'

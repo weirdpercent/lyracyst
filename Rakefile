@@ -1,13 +1,13 @@
-# -*- encoding: utf-8 -*-
 # Query parameters are preceded by a question mark ("?") and separated by ampersands ("&") and consist of the parameter name,
 # an equals sign ("="), and a value.
-# Each application can perform upto 5000 queries per day.
+# Each thesaurus.altervista.org application can perform upto 5000 queries per day.
 
 desc "Search thesaurus.altervista.com for synonyms"
 task :syn => :environment do
   require 'multi_json'
   require 'nokogiri'
   require 'open-uri/cached'
+  require 'urban'
   OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
   print 'Opening data URI...'
   environment='ruby'; maxqueries=5000; querycount=0; t=Time.now; y=t.year.to_s; m=t.month; d=t.day; #declarations
@@ -45,7 +45,7 @@ task :syn => :environment do
     uri=open(data).read #submit search query
     dataload=MultiJson.load(uri) #parse it
     q=MultiJson.dump(dataload, :pretty => true) #reencode pretty json
-    fo=File.open("json/query.json", "w+")
+    fo=File.open("json/synquery.json", "w+")
     fo.print q
     fo.close
     querycount+=1 #increment daily queries
@@ -96,24 +96,9 @@ desc "Get rhymes from arpabet.heroku.com"
 task :rhy => :environment do
   require 'multi_json'
   require 'open-uri/cached'
-  delimited=false; full=false; limit=0; param=false; searchword='test'; skip=0; #declarations
+  searchword='test' #declarations
   OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
   data="http://arpabet.heroku.com/words/#{searchword}"
-  if full == true then param=true; end
-  if delimited == true then param=true; end
-  if limit > 0 then param=true; end
-  if skip > 0 then param=true; end
-  if param == true
-    data << "?"
-    if full == true then data << "full=1&" end
-    if delimited == true then data << "delimited=1&"; end
-    if limit > 0 then data << "limit=#{limit}&"; end
-    if skip > 0 then data << "skip=#{skip}&"
-  end
   uri=open(data).read #submit search query
-  if uri.class == string
-    #handle semicolon-delimited string
-  else
-    #treat as array of strings or array of hashes
-  end
+  parse=MultiJson.load(uri)
 end
