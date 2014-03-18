@@ -1,7 +1,7 @@
 lyracyst
 ===
 
-[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) Code Climate|Coveralls
+[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) [![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)|Coveralls
 
 A powerful word search tool for the semantics-savvy writer.
 
@@ -14,19 +14,14 @@ Search Wordnik, thesaurus.altervista.org, and rhymes with arpabet.heroku.com fro
 - Open URI fetching w/ transparent caching
 - Definitions from Wordnik
 - Rhymes from arpabet.heroku.com
-- Synonyms from thesaurus.altervista.org
+- Related words from thesaurus.altervista.org
 - XML & JSON parsing
 - Export wordlists matching search criteria
 
 ### Usage
 
     bundle install
-    lyracyst (nik|rhy|syn)
-    --format -f (json|xml)
-    --outfile -o output.ext
-    lyracyst help commands
-    rake -T
-    rake raketask
+    rake
 
 ### Code Example
 
@@ -39,17 +34,9 @@ Search Wordnik, thesaurus.altervista.org, and rhymes with arpabet.heroku.com fro
 
 I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, and sentences that rock.
 
-### Installation
-
-    gem install lyracyst
-
-### API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
 ### Tests
 
-    rake spec
+    TODO
 
 ### Contributors
 
