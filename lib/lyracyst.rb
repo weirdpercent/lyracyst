@@ -44,8 +44,9 @@ class Search
     end
     if testcount < maxqueries #make sure we don't abuse the service
       urlprefix='http://thesaurus.altervista.org/thesaurus/v1'
-      apikey=File.readlines('keys/thesaurus.key') #search API key, get one at http://thesaurus.altervista.org/mykey
-      apikey=apikey[0].chomp
+      #apikey=File.readlines('keys/thesaurus.key') #search API key, get one at http://thesaurus.altervista.org/mykey
+      #apikey=apikey[0].chomp
+      apikey=ENV['THESAURUS'] #access thru ENV vars for safe Travis builds
       searchlang='en_US' # it_IT, fr_FR, de_DE, en_US, el_GR, es_ES, de_DE, no_NO, pt_PT, ro_RO, ru_RU, sk_SK
       dataoutput='json' # xml or json (default xml)
       url="#{urlprefix}?key=#{apikey}&word=#{search}&language=#{searchlang}&output=#{dataoutput}"
@@ -95,9 +96,10 @@ class Search
     end
   end
   def nik(search)
-    apikey=File.readlines('keys/wordnik.key') #search API key, get one at http://developer.wordnik.com/
-    apikey=apikey[0]
-    apikey=apikey.chomp
+    #apikey=File.readlines('keys/wordnik.key') #search API key, get one at http://developer.wordnik.com/
+    #apikey=apikey[0]
+    #apikey=apikey.chomp
+    apikey=ENV['WORDNIK'] #access thru ENV vars for safe Travis builds
     Wordnik.configure do |cfg|
       cfg.api_key=apikey
       cfg.response_format='json'
