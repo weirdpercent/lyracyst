@@ -11,9 +11,9 @@ require 'wordnik'
 OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
 environment='ruby'
 result=''
-#search='book' # (urlencoded string)
-print "Enter a word: "
-search=STDIN.gets.chomp
+search='test' # (urlencoded string)
+#print "Enter a word: " #change commenting here to convert between command line and test modes
+#search=STDIN.gets.chomp
 class Fetch
   def search(url, result)
     result=open(url).read #submit search query
@@ -74,6 +74,7 @@ class Search
       while x <= y
         resultl=resulta[x]
         list=resultl['list']
+        cat=list['category'].gsub(/\(|\)/, '')
         puts "related words: #{list['category']} - #{list['synonyms']}"
         x+=1
       end

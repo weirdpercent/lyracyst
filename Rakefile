@@ -18,4 +18,4 @@ task :run do
   require './lib/lyracyst.rb'
 end
 
-task :default => :run
+task :default => [:run]
