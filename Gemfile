@@ -12,9 +12,9 @@ gem 'rake'
 gem 'wordnik'
 
 group :development do
-  gem 'cucumber'
-  gem 'factory_girl'
-  gem 'gherkin'
-  gem 'rspec'
-  gem 'spinach'
+  #gem 'cucumber'
+  #gem 'factory_girl'
+  #gem 'gherkin'
+  #gem 'rspec'
+  #gem 'spinach'
 end
