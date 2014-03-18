@@ -1,7 +1,7 @@
 lyracyst
 ===
 
-TravisCI|Gemnasium|Code Climate|Coveralls
+[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) Code Climate|Coveralls
 
 A powerful word search tool for the semantics-savvy writer.
 

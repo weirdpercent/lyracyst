@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'bundler'
 gem 'commander'
+gem 'configatron'
 gem 'coveralls', require: false
 gem 'multi_json'
 gem 'nokogiri'

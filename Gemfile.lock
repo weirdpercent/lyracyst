@@ -1,18 +1,23 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activemodel (4.0.3)
+      activesupport (= 4.0.3)
+      builder (~> 3.1.0)
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     atomic (1.1.15)
-    builder (3.2.2)
+    builder (3.1.4)
     coderay (1.1.0)
     colorize (0.5.8)
     commander (4.1.6)
       highline (~> 1.6.11)
+    configatron (3.0.1)
     coveralls (0.7.0)
       multi_json (~> 1.3)
       rest-client
@@ -34,18 +39,15 @@ GEM
     gherkin-ruby (0.3.1)
       racc
     highline (1.6.21)
-    httparty (0.13.0)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
+    htmlentities (4.3.1)
     i18n (0.6.9)
     json (1.8.1)
     method_source (0.8.2)
-    mime-types (2.1)
+    mime-types (2.2)
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.9.0)
     multi_test (0.0.3)
-    multi_xml (0.5.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     open-uri-cached (0.0.5)
@@ -70,7 +72,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    slop (3.4.7)
+    slop (3.5.0)
     spinach (0.8.7)
       colorize (= 0.5.8)
       gherkin-ruby (>= 0.3.1)
@@ -80,9 +82,16 @@ GEM
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
     tins (1.0.0)
+    typhoeus (0.3.3)
+      mime-types
     tzinfo (0.3.39)
-    wordnik (0.2.1)
-      httparty (>= 0.4.5)
+    wordnik (4.12)
+      activemodel (>= 3.0.3)
+      addressable (>= 2.2.4)
+      htmlentities (>= 4.2.4)
+      json (>= 1.4.6)
+      nokogiri (>= 1.4.4)
+      typhoeus (>= 0.2.1)
 
 PLATFORMS
   ruby
@@ -90,6 +99,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   commander
+  configatron
   coveralls
   cucumber
   factory_girl
