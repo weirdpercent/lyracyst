@@ -1,7 +1,7 @@
 lyracyst
 ===
 
-[![lyracyst](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)](lyra.jpg)
+[![lyracyst](lyra.jpg)](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)
 
 Constellation Lyra photo by [Scott Roy Atwood](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)
 
