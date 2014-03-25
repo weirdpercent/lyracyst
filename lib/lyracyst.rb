@@ -61,8 +61,8 @@ class Search
       resultp=MultiJson.load(result)
       resulta=resultp['response']
       urlprefix='http://thesaurus.altervista.org/thesaurus/v1'
-      apikey=File.readlines('keys/thesaurus.key') #search API key, get one at http://thesaurus.altervista.org/mykey
-      apikey=apikey[0].chomp
+      #apikey=File.readlines('keys/thesaurus.key') #search API key, get one at http://thesaurus.altervista.org/mykey
+      #apikey=apikey[0].chomp
       searchlang='en_US' # it_IT, fr_FR, de_DE, en_US, el_GR, es_ES, de_DE, no_NO, pt_PT, ro_RO, ru_RU, sk_SK
       dataoutput='json' # xml or json (default xml)
       url="#{urlprefix}?key=#{apikey}&word=#{search}&language=#{searchlang}&output=#{dataoutput}"
