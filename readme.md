@@ -1,17 +1,17 @@
 lyracyst
 ===
 
-![lyracyst](lyra.jpg)
+[![lyracyst](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)](lyra.jpg)
 
 Constellation Lyra photo by [Scott Roy Atwood](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)
 
-[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)[![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)Coveralls
+[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)[![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)
 
-A powerful word search tool for the semantics-savvy writer.
+A powerful word search tool for writers of all kinds.
 
 ### Synopsis
 
-Search Wordnik, thesaurus.altervista.org, and rhymes with arpabet.heroku.com from the command line.
+Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line.
 
 ### Features
 
@@ -31,20 +31,16 @@ Search Wordnik, thesaurus.altervista.org, and rhymes with arpabet.heroku.com fro
 
     s=Search.new
     s.nik(search) # Wordnik definitions
-    s.rhy(search) # Arpabet rhymes
     s.syn(search) # Altervista synonyms
+    s.rhy(search) # Arpabet rhymes
 
 ### Motivation
 
-I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, and sentences that rock.
+I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, and stories that rock.
 
 ### Tests
 
     TODO
-
-### Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
 
 ### Contributing workflow
 
