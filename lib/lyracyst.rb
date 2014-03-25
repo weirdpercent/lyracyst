@@ -2,8 +2,8 @@
 # an equals sign ("="), and a value.
 # Each thesaurus.altervista.org application can perform upto 5000 queries per day.
 
-require 'commander'
-require 'configatron'
+#require 'commander'
+#require 'configatron'
 require 'multi_json'
 require 'nokogiri'
 require 'open-uri/cached'
@@ -27,7 +27,8 @@ class Search
     date="#{y}#{m}#{d}"
     dateint=date.to_i
     #pd=Date.parse(date)
-    if FileTest.exist?("json/synqc.json") == true
+    if File.exist?("json/synqc.json") == true
+      puts 'synqc.json exists, reading...'
       rl=File.readlines("json/synqc.json")
       rl=rl[0]
       loadrl=MultiJson.load(rl)
@@ -35,12 +36,14 @@ class Search
       testcount=loadrl['querycount']
       pdateint=testdate.to_i
       if dateint > pdateint == true #track date changes
-        qct={'date' => date, 'querycount' => querycount}
+        qct={'date' => dateint, 'querycount' => querycount}
         fo=File.open("json/synqc.json", "w+")
         tofile=MultiJson.dump(qct)
         fo.print tofile
         fo.close
       end
+    else
+      testcount=0
     end
     if testcount < maxqueries #make sure we don't abuse the service
       urlprefix='http://thesaurus.altervista.org/thesaurus/v1'
@@ -81,7 +84,7 @@ class Search
       end
       querycount+=1 #increment daily queries
       fo=File.open("json/synqc.json" , "w+")
-      qct={'date' => date, 'querycount' => querycount}
+      qct={'date' => dateint, 'querycount' => querycount}
       tofile=MultiJson.dump(qct)
       fo.print tofile
       fo.close
