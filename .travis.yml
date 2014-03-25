@@ -2,11 +2,9 @@ language: ruby
 cache: bundler
 rvm:
 - 2.1.1
-before_script:
-  encrypt:
-    global:
-      - secure: "d/SAcLonvN+pVQCOT3xcGZqGVLf9mR4100SZaX8dZUSYqhHO28MGiVBZhiPKxlTYwlgUxslG57S21kxa/HTrkMn7nIVz+WBlJQvbC8skoTEEToWdRPX57kMelWQ7mJzVmj1e4GwaUSZ7SPh5/w0Sv8xiELxGykeX4coiN3Wu7A8="
-      - secure: "EVsX1eoC9Rvp+4k+3GvByfsKPzgj3ouu3yA4HiEI6/Ciiynuu+I2sRTMa7Fd9GhgfI8Dgcuxy/Rkjd0vP1B4o9F8VkvojWZWHnE+70XS7rH5NORU9qQswTR9Fy0dyKJ41U/2bINL3eP6XBuM4evBo+bjuzLswm7S8KQHwhBPJlo="
-      - secure: "R9HaxpZv4EGFy2SiHwbpVlM1/C7wGOU8GUY7RmNQH++0kj1jfYjmeVZSqGmyoi/fN90GRG1s0wvN+YWlmjyjY7n2M17oq5k4Pw1hRTOHeVXmMVQ+0bgNbU3/5smmBcpun85DEJleqW2JX22nOOXloTU1by5zyOukCAFklo+o8tM="
+env:
+  global:
+    - secure: "OdleSgmWFyyNQ/VBa9tUBRKGZfWfOsxLMbFIQnkxPjRLSMGoMgyKgp6GJohX67fLDjxWHLsG3MQIkMU3wuKaCi35Myree7XjtQ8ziomtIglkPjxOXbQ5YywV6Vm3cqLbjGPc8yp0Xz/zVTlQS+5rw1ZkPvwP0LcpBJCnqGMISMY="
+    - secure: "Vj686G0kiLW7u17aFVA289fyvPnx1GKKpHwOEf3Ch6LFtLs9F8TjoS4yA+EprrnAZnVGtV796O0+wDbnnr8vmlALTv5zYb7YH2aH4XGGlWpeFJ9r7N5V1cV0h8AD1Qys6v6QHhp72SS04W0dH7g38jffD8witoupxJj2Xm0r9Hs="
 after_success:
 - coveralls
