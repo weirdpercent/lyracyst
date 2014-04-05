@@ -5,8 +5,8 @@ rvm:
 - rbx
 env:
   global:
-    - secure: "OdleSgmWFyyNQ/VBa9tUBRKGZfWfOsxLMbFIQnkxPjRLSMGoMgyKgp6GJohX67fLDjxWHLsG3MQIkMU3wuKaCi35Myree7XjtQ8ziomtIglkPjxOXbQ5YywV6Vm3cqLbjGPc8yp0Xz/zVTlQS+5rw1ZkPvwP0LcpBJCnqGMISMY="
-    - secure: "Vj686G0kiLW7u17aFVA289fyvPnx1GKKpHwOEf3Ch6LFtLs9F8TjoS4yA+EprrnAZnVGtV796O0+wDbnnr8vmlALTv5zYb7YH2aH4XGGlWpeFJ9r7N5V1cV0h8AD1Qys6v6QHhp72SS04W0dH7g38jffD8witoupxJj2Xm0r9Hs="
+  - secure: OdleSgmWFyyNQ/VBa9tUBRKGZfWfOsxLMbFIQnkxPjRLSMGoMgyKgp6GJohX67fLDjxWHLsG3MQIkMU3wuKaCi35Myree7XjtQ8ziomtIglkPjxOXbQ5YywV6Vm3cqLbjGPc8yp0Xz/zVTlQS+5rw1ZkPvwP0LcpBJCnqGMISMY=
+  - secure: Vj686G0kiLW7u17aFVA289fyvPnx1GKKpHwOEf3Ch6LFtLs9F8TjoS4yA+EprrnAZnVGtV796O0+wDbnnr8vmlALTv5zYb7YH2aH4XGGlWpeFJ9r7N5V1cV0h8AD1Qys6v6QHhp72SS04W0dH7g38jffD8witoupxJj2Xm0r9Hs=
 script: bundle exec ruby lib/lyracyst.rb get test
 after_success:
 - coveralls
