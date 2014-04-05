@@ -10,9 +10,6 @@ require 'wordnik'
 OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
 environment='ruby'
 result=''
-program :name, 'lyracyst'
-program :version, '0.0.1'
-program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
 #search='test' # (urlencoded string)
 #print "Enter a word: " #change commenting here to convert between command line and test modes
 class Fetch
@@ -128,7 +125,9 @@ class Search
     print "\n"
   end
 end
-
+program :name, 'lyracyst'
+program :version, '0.0.1'
+program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
 command :get do |c|
   c.syntax = 'lyracyst get [options]'
   c.summary = 'Fetches all sources'
@@ -143,7 +142,6 @@ command :get do |c|
     s.rhyme(search)
   end
 end
-
 command :define do |c|
   c.syntax = 'lyracyst define [options]'
   c.summary = 'Fetches definitions'
@@ -156,7 +154,6 @@ command :define do |c|
     s.define(search)
   end
 end
-
 command :related do |c|
   c.syntax = 'lyracyst related [options]'
   c.summary = 'Fetches related words'
@@ -170,7 +167,6 @@ command :related do |c|
     s.related(search)
   end
 end
-
 command :rhyme do |c|
   c.syntax = 'lyracyst rhyme [options]'
   c.summary = 'Fetches rhymes'
@@ -183,4 +179,3 @@ command :rhyme do |c|
     s.rhyme(search)
   end
 end
-

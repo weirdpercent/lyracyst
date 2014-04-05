@@ -11,6 +11,6 @@ branches:
   only:
     - master
     - commander
-script: bundle exec rake lyracyst:get[test]
+script: bundle exec ruby lib/lyracyst.rb get test
 after_success:
 - coveralls
