@@ -24,15 +24,15 @@ Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://the
 
 ### Usage
 
-    bundle install
-    rake
+    gem install lyracyst
+    lyracyst get test
 
 ### Code Example
 
     s=Search.new
-    s.nik(search) # Wordnik definitions
-    s.syn(search) # Altervista synonyms
-    s.rhy(search) # Arpabet rhymes
+    s.define(search) # Wordnik definitions
+    s.related(search, result) # Altervista related words
+    s.rhyme(search) # Arpabet rhymes
 
 ### Motivation
 
@@ -41,6 +41,11 @@ I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, 
 ### Tests
 
     TODO
+
+### Developers
+
+    bundle install
+    rake lyracyst:get[test]
 
 ### Contributing workflow
 
