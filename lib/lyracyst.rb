@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'commander/import'
 #require 'configatron'
 require 'multi_json'
 #require 'nokogiri'
 require 'open-uri/cached'
 require 'wordnik'
+require 'commander.rb'
 OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
 environment='ruby'
 result=''
@@ -125,6 +125,7 @@ class Search
     print "\n"
   end
 end
+<<<<<<< HEAD
 program :name, 'lyracyst'
 program :version, '0.0.1'
 program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
@@ -179,3 +180,7 @@ command :rhyme do |c|
     s.rhyme(search)
   end
 end
+=======
+
+
+>>>>>>> f57ddddcfbc56a4046cf8b7591b28cfd71ce7f44
