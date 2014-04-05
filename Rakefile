@@ -1,4 +1,14 @@
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'rake/clean'
+require "bundler/version"
+
+task :build do
+  system "gem build lyracyst.gemspec"
+end
+
+task :release => :build do
+  system "gem push lyracyst-#{Bunder::VERSION}"
+end
 
 task :clean do
   CLEAN = FileList['**/*.json']
@@ -20,14 +30,14 @@ namespace :lyracyst do
   end
 
   desc "Define"
-  task :define do
+  task :define, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
     s.define(args.search)
   end
 
   desc "Related"
-  task :related do
+  task :related, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
     result=''
@@ -35,7 +45,7 @@ namespace :lyracyst do
   end
 
   desc "Rhymes"
-  task :rhyme do
+  task :rhyme, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
     s.rhyme(args.search)
