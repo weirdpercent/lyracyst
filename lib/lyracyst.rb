@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+require 'commander/import'
 #require 'configatron'
 require 'multi_json'
 #require 'nokogiri'
