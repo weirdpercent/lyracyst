@@ -5,7 +5,7 @@ lyracyst
 
 Constellation Lyra photo by [Scott Roy Atwood](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)
 
-[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)[![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)
+[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)[![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)
 
 A powerful word search tool for writers of all kinds.
 
