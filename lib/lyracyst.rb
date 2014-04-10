@@ -186,7 +186,7 @@ class Search
 end
 
 program :name, 'lyracyst'
-program :version, '0.0.4'
+program :version, '0.0.5'
 program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
 command :get do |c|
   c.syntax = 'lyracyst get [options]'

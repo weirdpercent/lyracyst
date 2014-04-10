@@ -6,8 +6,9 @@ task :build do
   system "gem build lyracyst.gemspec"
 end
 
-task :release => :build do
-  system "gem push lyracyst-#{Bundler::VERSION}"
+desc "Creates executable in /bin"
+task :bin do
+  `cp ./lib/lyracyst.rb ./bin/lyracyst`
 end
 
 task :clean do
@@ -19,7 +20,7 @@ task :clobber do
   puts 'Everything cleaned.'
 end
 namespace :lyracyst do
-  desc "Get"
+  desc "get[searchword]"
   task :get, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
@@ -29,14 +30,14 @@ namespace :lyracyst do
     s.rhyme(args.search)
   end
 
-  desc "Define"
+  desc "define[searchword]"
   task :define, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
     s.define(args.search)
   end
 
-  desc "Related"
+  desc "related[searchword]"
   task :related, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
@@ -44,7 +45,7 @@ namespace :lyracyst do
     s.related(args.search, result)
   end
 
-  desc "Rhymes"
+  desc "rhyme[searchword]"
   task :rhyme, :search do |t, args|
     require './lib/lyracyst.rb'
     s=Search.new
