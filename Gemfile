@@ -10,12 +10,13 @@ gem 'rake'
 gem 'wordnik'
 
 group :development do
-  gem 'pry'
   #gem 'cucumber'
   #gem 'factory_girl'
   #gem 'gherkin'
+  gem 'pry'
   #gem 'rspec'
   #gem 'spinach'
+  gem 'yard'
 end
 
 platforms :rbx do

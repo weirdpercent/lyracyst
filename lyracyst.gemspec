@@ -2,7 +2,7 @@ require File.expand_path("../lib/lyracyst", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "lyracyst"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.platform    = Gem::Platform::RUBY
   s.license     = "MIT"
   s.authors     = ["Drew Prentice"]

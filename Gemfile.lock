@@ -251,6 +251,7 @@ GEM
       json (>= 1.4.6)
       nokogiri (>= 1.4.4)
       typhoeus (>= 0.2.1)
+    yard (0.8.7.4)
 
 PLATFORMS
   ruby
@@ -266,3 +267,4 @@ DEPENDENCIES
   rake
   rubysl (~> 2.0)
   wordnik
+  yard

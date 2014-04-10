@@ -7,7 +7,7 @@ task :build do
 end
 
 task :release => :build do
-  system "gem push lyracyst-#{Bunder::VERSION}"
+  system "gem push lyracyst-#{Bundler::VERSION}"
 end
 
 task :clean do

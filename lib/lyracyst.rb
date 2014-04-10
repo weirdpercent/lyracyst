@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
+# The program takes a search term and returns a list.
+# The list can be either definitions, related words,
+# rhymes, or all three at once.
+#
+# Author::    Drew Prentice  (mailto:weirdpercent@gmail.com)
+# Copyright:: Copyright (c) 2014 Drew Prentice
+# License::   MIT
 
 require 'rubygems'
 require 'commander/import'
@@ -7,16 +14,26 @@ require 'multi_json'
 #require 'nokogiri'
 require 'open-uri/cached'
 require 'wordnik'
-require 'commander.rb'
-OpenURI::Cache.cache_path = 'tmp/open-uri' #transparent caching
+
+OpenURI::Cache.cache_path = 'tmp/open-uri'
 environment='ruby'
 result=''
-#search='test' # (urlencoded string)
-#print "Enter a word: " #change commenting here to convert between command line and test modes
+
+# Handles tasks related to fetching queries
 class Fetch
+
+  # Opens URL and returns the JSON response.
+  #
+  # @param url [String] The query URL
+  # @param result [String] The JSON response.
   def search(url, result)
-    result=open(url).read #submit search query
+    result=open(url).read
   end
+
+  # Sets today's date and writes it with querycount to syncqc.json.
+  #
+  # @param dateint [Fixnum] Today's date in integer form.
+  # @param querycount [Fixnum] Number of daily queries in integer form.
   def update(dateint, querycount)
     qct={'date' => dateint, 'querycount' => querycount}
     fo=File.open("json/synqc.json", "w+")
@@ -24,6 +41,12 @@ class Fetch
     fo.print tofile
     fo.close
   end
+
+  # Extracts related words from JSON response and prints them.
+  #
+  # @param x [Fixnum] Integer always set to zero.
+  # @param y [Fixnum] Number of items in resulta Array minus 1.
+  # @param resulta [Array] An array of values from JSON response.
   def rel(x, y, resulta)
     while x <= y
       resultl=resulta[x]
@@ -33,27 +56,45 @@ class Fetch
       x+=1
     end
   end
+
+  # Submits search term and parameters to Altervista.
+  # searchlang can be de_DE, el_GR, en_US, es_ES, fr_FR,
+  # it_IT, no_NO, pt_PT, ro_RO, ru_RU, or sk_SK.
+  # dataoutput only takes 'json' right now. This method calls
+  # {Fetch#search} and {Fetch#update}.
+  #
+  # @param search [String] The word or phrase to search for.
+  # @param dateint [Fixnum] Today's date in integer form.
+  # @param result [String] The JSON response.
+  # @param environment [String] Execution environment, right now just ruby.
+  # @param querycount [Fixnum] Number of daily queries in integer form.
   def submit(search, dateint, result, environment, querycount)
     urlprefix='http://thesaurus.altervista.org/thesaurus/v1'
-    #apikey=File.readlines('keys/thesaurus.key') #search API key, get one at http://thesaurus.altervista.org/mykey
-    #apikey=apikey[0].chomp
-    apikey=ENV['THESAURUS'] #access thru ENV vars for safe Travis builds
-    searchlang='en_US' # it_IT, fr_FR, de_DE, en_US, el_GR, es_ES, de_DE, no_NO, pt_PT, ro_RO, ru_RU, sk_SK
-    dataoutput='json' # xml or json (default xml)
+    apikey=ENV['THESAURUS']
+    searchlang='en_US'
+    dataoutput='json'
     url="#{urlprefix}?key=#{apikey}&word=#{search}&language=#{searchlang}&output=#{dataoutput}"
-    if environment == 'javascript' # (requires output=json)
+    if environment == 'javascript'
       url="#{url}&callback=synonymSearch"
     end
     f=Fetch.new()
-    resultj=f.search(url, result) #submit search query
+    resultj=f.search(url, result)
     resultp=MultiJson.load(resultj)
     resulta=resultp['response']
     x=0
     y=resulta.length-1
     f.rel(x, y, resulta)
-    querycount+=1 #increment daily queries
+    querycount+=1
     f.update(dateint, querycount)
   end
+
+  # Formats rhyme results, assumes a space means a
+  # word contraction, i.e. raison d'etre and inserts
+  # an apostrophe. Also removes Arpabet numbers.
+  #
+  # @param x [Fixnum] Integer always set to zero.
+  # @param y [Fixnum] Number of items in resulta Array minus 1.
+  # @param parse [String] The rhyming word to be formatted.
   def parse(x, y, parse)
     while x <= y
       if parse[x] =~ / \d/
@@ -69,14 +110,22 @@ class Fetch
     end
   end
 end
+
+# The Search class defines three methods for submitting queries.
 class Search
-  def related(search, result) # Each thesaurus.altervista.org application can perform upto 5000 queries per day.
-    environment='ruby'; maxqueries=5000; querycount=0; t=Time.now; y=t.year.to_s; m=t.month; d=t.day; #declarations
-    if m < 10 then m="0#{m}" else  m=m.to_s; end #2-digits #FIXME < not valid?
+  # Altervista.org's thesaurus service provides related words.
+  # The service limits each API key to 5000 queries a day. If
+  # maximum number of queries has been reached, this methods
+  # will exit. This method calls {Fetch#update} and {Fetch#submit}.
+  #
+  # @param search [String] The word or phrase to search for.
+  # @param result [String] The JSON response.
+  def related(search, result)
+    environment='ruby'; maxqueries=5000; querycount=0; t=Time.now; y=t.year.to_s; m=t.month; d=t.day;
+    if m < 10 then m="0#{m}" else  m=m.to_s; end
     if d < 10 then d="0#{d}" else d=d.to_s; end
     date="#{y}#{m}#{d}"
     dateint=date.to_i
-    #pd=Date.parse(date)
     if File.exist?("json/synqc.json") == true
       rl=File.readlines("json/synqc.json")
       rl=rl[0]
@@ -84,28 +133,31 @@ class Search
       testdate=loadrl['date']
       testcount=loadrl['querycount']
       pdateint=testdate.to_i
-      if dateint > pdateint == true #track date changes
+      if dateint > pdateint == true
         f=Fetch.new()
         f.update(dateint, querycount)
       end
     else
       testcount=0
     end
-    if testcount < maxqueries #make sure we don't abuse the service
+    if testcount < maxqueries
       f=Fetch.new()
       f.submit(search, dateint, result, environment, querycount)
     else
       puts "Max queries per day has been reached."
     end
   end
+  # Wordnik.com's service provides definitions. The logger
+  # defaults to Rails.logger or Logger.new(STDOUT). Set to
+  # Logger.new('/dev/null') to disable logging.
+  #
+  # @param search [String] The word or phrase to search for.
   def define(search)
-    #apikey=File.readlines('keys/wordnik.key') #search API key, get one at http://developer.wordnik.com/
-    #apikey=apikey[0].chomp
-    apikey=ENV['WORDNIK'] #access thru ENV vars for safe Travis builds
+    apikey=ENV['WORDNIK']
     Wordnik.configure do |cfg|
       cfg.api_key=apikey
       cfg.response_format='json'
-      cfg.logger = Logger.new('/dev/null') #defaults to Rails.logger or Logger.new(STDOUT). Set to Logger.new('/dev/null') to disable logging.
+      cfg.logger = Logger.new('/dev/null')
     end
     define=Wordnik.word.get_definitions(search)
     define.map { |defi|
@@ -114,6 +166,12 @@ class Search
       #puts "Definition: #{part} - #{text} - #{att}" #With attribution to source
     }
   end
+
+  # ARPA created ARPABET decades ago to find words that
+  # rhyme. The technology is still quite relevant today.
+  # This program uses the Heroku app based on ARPABET.
+  #
+  # @param search [String] The word or phrase to search for.
   def rhyme(search)
     url="http://arpabet.heroku.com/words/#{search}"
     f=Fetch.new()
@@ -126,8 +184,9 @@ class Search
     print "\n"
   end
 end
+
 program :name, 'lyracyst'
-program :version, '0.0.1'
+program :version, '0.0.4'
 program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
 command :get do |c|
   c.syntax = 'lyracyst get [options]'
@@ -143,6 +202,7 @@ command :get do |c|
     s.rhyme(search)
   end
 end
+
 command :define do |c|
   c.syntax = 'lyracyst define [options]'
   c.summary = 'Fetches definitions'
@@ -155,12 +215,12 @@ command :define do |c|
     s.define(search)
   end
 end
+
 command :related do |c|
   c.syntax = 'lyracyst related [options]'
   c.summary = 'Fetches related words'
   c.description = 'Uses the Altervista API to get related words'
   c.example 'Uses the Altervista API to get related words', 'lyracyst related test'
-  #c.option '--some-switch', 'Some switch that does something' # it_IT, fr_FR, de_DE, en_US, el_GR, es_ES, de_DE, no_NO, pt_PT, ro_RO, ru_RU, sk_SK
   c.action do |args, options|
     search=args[0]
     s=Search.new
@@ -168,6 +228,7 @@ command :related do |c|
     s.related(search)
   end
 end
+
 command :rhyme do |c|
   c.syntax = 'lyracyst rhyme [options]'
   c.summary = 'Fetches rhymes'

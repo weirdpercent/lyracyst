@@ -5,13 +5,16 @@ lyracyst
 
 Constellation Lyra photo by [Scott Roy Atwood](http://en.wikipedia.org/wiki/File:Lyra_constellation_detail_long_exposure.jpg)
 
-[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)[![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst)
+[![Build Status](https://travis-ci.org/weirdpercent/lyracyst.png?branch=master)](https://travis-ci.org/weirdpercent/lyracyst)[![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst)[![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst)
 
 A powerful word search tool for writers of all kinds.
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line.
+Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line. Get API search keys as follows:
+Altervista - http://thesaurus.altervista.org/mykey
+Wordnik - http://developer.wordnik.com/
+Put them in environment variables THESAURUS and WORDNIK respectively. Adding these to .bashrc or .zshrc is the easiest way.
 
 ### Features
 
@@ -19,8 +22,7 @@ Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://the
 - Definitions from Wordnik
 - Rhymes from arpabet.heroku.com
 - Related words from thesaurus.altervista.org
-- XML & JSON parsing
-- Export wordlists matching search criteria
+- JSON parsing
 
 ### Usage
 
