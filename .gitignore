@@ -28,3 +28,5 @@ doc.sh
 Gemfile.lock
 .rvmrc
 **/*.key
+.rspec
+/spec/
