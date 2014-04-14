@@ -11,10 +11,12 @@ A powerful word search tool for writers of all kinds.
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line. Get API search keys as follows:
-Altervista - http://thesaurus.altervista.org/mykey
-Wordnik - http://developer.wordnik.com/
-Put them in environment variables THESAURUS and WORDNIK respectively. Adding these to .bashrc or .zshrc is the easiest way.
+Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line. Get the necessary API keys as follows:
+
+- Altervista - http://thesaurus.altervista.org/mykey
+- Wordnik - http://developer.wordnik.com/
+
+Put them in environment variables THESAURUS and WORDNIK respectively. Add these to .bashrc, .zshrc, Windows path, etc.
 
 ### Features
 
@@ -24,10 +26,18 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Adding the
 - Related words from thesaurus.altervista.org
 - JSON parsing
 
+### Planned Features
+
+- JSON/XML parsing
+- JSON/XML schema validation
+- node.js version
+
 ### Usage
 
     gem install lyracyst
     lyracyst get test
+    lyracyst --help
+    lyracyst help command
 
 ### Code Example
 

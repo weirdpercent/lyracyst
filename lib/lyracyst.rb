@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 # The program takes a search term and returns a list.
 # The list can be either definitions, related words,
 # rhymes, or all three at once.
@@ -6,7 +7,6 @@
 # Author::    Drew Prentice  (mailto:weirdpercent@gmail.com)
 # Copyright:: Copyright (c) 2014 Drew Prentice
 # License::   MIT
-
 require 'rubygems'
 require 'commander/import'
 #require 'configatron'
@@ -14,7 +14,6 @@ require 'multi_json'
 #require 'nokogiri'
 require 'open-uri/cached'
 require 'wordnik'
-
 OpenURI::Cache.cache_path = 'tmp/open-uri'
 environment='ruby'
 result=''

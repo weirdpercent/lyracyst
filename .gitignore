@@ -13,6 +13,8 @@
 # Documentation                           
 /.yardoc/
 /_yardoc/
+/.yardopts
+doc.sh
 /doc/
 /rdoc/
 
@@ -21,8 +23,8 @@
 /lib/bundler/man/
 
 # Optional
-#.ruby-version
-#.ruby-gemset
+.ruby-version
+.ruby-gemset
 Gemfile.lock
 .rvmrc
 **/*.key
