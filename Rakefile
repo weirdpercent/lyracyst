@@ -1,55 +1,55 @@
-$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+$:.unshift File.dirname(__FILE__)
 require 'rake/clean'
 require "bundler/version"
+require 'cucumber'
+require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
+end
+
+desc 'Build gemspec'
 task :build do
   system "gem build lyracyst.gemspec"
 end
 
-desc "Creates executable in /bin"
+desc 'Create executable in /bin'
 task :bin do
   `cp ./lib/lyracyst.rb ./bin/lyracyst`
 end
 
-task :clean do
-  CLEAN = FileList['**/*.json']
-  puts 'JSON cleaned.'
-end
-task :clobber do
-  CLOBBER = FileList['**/*.json']
-  puts 'Everything cleaned.'
-end
 namespace :lyracyst do
-  desc "get[searchword]"
+  desc 'get[searchword]'
   task :get, :search do |t, args|
-    require './lib/lyracyst.rb'
-    s=Search.new
-    result=''
-    s.define(args.search)
-    s.related(args.search, result)
-    s.rhyme(args.search)
+    search = args.search
+    system "lyracyst get test"
   end
 
-  desc "define[searchword]"
+  desc 'define[searchword]'
   task :define, :search do |t, args|
-    require './lib/lyracyst.rb'
-    s=Search.new
-    s.define(args.search)
+    search = args.search
+    system('lyracyst get test')
   end
 
-  desc "related[searchword]"
+  desc 'related[searchword]'
   task :related, :search do |t, args|
-    require './lib/lyracyst.rb'
-    s=Search.new
-    result=''
-    s.related(args.search, result)
+    search = args.search
+    system('lyracyst get test')
   end
 
-  desc "rhyme[searchword]"
+  desc 'rhyme[searchword]'
   task :rhyme, :search do |t, args|
-    require './lib/lyracyst.rb'
-    s=Search.new
-    s.rhyme(args.search)
+    search = args.search
+    system('lyracyst get test')
   end
 end
+
+task :travis do
+  ["rake features", "rake lyracyst:get[test]"].each do |cmd|
+    puts "Starting to run #{cmd}..."
+    system("bundle exec #{cmd}")
+    raise "#{cmd} failed!" unless $?.exitstatus == 0
+  end
+end
+
 task :default => 'lyracyst:get'

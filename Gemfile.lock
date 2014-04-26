@@ -11,22 +11,56 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    aruba (0.5.4)
+      childprocess (>= 0.3.6)
+      cucumber (>= 1.1.1)
+      rspec-expectations (>= 2.7.0)
     builder (3.2.2)
+    childprocess (0.5.3)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
+    colorize (0.5.8)
     commander (4.1.6)
       highline (~> 1.6.11)
+    configatron (3.1.3)
+    coveralls (0.7.0)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
+    cucumber (1.3.14)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.12)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.1)
+    diff-lcs (1.2.5)
+    docile (1.1.3)
     ethon (0.7.0)
       ffi (>= 1.3.0)
     ffi (1.9.3)
     ffi2-generators (0.1.1)
+    gherkin (2.12.2)
+      multi_json (~> 1.3)
+    gherkin-ruby (0.3.1)
+      racc
     highline (1.6.21)
     htmlentities (4.3.1)
     i18n (0.6.9)
     json (1.8.1)
+    lyracyst (0.0.6)
+      commander (~> 4.1)
+      configatron (~> 3.1)
+      multi_json (~> 1.9)
+      open-uri-cached (~> 0.0)
+      wordnik (~> 4.12)
     method_source (0.8.2)
+    mime-types (2.2)
     mini_portile (0.5.3)
     minitest (5.3.3)
     multi_json (1.9.2)
+    multi_test (0.1.1)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     open-uri-cached (0.0.5)
@@ -36,7 +70,17 @@ GEM
       slop (~> 3.4)
     psych (2.0.5)
     racc (1.4.11)
-    rake (10.2.2)
+    rake (10.3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.8)
+    rspec-expectations (2.14.5)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.6)
     rubysl (2.0.15)
       rubysl-abbrev (~> 2.0)
       rubysl-base64 (~> 2.0)
@@ -239,8 +283,21 @@ GEM
     rubysl-xmlrpc (2.0.0)
     rubysl-yaml (2.0.4)
     rubysl-zlib (2.0.1)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.5.0)
+    spinach (0.8.9)
+      colorize (= 0.5.8)
+      gherkin-ruby (>= 0.3.1)
+      json
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
+    thor (0.19.1)
     thread_safe (0.3.3)
+    tins (1.1.0)
     typhoeus (0.6.8)
       ethon (>= 0.7.0)
     tzinfo (1.1.0)
@@ -258,14 +315,22 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aruba
   bundler
   commander
+  configatron
+  coveralls
+  cucumber
+  gherkin
+  lyracyst (= 0.0.6)
   multi_json
   open-uri-cached
   pry
   psych
   racc
   rake
+  rspec
   rubysl (~> 2.0)
+  spinach
   wordnik
   yard
