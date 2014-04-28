@@ -28,19 +28,19 @@ namespace :lyracyst do
   desc 'define[searchword]'
   task :define, :search do |t, args|
     search = args.search
-    system('lyracyst get test')
+    system('lyracyst define test')
   end
 
   desc 'related[searchword]'
   task :related, :search do |t, args|
     search = args.search
-    system('lyracyst get test')
+    system('lyracyst related test')
   end
 
   desc 'rhyme[searchword]'
   task :rhyme, :search do |t, args|
     search = args.search
-    system('lyracyst get test')
+    system('lyracyst rhyme test')
   end
 end
 
