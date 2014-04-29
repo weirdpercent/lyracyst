@@ -1,9 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-- 1.9.3
 - ruby-head
-- jruby-head
 - rbx-2.2.6
 env:
   global:
