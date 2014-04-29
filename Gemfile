@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'bundler'
 gem 'commander'
 gem 'httpi'
+# lyracyst gem including for CLI testing
+gem 'lyracyst', '0.0.7'
 gem 'multi_json'
 gem 'multi_xml'
 gem 'wordnik'
