@@ -2,21 +2,18 @@ source 'http://rubygems.org'
 
 gem 'bundler'
 gem 'commander'
-gem 'configatron'
-# lyracyst gem including for CLI testing
-gem 'lyracyst', '0.0.6'
+gem 'httpi'
 gem 'multi_json'
-gem 'open-uri-cached'
-gem 'rake'
+gem 'multi_xml'
 gem 'wordnik'
 
-group :development do
+group :test do
   gem 'aruba'
   gem 'coveralls', require: false
   gem 'cucumber'
-  #gem 'factory_girl'
-  gem 'gherkin'
+  gem 'methadone'
   gem 'pry'
+  gem 'rake'
   gem 'rspec'
   gem 'spinach'
   gem 'yard'

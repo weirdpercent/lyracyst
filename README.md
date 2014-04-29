@@ -20,33 +20,43 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Add these 
 
 ### Features
 
-- Open URI fetching w/ transparent caching
+- JSON and XML parsing
 - Definitions from Wordnik
 - Rhymes from arpabet.heroku.com
 - Related words from thesaurus.altervista.org
-- JSON parsing
+- Supports multiple HTTP clients, recommends curb for speed
 - Supports multiple JSON parsers, recommends oj for speed
+- Supports multiple XML parsers, recommends ox for speed
 
 ### Planned Features
 
-- XML parsing
 - JSON/XML schema validation
+- JSON/XML export
 - node.js version using Opal: Ruby in Javascript
-- Support multiple XML parsers, recommend ox for speed
 
 ### Usage
 
     gem install lyracyst
     lyracyst get test
     lyracyst --help
-    lyracyst help command
+    lyracyst help get
 
 ### Code Example
 
-    s=Search.new
-    s.define(search) # Wordnik definitions
-    s.related(search, result) # Altervista related words
-    s.rhyme(search) # Arpabet rhymes
+    fmt = 'json'
+    lang = 'en_US'
+    result = []
+    search = 'test'
+    g=Lyracyst::Get.new
+    g.get(search, result, lang, fmt) # Fetch all
+    de = Lyracyst::Define.new
+    de.define(search, fmt)
+    result = []
+    re = Lyracyst::Relate.new
+    re.relate(search, result, lang, fmt)
+    result = []
+    rh = Lyracyst::Rhyme.new
+    rh.rhyme(search, result)
 
 ### Motivation
 
@@ -54,7 +64,9 @@ I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, 
 
 ### Tests
 
-    TODO
+Lyracyst uses Aruba to test commandline features. To run the tests, just run:
+
+    cucumber
 
 ### Developers
 

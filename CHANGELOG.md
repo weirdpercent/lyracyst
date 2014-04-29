@@ -1,6 +1,16 @@
 Changelog
 ===
 
+Version 0.0.7 - Tests, Optimization, & More Cleanup
+- Better docs
+- Testing on more Ruby implementations
+- More restructuring of code and lib files
+- Transition from open-uri_cached to httpi
+- Support for multiple HTTP clients
+- More Cucumber features
+- multi_xml support for multiple XML parsers
+- XML parsing
+
 Version 0.0.6 - Module & Docs
 - Better documentation
 - Some rubocop cleanup

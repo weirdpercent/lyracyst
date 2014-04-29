@@ -1,9 +1,10 @@
+@announce
 Feature: Help
-  In order to learn about my app's usage
+  In order to learn about usage
   As a developer using Cucumber
   I run the help command
 
   Scenario: Help command runs
-    When I run `lyracyst --help`
-    Then the output should contain "A powerful word search tool that fetches definitions, related words, and rhymes."
+    When I get help for "lyracyst"
+    And the output should contain "A powerful word search tool"
     And the exit status should be 0

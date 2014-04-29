@@ -1,19 +1,26 @@
+require 'methadone/cucumber'
 require 'aruba/cucumber'
 require 'rspec'
 require 'spinach'
 require 'coveralls'
-Coveralls.wear!
 
-ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
+Coveralls.wear!
+PROJECT_ROOT = File.join(File.dirname(__FILE__),'..','..')
+ENV['PATH'] = "#{File.join(PROJECT_ROOT,'bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
 LIB_DIR = File.join(File.expand_path(File.dirname(__FILE__)),'..','..','lib')
+ARUBA_DIR = File.join(%w(tmp aruba))
 
 Before do
-  @aruba_timeout_seconds = 10
+  @dirs = [ARUBA_DIR]
   @puts = true
+  @aruba_timeout_seconds = 60
   @original_rubylib = ENV['RUBYLIB']
-  ENV['RUBYLIB'] = LIB_DIR + File::PATH_SEPARATOR + ENV['RUBYLIB'].to_s
+  @original_rubyopt = ENV['RUBYOPT']
+  ENV['RUBYLIB'] = File.join(PROJECT_ROOT,'lib') + File::PATH_SEPARATOR + ENV['RUBYLIB'].to_s
+  ENV['RUBYOPT'] = (ENV['RUBYOPT'] || '') + ' -rubygems'
 end
 
 After do
   ENV['RUBYLIB'] = @original_rubylib
+  ENV['RUBYOPT'] = @original_rubyopt
 end

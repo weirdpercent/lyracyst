@@ -1,8 +1,12 @@
 language: ruby
 cache: bundler
+install: gem install lyracyst
 rvm:
-- 2.1.1
-- rbx
+- 1.8.7
+- 1.9.3
+- ruby-head
+- jruby-head
+- rbx-head
 env:
   global:
   - secure: OdleSgmWFyyNQ/VBa9tUBRKGZfWfOsxLMbFIQnkxPjRLSMGoMgyKgp6GJohX67fLDjxWHLsG3MQIkMU3wuKaCi35Myree7XjtQ8ziomtIglkPjxOXbQ5YywV6Vm3cqLbjGPc8yp0Xz/zVTlQS+5rw1ZkPvwP0LcpBJCnqGMISMY=

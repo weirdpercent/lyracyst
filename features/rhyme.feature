@@ -1,3 +1,4 @@
+@announce
 Feature: Rhyme
   In order to use my app to fetch rhymes
   As a developer using Cucumber
@@ -6,4 +7,5 @@ Feature: Rhyme
   Scenario: Rhyme command runs
     When I run `lyracyst rhyme test`
     Then the output should contain "Getting rhymes"
+    And the output should contain "Rhymes with"
     And the exit status should be 0

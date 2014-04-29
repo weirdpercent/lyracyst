@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
+# coding: utf-8
 
 require 'commander/import'
-require './lib/lyracyst/fetch.rb'
-require './lib/lyracyst/search.rb'
+require './lib/lyracyst/define.rb'
+require './lib/lyracyst/get.rb'
+require './lib/lyracyst/relate.rb'
+require './lib/lyracyst/rhyme.rb'
 require './lib/lyracyst/version.rb'
 
 # The program takes a search term and returns a list.
@@ -13,7 +16,8 @@ require './lib/lyracyst/version.rb'
 # Copyright:: Copyright (c) 2014 Drew Prentice
 # License::   MIT
 module Lyracyst
-  environment = 'ruby'
+  # The platform this app is running on. For now only Ruby, plans for node.js version in the future.
+  ENVIRONMENT = 'ruby'
   program :name, 'lyracyst'
   program :version, VERSION
   program :description, 'A powerful word search tool that fetches definitions, related words, and rhymes.'
@@ -23,20 +27,17 @@ module Lyracyst
     c.summary = 'Fetches all sources'
     c.description = 'Searches definitions, related words, and rhymes for a given query'
     c.example 'Fetches info about the word test', 'lyracyst get test'
-    #c.option = '--lang en_US', String, 'Sets search language'
-    #c.option = '--fmt json', String, 'Sets XML or JSON format'
+    c.option '--lang en_US', String, 'Sets search language'
+    c.option '--fmt json', String, 'Sets XML or JSON format'
     c.action do |args, options|
-      #options.default :lang => 'en_US', :fmt => 'json'
-      lang = 'en_US'
-      fmt = 'json'
+      options.default :lang => 'en_US', :fmt => 'json'
+      lang = options.lang
+      fmt = options.fmt
       search = args[0]
-      fmt = 'json'
       result = []
-      s = Lyracyst::Search.new
+      g = Lyracyst::Get.new
       puts "Getting all for [#{search}]"
-      s.define(search)
-      s.related(search, result, lang, fmt)
-      s.rhyme(search, result)
+      g.get(search, result, lang, fmt)
     end
   end
 
@@ -45,28 +46,33 @@ module Lyracyst
     c.summary = 'Fetches definitions'
     c.description = 'Uses the Wordnik API to get definitions'
     c.example 'Uses the Wordnik API to get definitions of the word test', 'lyracyst define test'
+    c.option '--fmt json', String, 'Sets XML or JSON format'
     c.action do |args, options|
+      options.default :fmt => 'json'
+      fmt = options.fmt
       search = args[0]
-      s = Lyracyst::Search.new
+      de = Lyracyst::Define.new
       puts "Getting definitions for [#{search}]"
-      s.define(search)
+      de.define(search, fmt)
     end
   end
 
-  command :related do |c|
-    c.syntax = 'lyracyst related word'
-    c.summary = 'Fetches related words'
+  command :relate do |c|
+    c.syntax = 'lyracyst relate word'
+    c.summary = 'Fetches relate words'
     c.description = 'Uses the Altervista API to get related words'
-    c.example 'Uses the Altervista API to get words related to test', 'lyracyst related test'
-    #c.option = '--lang', String, 'Sets search language'
+    c.example 'Uses the Altervista API to get words related to test', 'lyracyst relate test'
+    c.option '--lang en_US', String, 'Sets search language'
+    c.option '--fmt json', String, 'Sets XML or JSON format'
     c.action do |args, options|
-      lang = 'en_US'
-      fmt = 'json'
+      options.default :lang => 'en_US', :fmt => 'json'
+      lang = options.lang
+      fmt = options.fmt
       search = args[0]
       result = []
-      s = Lyracyst::Search.new
+      re = Lyracyst::Relate.new
       puts "Getting related words for [#{search}]"
-      s.related(search, result, lang, fmt)
+      re.relate(search, result, lang, fmt)
     end
   end
 
@@ -75,13 +81,12 @@ module Lyracyst
     c.summary = 'Fetches rhymes'
     c.description = 'Uses the ARPABET system to get rhymes'
     c.example 'Uses the ARPABET system to get rhymes with test', 'lyracyst rhyme test'
-    c.option '--some-switch', 'Some switch that does something'
-    c.action do |args, options|
+    c.action do |args|
       result = []
       search = args[0]
-      s = Lyracyst::Search.new
+      rh = Lyracyst::Rhyme.new
       puts "Getting rhymes for [#{search}]"
-      s.rhyme(search, result)
+      rh.rhyme(search, result)
     end
   end
 end
