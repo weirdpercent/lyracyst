@@ -51,6 +51,12 @@ GEM
       rubyntlm (~> 0.3.2)
     i18n (0.6.9)
     json (1.8.1)
+    lyracyst (0.0.7)
+      httpi (~> 2.1)
+      methadone (~> 1.3)
+      multi_json (~> 1.9)
+      multi_xml (~> 0.5)
+      wordnik (~> 4.12)
     methadone (1.3.2)
       bundler
     method_source (0.8.2)
@@ -321,6 +327,7 @@ DEPENDENCIES
   coveralls
   cucumber
   httpi
+  lyracyst (= 0.0.7)
   methadone
   multi_json
   multi_xml
