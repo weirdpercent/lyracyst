@@ -4,7 +4,7 @@ class Spinach::Features::Rhyme < Spinach::FeatureSteps
   end
 
   step 'the output should contain "Getting rhymes"' do
-    @output =~ /Getting rhymes/
+    @output =~ /Getting rhymes for \[[A-Za-z\-' ]*\]/
   end
 
   step 'the output should contain "Rhymes with"' do
