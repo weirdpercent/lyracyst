@@ -43,20 +43,22 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Add these 
 
 ### Code Example
 
-    fmt = 'json'
-    lang = 'en_US'
-    result = []
-    search = 'test'
-    g=Lyracyst::Get.new
-    g.get(search, result, lang, fmt) # Fetch all
-    de = Lyracyst::Define.new
-    de.define(search, fmt)
-    result = []
-    re = Lyracyst::Relate.new
-    re.relate(search, result, lang, fmt)
-    result = []
-    rh = Lyracyst::Rhyme.new
-    rh.rhyme(search, result)
+```ruby
+fmt = 'json'
+lang = 'en_US'
+result = []
+search = 'test'
+g=Lyracyst::Get.new
+g.get(search, result, lang, fmt) # Fetch all
+de = Lyracyst::Define.new
+de.define(search, fmt)
+result = []
+re = Lyracyst::Relate.new
+re.relate(search, result, lang, fmt)
+result = []
+rh = Lyracyst::Rhyme.new
+rh.rhyme(search, result)
+```
 
 ### Motivation
 
