@@ -37,15 +37,15 @@ module Lyracyst
         pdateint = testdate.to_i
         if dateint > pdateint == true
           re = Lyracyst::Relate.new
-          #re.update(dateint, querycount)
+          re.update(dateint, querycount)
         end
       else
         querycount = 0
         new = { 'date' => dateint, 'querycount' => querycount }
-        #fo = File.open('json/synqc.json', "w+") # FIXME json dir operations fail in Cucumber
-        #tofile = MultiJson.dump(new)
-        #fo.print tofile
-        #fo.close
+        fo = File.open('json/synqc.json', "w+") # FIXME json dir operations fail in Cucumber
+        tofile = MultiJson.dump(new)
+        fo.print tofile
+        fo.close
       end
       if querycount < max
         urlprefix = 'http://thesaurus.altervista.org/thesaurus/v1'
@@ -150,7 +150,7 @@ module Lyracyst
         puts "Invalid data format."
       end
       querycount += 1
-      #re.update(dateint, querycount)
+      re.update(dateint, querycount)
     end
     # Sets today's date and writes it with querycount to syncqc.json.
     #
