@@ -1,6 +1,8 @@
 # coding: utf-8
 require 'httpi'
 require 'multi_json'
+require 'rainbow'
+
 module Lyracyst
   # The Rhyme class uses the ARPABET Heroku app to fetch rhymes.
   class Rhyme
@@ -16,7 +18,9 @@ module Lyracyst
       rtype = ''
       result = rh.http(url, result)
       resulta = MultiJson.load(result)
-      print "Rhymes with: "
+      print Rainbow("[").blue.bright
+      print Rainbow("Rhymes with").green.bright
+      print Rainbow("]").blue.bright
       resulta.map { |x|
         print " #{x}"
       }

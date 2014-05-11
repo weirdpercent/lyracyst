@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'rainbow'
 require 'wordnik'
 
 module Lyracyst
@@ -24,7 +25,11 @@ module Lyracyst
           text = d['text']
           # att = d['attributionText']
           part = d['partOfSpeech']
-          puts "Definition: #{part} - #{text}"
+          print Rainbow("[").blue.bright
+          print Rainbow("Definition").green.bright
+          print Rainbow("]").blue.bright
+          print Rainbow("#{part} - ").bright
+          puts "#{text}"
           # puts "Definition: #{part} - #{text} - #{att}" # With attribution
         }
       else

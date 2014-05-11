@@ -2,6 +2,7 @@
 # coding: utf-8
 
 require 'commander/import'
+require 'rainbow'
 require './lib/lyracyst/define.rb'
 require './lib/lyracyst/get.rb'
 require './lib/lyracyst/relate.rb'
@@ -36,7 +37,10 @@ module Lyracyst
       search = args[0]
       result = []
       g = Lyracyst::Get.new
-      puts "Getting all for [#{search}]"
+      print Rainbow("Getting all for ").bright
+      print Rainbow("[").blue.bright
+      print Rainbow("#{search}").green.bright
+      puts Rainbow("]").blue.bright
       g.get(search, result, lang, fmt)
     end
   end
@@ -52,7 +56,10 @@ module Lyracyst
       fmt = options.fmt
       search = args[0]
       de = Lyracyst::Define.new
-      puts "Getting definitions for [#{search}]"
+      print Rainbow("Getting definitions for ").bright
+      print Rainbow("[").blue.bright
+      print Rainbow("#{search}").green.bright
+      puts Rainbow("]").blue.bright
       de.define(search, fmt)
     end
   end
@@ -71,7 +78,10 @@ module Lyracyst
       search = args[0]
       result = []
       re = Lyracyst::Relate.new
-      puts "Getting related words for [#{search}]"
+      print Rainbow("Getting related words for ").bright
+      print Rainbow("[").blue.bright
+      print Rainbow("#{search}").green.bright
+      puts Rainbow("]").blue.bright
       re.relate(search, result, lang, fmt)
     end
   end
@@ -85,7 +95,10 @@ module Lyracyst
       result = []
       search = args[0]
       rh = Lyracyst::Rhyme.new
-      puts "Getting rhymes for [#{search}]"
+      print Rainbow("Getting rhymes for ").bright
+      print Rainbow("[").blue.bright
+      print Rainbow("#{search}").green.bright
+      puts Rainbow("]").blue.bright
       rh.rhyme(search, result)
     end
   end

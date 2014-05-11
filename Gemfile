@@ -7,6 +7,7 @@ gem 'httpi'
 gem 'lyracyst', '0.0.7'
 gem 'multi_json'
 gem 'multi_xml'
+gem 'rainbow'
 gem 'wordnik'
 
 group :test do

@@ -1,4 +1,5 @@
 # coding: utf-8
+
 module Lyracyst
   #The Get class defines a method to search all sources.
   class Get

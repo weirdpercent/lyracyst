@@ -2,6 +2,7 @@
 require 'httpi'
 require 'multi_json'
 require 'multi_xml'
+require 'rainbow'
 
 module Lyracyst
   # The Relate class defines methods for interacting with the
@@ -121,7 +122,11 @@ module Lyracyst
       while x <= y
         item=resulta[x]
         item=item['list']
-        puts "Related words: #{item['category'].gsub(/\(|\)/, '')} - #{item['synonyms']}"
+        print Rainbow("[").blue.bright
+        print Rainbow("Related words").green.bright
+        print Rainbow("]").blue.bright
+        print Rainbow("#{item['category'].gsub(/\(|\)/, '')} - ").bright
+        puts "#{item['synonyms']}"
         x += 1
       end
     end

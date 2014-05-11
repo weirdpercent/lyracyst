@@ -75,6 +75,7 @@ GEM
     psych (2.0.5)
     racc (1.4.11)
     rack (1.5.2)
+    rainbow (2.0.0)
     rake (10.3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -334,6 +335,7 @@ DEPENDENCIES
   pry
   psych
   racc
+  rainbow
   rake
   rspec
   rubysl (~> 2.0)
