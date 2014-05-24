@@ -6,6 +6,7 @@ gemspec
 gem 'bundler'
 gem 'gli'
 gem 'httpi'
+gem 'json_pure'
 gem 'multi_json'
 gem 'multi_xml'
 gem 'net-http-persistent'

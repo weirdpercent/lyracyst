@@ -46,6 +46,7 @@ GEM
       rack
       rubyntlm (~> 0.3.2)
     json (1.8.1)
+    json_pure (1.8.1)
     methadone (1.4.0)
       bundler
     method_source (0.8.2)
@@ -297,6 +298,7 @@ DEPENDENCIES
   cucumber
   gli
   httpi
+  json_pure
   lyracyst!
   methadone
   multi_json
