@@ -9,6 +9,10 @@ Constellation Lyra photo by Scott Roy Atwood
 
 Now fully wielding [Wordnik](http://developer.wordnik.com/docs.html) in one hand and [Rhymebrain](http://rhymebrain.com/api.html) in the other, Lyracyst is extremely powerful. It is multiligual. In English for example, it can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, and syllable stress and count. Inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
 
+### Platform
+
+Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon).
+
 ### Synopsis
 
 Search [Wordnik](http://www.wordnik.com/) and [Rhymebrain](http://rhymebrain.com) from the command line. Lyracyst is pretty opinionated in ways I will eventually document. Get the necessary API keys as follows:
@@ -106,4 +110,6 @@ SOFTWARE.**
 
 ### Gratitude
 
-Many thanks to all contributors to the gems used in this project!
+Many thanks to all contributors to the gems used in this project! Wordnik and
+Rhymebrain are both amazing. All I did was write CLI wrappers for them; they
+are the real geniuses.
