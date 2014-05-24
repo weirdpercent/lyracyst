@@ -1,6 +1,6 @@
 class Spinach::Features::Initconfig < Spinach::FeatureSteps
-  step 'I run `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig`' do
-    @output = `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig`
+  step 'I run `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig --force`' do
+    @output = `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig --force`
   end
 
   step 'the output should contain a confirmation' do

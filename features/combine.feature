@@ -1,4 +1,3 @@
-@announce
 Feature: Combine
   In order to use my app to get portmanteaus
   As a developer using Cucumber

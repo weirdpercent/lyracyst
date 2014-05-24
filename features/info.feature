@@ -1,4 +1,3 @@
-@announce
 Feature: Info
   In order to use my app to get word info
   As a developer using Cucumber

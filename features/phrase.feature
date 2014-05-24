@@ -1,4 +1,3 @@
-@announce
 Feature: Phrase
   In order to use my app to get phrases
   As a developer using Cucumber

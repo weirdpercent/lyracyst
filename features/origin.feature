@@ -1,4 +1,3 @@
-@announce
 Feature: Origin
   In order to use my app to get etymologies
   As a developer using Cucumber

@@ -1,4 +1,3 @@
-@announce
 Feature: Pronounce
   In order to use my app to get pronunciations
   As a developer using Cucumber

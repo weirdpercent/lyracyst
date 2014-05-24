@@ -1,4 +1,3 @@
-@announce
 Feature: Hyphenation
   In order to use my app to get hyphenations
   As a developer using Cucumber

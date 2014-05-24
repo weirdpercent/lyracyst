@@ -12,13 +12,13 @@ version Lyracyst::VERSION
 
 desc 'HTTP adapter'
 long_desc 'httpclient, curb, em_http, net_http_persistent, excon, rack'
-default_value :excon
+default_value :net_http_persistent
 arg_name 'http'
 flag [:h,:http]
 
 desc 'JSON adapter'
 long_desc 'oj, yajl, json_gem, json_pure'
-default_value :json_pure
+default_value :oj
 arg_name 'json'
 flag [:j,:json]
 

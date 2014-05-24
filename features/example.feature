@@ -1,4 +1,3 @@
-@announce
 Feature: Example
   In order to use my app to get example usage
   As a developer using Cucumber

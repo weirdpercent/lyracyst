@@ -1,4 +1,3 @@
-@announce
 Feature: Define
   In order to use my app to get definitions
   As a developer using Cucumber

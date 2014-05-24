@@ -1,4 +1,3 @@
-@announce
 Feature: Relate
   In order to use my app to fetch related words
   As a developer using Cucumber

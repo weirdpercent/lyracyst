@@ -1,4 +1,3 @@
-@announce
 Feature: Rhyme
   In order to use my app to fetch rhymes
   As a developer using Cucumber
