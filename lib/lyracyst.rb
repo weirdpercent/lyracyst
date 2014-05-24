@@ -269,16 +269,16 @@ pre do |global,command,options,args|
   wn.set_xml(xml)
   label = 'Global options'
   wn.label(label)
-  print "- #{global} "
+  print "➜#{global}➜"
   label = 'Command'
   wn.label(label)
-  print "- #{command.name} "
+  print "➜#{command.name}➜"
   label = 'Command options'
   wn.label(label)
-  print "- #{options} "
+  print "➜#{options}➜"
   label = 'Args'
   wn.label(label)
-  print "- #{args} "
+  print "➜#{args}➜"
   label =  'Bootstrapped'
   wn.label(label)
   puts ''

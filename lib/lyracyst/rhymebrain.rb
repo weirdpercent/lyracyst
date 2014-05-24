@@ -28,7 +28,7 @@ module Lyracyst
     def label(label)
       print Rainbow("[").blue.bright
       print Rainbow(label).green.bright
-      print Rainbow("] ").blue.bright
+      print Rainbow("]").blue.bright
     end
 
     # Fetches dynamically generated URL. Functions are Rhymes,
@@ -69,8 +69,8 @@ module Lyracyst
           a += 1
         end
         rh.label(label)
-        print Rainbow('- ').bright
-        print rcont.join(Rainbow('|').bright)
+        print Rainbow('➜').bright
+        print rcont.join(Rainbow('➜').bright)
         puts ''
       end
     end
@@ -91,20 +91,20 @@ module Lyracyst
         flags = result['flags']
         syllables = result['syllables']
         wi.label(label)
-        print Rainbow('- Word: ').bright
+        print Rainbow('Word➜').bright
         print "#{word}"
-        print Rainbow('|Pronunciation: ').bright
+        print Rainbow('|Pronunciation➜').bright
         print "#{pron}"
-        print Rainbow('|IPA: ').bright
+        print Rainbow('|IPA➜').bright
         print "#{ipa}"
-        print Rainbow('|Syllables: ').bright
+        print Rainbow('|Syllables➜').bright
         print "#{syllables}"
-        print Rainbow('|Flags: ').bright
+        print Rainbow('|Flags➜').bright
         fcont = []
-        if flags =~ /a/ then fcont.push 'The word is offensive.'; end
+        if flags =~ /a/ then fcont.push Rainbow('The word is offensive.').red.bright; end
         if flags =~ /b/ then fcont.push 'The word might be found in most dictionaries.'; end
         if flags =~ /c/ then fcont.push 'The pronunciation is known with confidence. It was not automatically generated.'; end
-          puts "#{fcont.join(Rainbow('|').bright)}"
+          puts "#{fcont.join(Rainbow('➜').bright)}"
       end
     end
 
@@ -123,14 +123,13 @@ module Lyracyst
           match = result[a]
           roots = match['source']
           combo = match['combined']
-          both = "#{Rainbow('Root words: ').bright}#{roots}#{Rainbow('| Combination: ').bright}#{combo}"
+          both = "#{Rainbow('Root words➜').bright}#{roots}#{Rainbow('Combination➜').bright}#{combo}"
           pmcont.push both
           a += 1
         end
         pm.label(label)
-        print Rainbow('- ').bright
-        print pmcont.join(Rainbow('|').bright)
-        puts ''
+        print Rainbow('➜').bright
+        puts pmcont.join(Rainbow('➜').bright)
       end
     end
 

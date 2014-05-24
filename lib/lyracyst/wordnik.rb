@@ -42,7 +42,7 @@ module Lyracyst
     def label(label)
       print Rainbow("[").blue.bright
       print Rainbow(label).green.bright
-      print Rainbow("] ").blue.bright
+      print Rainbow("]➜").blue.bright
     end
 
     # Fetches dynamically generated URL. Functions are definitions,
@@ -104,7 +104,7 @@ module Lyracyst
           text = d['text']
           part = d['partOfSpeech']
           defi.label(label)
-          print Rainbow("#{part} - ").bright
+          print Rainbow("#{part}➜").bright
           puts "#{text}"
           x += 1
         end
@@ -131,8 +131,8 @@ module Lyracyst
           text = ex['text']
           url = ex['url']
           exam.label(label)
-          print Rainbow("- #{title} - ").bright
-          puts "#{text} - #{url}"
+          print Rainbow("➜#{title}➜").bright
+          puts "#{text}➜#{url}"
           x += 1
         end
       else
@@ -159,8 +159,8 @@ module Lyracyst
           rawtype = pro['rawType']
           raw = pro['raw']
           pron.label(label)
-          print Rainbow("- ").bright
-          puts "#{raw} - #{rawtype}"
+          print Rainbow("➜").bright
+          puts "#{raw}➜#{rawtype}"
           x += 1
         end
       else
@@ -189,8 +189,8 @@ module Lyracyst
           re = result[x]
           words, type = re['words'], re['relationshipType']
           rel.label(label)
-          print Rainbow("#{type} - ").bright
-          puts "#{words.join(', ')}"
+          print Rainbow("#{type}➜").bright
+          puts "#{words.join('➜')}"
           x += 1
         end
       else
@@ -210,7 +210,7 @@ module Lyracyst
       if result != nil
         x, y, hcont = 0, result.length - 1, []
         hyph.label(label)
-        print Rainbow("- ").bright
+        print Rainbow("➜").bright
         while x <= y
           hy = result[x]
           ht = hy['text']
@@ -241,20 +241,20 @@ module Lyracyst
       if result != nil
         x, y, phcont = 0, result.length - 1, []
         phr.label(label)
-        print Rainbow("- ").bright
+        print Rainbow("➜").bright
         while x <= y
           ph = result[x]
           one = ph['gram1']
           two = ph['gram2']
           if one == search
-            item = "#{Rainbow(one).bright} #{two}"
+            item = "#{Rainbow(one).bright}➜#{two}"
           else
-            item = "#{one} #{Rainbow(two).bright}"
+            item = "#{one}➜#{Rainbow(two).bright}"
           end
           phcont.push item
           x += 1
         end
-        puts "#{phcont.join('|')}"
+        puts "#{phcont.join('➜')}"
       else
         puts 'Wordnik failed to fetch word info.'
       end
@@ -279,8 +279,8 @@ module Lyracyst
           content, ets, er = root['__content__'], root['ets'], root['er']
           #etymology.label(label)
           label(label)
-          print Rainbow("- ").bright
-          print "#{content} - "
+          print Rainbow("➜").bright
+          print "#{content}➜"
           if ets != nil
             c, d, etscont = 0, ets.length - 1, []
             while c <= d
@@ -293,12 +293,12 @@ module Lyracyst
               end
               c += 1
             end
-            print "#{etscont.join('|')}"
+            print "#{etscont.join('➜')}"
           else
             puts ''
           end
           if er != nil
-            print ' - '
+            print '➜'
             e, f, ercont = 0, er.length - 1, []
             while e <= f
               if f == 0
@@ -310,7 +310,7 @@ module Lyracyst
               end
               e += 1
             end
-            print "#{ercont.join('|')}"
+            print "#{ercont.join('➜')}"
           else
             puts ''
           end
