@@ -7,6 +7,7 @@ Version 0.0.8 - Major Improvements
 - Removed Altervista related words in favor of using Wordnik
 - Migrated from [ARPABET](http://arpabet.heroku.com) to [Rhymebrain](http://rhymebrain.com/api.html) and using it to fetch rhymes, word info, and portmanteaus
 - Migrated from [commander](http://github.com/visionmedia/commander) to [gli](http://github.com/davetron5000/gli) for CLI interface
+- Configuration file for defaults (~/.lyracyst.yml)
 
 Version 0.0.7 - Tests, Optimization, & More Cleanup
 - Better docs

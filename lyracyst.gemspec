@@ -24,11 +24,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba", "~> 0.5"
   s.add_development_dependency "coveralls", "~> 0.7"
   s.add_development_dependency "cucumber", "~> 1.3"
+  s.add_development_dependency "methadone", "~> 1.4"
   s.add_development_dependency "rake", "~> 10.3"
+  s.add_development_dependency "spinach", "~> 0.8"
   s.add_development_dependency "yard", "~> 0.8"
 
   # If you need to check in files that aren't .rb files, add them here
-  s.files        = Dir["{lib}/**/*.rb", "bin/*", "json/*", "LICENSE.md", "CHANGELOG.md"]
+  s.files        = Dir["{lib}/**/*.rb", "bin/*", "json/*","CHANGELOG.md"]
   s.require_path = 'lib'
 
   # If you need an executable, add it here
