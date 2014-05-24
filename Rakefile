@@ -20,63 +20,64 @@ task :bin do
 end
 
 namespace :lyracyst do
-  desc 'get[searchword]'
-  task :get, :search do |t, args|
-    search = args.search
-    `lyracyst get #{search}`
-  end
 
   desc 'define[searchword]'
   task :define, :search do |t, args|
     search = args.search
-    `lyracyst define #{search}`
+    system "lyracyst define #{search}"
   end
 
   desc 'relate[searchword]'
   task :relate, :search do |t, args|
     search = args.search
-    `lyracyst relate #{search}`
+    system "lyracyst relate #{search}"
   end
 
   desc 'phrase[searchword]'
   task :phrase, :search do |t, args|
     search = args.search
-    `lyracyst phrase #{search}`
+    system "lyracyst phrase #{search}"
   end
 
   desc 'rhyme[searchword]'
   task :rhyme, :search do |t, args|
     search = args.search
-    `lyracyst rhyme #{search}`
+    system "lyracyst rhyme #{search}"
   end
 
   desc 'example[searchword]'
   task :example, :search do |t, args|
     search = args.search
-    `lyracyst example #{search}`
+    system "lyracyst example #{search}"
+  end
+
+  desc 'combine[searchword]'
+  task :combine, :search do |t, args|
+    search = args.search
+    system "lyracyst combine #{search}"
   end
 
   desc 'pronounce[searchword]'
   task :pronounce, :search do |t, args|
     search = args.search
-    `lyracyst pronounce #{search}`
+    system "lyracyst pronounce #{search}"
   end
 
   desc 'hyphen[searchword]'
   task :hyphen, :search do |t, args|
     search = args.search
-    `lyracyst hyphen #{search}`
+    system "lyracyst hyphen #{search}"
   end
 
-  desc 'etymology[searchword]'
-  task :etymology, :search do |t, args|
+  desc 'origin[searchword]'
+  task :origin, :search do |t, args|
     search = args.search
-    `lyracyst etymology #{search}`
+    system "lyracyst origin #{search}"
   end
 end
 
 task :travis do
-  ["rake features", "rake lyracyst:get[test]"].each do |cmd|
+  ["rake features", "rake lyracyst:define[test]"].each do |cmd|
     puts "Starting to run #{cmd}..."
     `bundle exec #{cmd}`
     raise "#{cmd} failed!" unless $?.exitstatus == 0
