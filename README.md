@@ -7,22 +7,20 @@ Constellation Lyra photo by Scott Roy Atwood
 
 [![Build Status](https://travis-ci.org/weirdpercent/lyracyst.svg?branch=master)](https://travis-ci.org/weirdpercent/lyracyst) [![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst) [![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) [![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst) [![Coverage Status](https://coveralls.io/repos/weirdpercent/lyracyst/badge.png)](https://coveralls.io/r/weirdpercent/lyracyst)
 
-A powerful word search tool for writers of all kinds.
+Now fully wielding [Wordnik](http://developer.wordnik.com/docs.html) in one hand and [Rhymebrain](http://rhymebrain.com/api.html) in the other, Lyracyst is extremely powerful. It is multiligual. In English for example, it can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, and syllable stress and count. Inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [Altervista](http://thesaurus.altervista.org/), and [Rhymebrain](http://rhymebrain.com) from the command line. Lyracyst is pretty opinionated in ways I will eventually document. Get the necessary API keys as follows:
+Search [Wordnik](http://www.wordnik.com/) and [Rhymebrain](http://rhymebrain.com) from the command line. Lyracyst is pretty opinionated in ways I will eventually document. Get the necessary API keys as follows:
 
-- Altervista - http://thesaurus.altervista.org/mykey
 - Wordnik - http://developer.wordnik.com/
 
-Put them in environment variables THESAURUS and WORDNIK respectively. Add these to .bashrc, .zshrc, Windows env, etc. This allows [TravisCI](http://www.travis-ci.org) to be used for continuous integration.
+Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows env, etc. This allows [TravisCI](http://www.travis-ci.org) to be used for continuous integration.
 
 ### Features
 
 - JSON and XML parsing
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from Wordnik
-- Related words from thesaurus.altervista.org
 - Rhymes, word info, and portmanteaus from rhymebrain.com
 - Supports multiple HTTP clients, recommends net-http-persistent for speed and pure ruby compatibility
 - Supports multiple JSON parsers, recommends oj for speed, json_pure for pure ruby compatibility
@@ -37,27 +35,18 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Add these 
 ### Usage
 
     gem install lyracyst
-    lyracyst word definitions test
+    lyracyst define test
     lyracyst --help
-    lyracyst help word
+    lyracyst help define
 
 ### Code Example
 
 ```ruby
-fmt = 'json'
-lang = 'en_US'
-result = []
 search = 'test'
-g=Lyracyst::Get.new
-g.get(search, result, lang, fmt) # Fetch all
-de = Lyracyst::Define.new
-de.define(search, fmt)
-result = []
-re = Lyracyst::Relate.new
-re.relate(search, result, lang, fmt)
-result = []
-rh = Lyracyst::Rhyme.new
-rh.rhyme(search, result)
+part = 'noun,verb,adjective,adverb'
+params = { canon: false, defdict: 'all', limit: 10, increl: false, inctags: false }
+wn=Lyracyst::Wordnik.new
+wn.define(search, part, params)
 ```
 
 ### Motivation
@@ -73,7 +62,7 @@ Lyracyst uses Aruba to test commandline features. To run the tests, just run:
 ### Developers
 
     bundle install
-    rake lyracyst:get[test]
+    rake lyracyst:define[test]
 
 ### Contributing workflow
 

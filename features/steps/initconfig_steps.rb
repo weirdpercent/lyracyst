@@ -1,13 +1,13 @@
 class Spinach::Features::Initconfig < Spinach::FeatureSteps
   step 'I run `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig`' do
-    pending 'step not implemented'
+    @output = `lyracyst -h net_http_persistent -j json_pure -x rexml initconfig`
   end
 
   step 'the output should contain a confirmation' do
-    pending 'step not implemented'
+    @output =~ /Configuration file [A-Za-z '\/.]* written./
   end
 
   step 'the exit status should be 0' do
-    pending 'step not implemented'
+    $?.exitstatus == 0
   end
 end

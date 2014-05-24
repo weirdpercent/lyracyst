@@ -1,13 +1,13 @@
 class Spinach::Features::Hyphenation < Spinach::FeatureSteps
   step 'I run `lyracyst hyphen communication`' do
-    pending 'step not implemented'
+    @output = `lyracyst hyphen communication`
   end
 
   step 'the output should contain a hyphenation' do
-    pending 'step not implemented'
+    @output =~ /\[Hyphenation\] - [a-z-]*/
   end
 
   step 'the exit status should be 0' do
-    pending 'step not implemented'
+    $?.exitstatus == 0
   end
 end

@@ -131,7 +131,7 @@ module Lyracyst
           text = ex['text']
           url = ex['url']
           exam.label(label)
-          print Rainbow("#{title} - ").bright
+          print Rainbow("- #{title} - ").bright
           puts "#{text} - #{url}"
           x += 1
         end

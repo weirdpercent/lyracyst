@@ -1,13 +1,13 @@
 class Spinach::Features::Origin < Spinach::FeatureSteps
   step 'I run `lyracyst origin test`' do
-    pending 'step not implemented'
+    @output = `lyracyst origin `
   end
 
   step 'the output should contain an etymology' do
-    pending 'step not implemented'
+    @output =~ /\[Etymology\] - [A-Za-z0-9\[\]. ,;\(\)-|√™t†t√™e]*/
   end
 
   step 'the exit status should be 0' do
-    pending 'step not implemented'
+    $?.exitstatus == 0
   end
 end

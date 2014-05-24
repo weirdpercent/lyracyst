@@ -6,7 +6,7 @@ require 'lyracyst/version'
 require 'lyracyst/wordnik'
 
 include GLI::App
-program_desc 'A powerful word search tool that fetches definitions, related words, rhymes, and much more.'
+program_desc 'A powerful word search tool that fetches definitions, related words, rhymes, and much more. Rhymes are provided by rhymebrain.com.'
 config_file '.lyracyst.yml'
 version Lyracyst::VERSION
 
@@ -182,7 +182,7 @@ command :origin do |c|
   end
 end
 
-desc 'Fetches rhymes from Rhymebrain'
+desc 'Fetches rhymes from Rhymebrain.com'
 arg_name 'word'
 command :rhyme do |c|
   c.desc 'ISO639-1 language code (optional). Eg. en, de, es, fr, ru'
@@ -205,7 +205,7 @@ command :rhyme do |c|
   end
 end
 
-desc 'Fetches word info from Rhymebrain'
+desc 'Fetches word info from Rhymebrain.com'
 arg_name 'word'
 command :info do |c|
   c.desc 'ISO639-1 language code (optional). Eg. en, de, es, fr, ru'
@@ -228,7 +228,7 @@ command :info do |c|
   end
 end
 
-desc 'Fetches combined words (portmanteaus) from Rhymebrain'
+desc 'Fetches combined words (portmanteaus) from Rhymebrain.com'
 arg_name 'word'
   command :combine do |c|
   c.desc 'ISO639-1 language code (optional). Eg. en, de, es, fr, ru'

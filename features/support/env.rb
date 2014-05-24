@@ -1,4 +1,7 @@
 require 'aruba/cucumber'
+require 'methadone/cucumber'
+require 'rspec/expectations'
+require 'spinach'
 require 'coveralls'
 
 Coveralls.wear!

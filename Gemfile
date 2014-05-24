@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
+gemspec
+
+# My ideal setup
 gem 'bundler'
 gem 'gli'
 gem 'httpi'
-# lyracyst gem including for CLI testing
-gem 'lyracyst', '0.0.8'
 gem 'multi_json'
 gem 'multi_xml'
 gem 'net-http-persistent'
@@ -15,6 +16,7 @@ group :test do
   gem 'aruba'
   gem 'coveralls', require: false
   gem 'cucumber'
+  gem 'methadone'
   gem 'pry'
   gem 'rake'
   gem 'spinach'

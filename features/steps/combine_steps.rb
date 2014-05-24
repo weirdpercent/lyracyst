@@ -1,13 +1,13 @@
 class Spinach::Features::Combine < Spinach::FeatureSteps
   step 'I run `lyracyst combine test`' do
-    pending 'step not implemented'
+    @output = `lyracyst combine test`
   end
 
   step 'the output should contain a portmanteau' do
-    pending 'step not implemented'
+    @output =~ /\[Portmanteaus\] - [A-Za-z0-9:.,'| ]*/
   end
 
   step 'the exit status should be 0' do
-    pending 'step not implemented'
+    $?.exitstatus == 0
   end
 end

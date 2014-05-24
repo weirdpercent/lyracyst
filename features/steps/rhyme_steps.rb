@@ -1,13 +1,13 @@
 class Spinach::Features::Rhyme < Spinach::FeatureSteps
-  step 'I run `lyracyst rhyme test`' do
-    pending 'step not implemented'
+  step 'I run `lyracyst rhyme orange`' do
+    @output = `lyracyst rhyme orange`
   end
 
   step 'the output should contain rhymes' do
-    pending 'step not implemented'
+    @output =~ /\[Rhymes\] - [a-z|]*/
   end
 
   step 'the exit status should be 0' do
-    pending 'step not implemented'
+    $?.exitstatus == 0
   end
 end
