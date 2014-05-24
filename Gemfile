@@ -1,23 +1,22 @@
 source 'http://rubygems.org'
 
 gem 'bundler'
-gem 'commander'
+gem 'gli'
 gem 'httpi'
 # lyracyst gem including for CLI testing
-gem 'lyracyst', '0.0.7'
+gem 'lyracyst', '0.0.8'
 gem 'multi_json'
 gem 'multi_xml'
+gem 'net-http-persistent'
+gem 'oj'
 gem 'rainbow'
-gem 'wordnik'
 
 group :test do
   gem 'aruba'
   gem 'coveralls', require: false
   gem 'cucumber'
-  gem 'methadone'
   gem 'pry'
   gem 'rake'
-  gem 'rspec'
   gem 'spinach'
   gem 'yard'
 end

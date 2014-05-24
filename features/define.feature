@@ -6,6 +6,5 @@ Feature: Define
 
   Scenario: Define command runs
     When I run `lyracyst define test`
-    Then the output should contain "Getting definitions"
-    And the output should contain "Definition"
+    Then the output should contain a definition
     And the exit status should be 0

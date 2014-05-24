@@ -6,6 +6,5 @@ Feature: Relate
 
   Scenario: Relate command runs
     When I run `lyracyst relate test`
-    Then the output should contain "Getting related words"
-    And the output should contain "Related words"
+    Then the output should contain related words
     And the exit status should be 0

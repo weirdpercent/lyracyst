@@ -6,6 +6,5 @@ Feature: Rhyme
 
   Scenario: Rhyme command runs
     When I run `lyracyst rhyme test`
-    Then the output should contain "Getting rhymes"
-    And the output should contain "Rhymes with"
+    Then the output should contain rhymes
     And the exit status should be 0

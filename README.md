@@ -11,7 +11,7 @@ A powerful word search tool for writers of all kinds.
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [thesaurus.altervista.org](http://thesaurus.altervista.org/), and [Arpabet](http://en.wikipedia.org/wiki/Arpabet) from the command line. It's pretty opinionated, for reasons I will document eventually. Get the necessary API keys as follows:
+Search [Wordnik](http://www.wordnik.com/), [Altervista](http://thesaurus.altervista.org/), and [Rhymebrain](http://rhymebrain.com) from the command line. Lyracyst is pretty opinionated in ways I will eventually document. Get the necessary API keys as follows:
 
 - Altervista - http://thesaurus.altervista.org/mykey
 - Wordnik - http://developer.wordnik.com/
@@ -21,12 +21,12 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Add these 
 ### Features
 
 - JSON and XML parsing
-- Definitions from Wordnik
-- Rhymes from arpabet.heroku.com
+- Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from Wordnik
 - Related words from thesaurus.altervista.org
-- Supports multiple HTTP clients, recommends curb for speed
-- Supports multiple JSON parsers, recommends oj for speed
-- Supports multiple XML parsers, recommends ox for speed
+- Rhymes, word info, and portmanteaus from rhymebrain.com
+- Supports multiple HTTP clients, recommends net-http-persistent for speed and pure ruby compatibility
+- Supports multiple JSON parsers, recommends oj for speed, json_pure for pure ruby compatibility
+- Supports multiple XML parsers, recommends ox for speed, REXML for pure ruby compatibility
 
 ### Planned Features
 
@@ -37,9 +37,9 @@ Put them in environment variables THESAURUS and WORDNIK respectively. Add these 
 ### Usage
 
     gem install lyracyst
-    lyracyst get test
+    lyracyst word definitions test
     lyracyst --help
-    lyracyst help get
+    lyracyst help word
 
 ### Code Example
 
