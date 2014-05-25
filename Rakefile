@@ -9,6 +9,11 @@ Cucumber::Rake::Task.new(:features) do |t|
 end
 
 desc 'Build gemspec'
+task :spinach do
+  system 'spinach --reporter progress'
+end
+
+desc 'Build gemspec'
 task :build do
   `gem build lyracyst.gemspec`
 end
@@ -77,7 +82,7 @@ namespace :lyracyst do
 end
 
 task :travis do
-  ["rake features", "rake lyracyst:define[test]"].each do |cmd|
+  ["rake spinach", "rake lyracyst:define[test]"].each do |cmd|
     puts "Starting to run #{cmd}..."
     `bundle exec #{cmd}`
     raise "#{cmd} failed!" unless $?.exitstatus == 0
