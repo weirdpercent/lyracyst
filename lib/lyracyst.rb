@@ -5,6 +5,44 @@ require 'lyracyst/rhymebrain'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
 
+module Lyracyst
+
+  HTTPI.log = false
+
+  # Optionally sets HTTP adapter with httpi. Supports [:httpclient,
+  # :curb, :em_http, :net_http_persistent, :excon, :rack]
+  #
+  # @param http [Symbol] The http adapter to use. Smart defaults.
+  def self.set_http(http)
+    HTTPI.adapter = http
+  end
+
+  # Optionally sets JSON adapter with multi_json. Supports [:oj,
+  # :yajl, :json_gem, :json_pure]
+  #
+  # @param mj [Symbol] The JSON adapter to use. Smart defaults.
+  def self.set_json(mj)
+    MultiJson.use(mj)
+  end
+
+  # Optionally sets XML adapter with multi_json. Supports [:ox,
+  # :libxml, :nokogiri, :rexml]
+  #
+  # @param mx [Symbol] The XML adapter to use. Smart defaults.
+  def self.set_xml(mx)
+    MultiXml.parser = mx
+  end
+
+  # Prints colored element label.
+  #
+  # @param label [String] The label to print
+  def self.label(label)
+    print Rainbow("[").blue.bright
+    print Rainbow(label).green.bright
+    print Rainbow("]➜").blue.bright
+  end
+end
+
 include GLI::App
 program_desc 'A powerful word search tool that fetches definitions, related words, rhymes, and much more. Rhymes are provided by rhymebrain.com.'
 config_file '.lyracyst.yml'
@@ -257,30 +295,29 @@ pre do |global,command,options,args|
   # chosen command
   # Use skips_pre before a command to skip this block
   # on that command only
-  wn = Lyracyst::Wordnik.new
   http = global[:h]
   json = global[:j]
   xml = global[:x]
   if http.class != Symbol then http = http.to_sym; end
-  wn.set_http(http)
+  Lyracyst.set_http(http)
   if json.class != Symbol then json = json.to_sym; end
-  wn.set_json(json)
+  Lyracyst.set_json(json)
   if xml.class != Symbol then xml = xml.to_sym; end
-  wn.set_xml(xml)
+  Lyracyst.set_xml(xml)
   label = 'Global options'
-  wn.label(label)
+  Lyracyst.label(label)
   print "➜#{global}➜"
   label = 'Command'
-  wn.label(label)
+  Lyracyst.label(label)
   print "➜#{command.name}➜"
   label = 'Command options'
-  wn.label(label)
+  Lyracyst.label(label)
   print "➜#{options}➜"
   label = 'Args'
-  wn.label(label)
+  Lyracyst.label(label)
   print "➜#{args}➜"
   label =  'Bootstrapped'
-  wn.label(label)
+  Lyracyst.label(label)
   puts ''
   true
 end
@@ -289,9 +326,8 @@ post do |global,command,options,args|
   # Post logic here
   # Use skips_post before a command to skip this
   # block on that command only
-  wn = Lyracyst::Wordnik.new
-  label =  'Shutdown'
-  wn.label(label)
+  label = 'Shutdown'
+  Lyracyst.label(label)
   puts ''
 end
 

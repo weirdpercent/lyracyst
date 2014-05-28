@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "httpi", "~> 2.1"
   s.add_runtime_dependency "multi_json", "~> 1.9"
   s.add_runtime_dependency "multi_xml", "~> 0.5"
+  s.add_runtime_dependency "plugman", "~> 1.0"
   s.add_runtime_dependency "rainbow", "~> 2.0"
   s.add_development_dependency "aruba", "~> 0.5"
   s.add_development_dependency "coveralls", "~> 0.7"

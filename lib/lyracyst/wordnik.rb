@@ -10,39 +10,20 @@ module Lyracyst
   # related words, pronunciations, hyphenation, phrases,
   # and etymologies.
   class Wordnik
-    HTTPI.log = false
 
-    # Optionally sets HTTP adapter with httpi. Supports [:httpclient,
-    # :curb, :em_http, :net_http_persistent, :excon, :rack]
-    #
-    # @param http [Symbol] The http adapter to use. Smart defaults.
-    def set_http(http)
-      HTTPI.adapter = http
-    end
-
-    # Optionally sets JSON adapter with multi_json. Supports [:oj,
-    # :yajl, :json_gem, :json_pure]
-    #
-    # @param mj [Symbol] The JSON adapter to use. Smart defaults.
-    def set_json(mj)
-      MultiJson.use(mj)
-    end
-
-    # Optionally sets XML adapter with multi_json. Supports [:ox,
-    # :libxml, :nokogiri, :rexml]
-    #
-    # @param mx [Symbol] The XML adapter to use. Smart defaults.
-    def set_xml(mx)
-      MultiXml.parser = mx
-    end
-
-    # Prints colored element label.
-    #
-    # @param label [String] The label to print
-    def label(label)
-      print Rainbow("[").blue.bright
-      print Rainbow(label).green.bright
-      print Rainbow("]➜").blue.bright
+    def origin_extra(obj)
+      a, b, container = 0, obj.length - 1, []
+      while a <= b
+        if b == 0
+          content = obj['__content__']
+          container.push content
+        else
+          content = obj[a]
+          container.push content['__content__']
+        end
+      a += 1
+      end
+      print "#{container.join('➜')}"
     end
 
     # Fetches dynamically generated URL. Functions are definitions,
@@ -103,7 +84,7 @@ module Lyracyst
           d = result[x]
           text = d['text']
           part = d['partOfSpeech']
-          defi.label(label)
+          Lyracyst.label(label)
           print Rainbow("#{part}➜").bright
           puts "#{text}"
           x += 1
@@ -130,7 +111,7 @@ module Lyracyst
           title = ex['title']
           text = ex['text']
           url = ex['url']
-          exam.label(label)
+          Lyracyst.label(label)
           print Rainbow("➜#{title}➜").bright
           puts "#{text}➜#{url}"
           x += 1
@@ -158,7 +139,7 @@ module Lyracyst
           pro = result[x]
           rawtype = pro['rawType']
           raw = pro['raw']
-          pron.label(label)
+          Lyracyst.label(label)
           print Rainbow("➜").bright
           puts "#{raw}➜#{rawtype}"
           x += 1
@@ -188,7 +169,7 @@ module Lyracyst
         while x <= y
           re = result[x]
           words, type = re['words'], re['relationshipType']
-          rel.label(label)
+          Lyracyst.label(label)
           print Rainbow("#{type}➜").bright
           puts "#{words.join('➜')}"
           x += 1
@@ -209,7 +190,7 @@ module Lyracyst
       result = MultiJson.load(result)
       if result != nil
         x, y, hcont = 0, result.length - 1, []
-        hyph.label(label)
+        Lyracyst.label(label)
         print Rainbow("➜").bright
         while x <= y
           hy = result[x]
@@ -240,7 +221,7 @@ module Lyracyst
       result = MultiJson.load(result)
       if result != nil
         x, y, phcont = 0, result.length - 1, []
-        phr.label(label)
+        Lyracyst.label(label)
         print Rainbow("➜").bright
         while x <= y
           ph = result[x]
@@ -266,9 +247,8 @@ module Lyracyst
     # @param params [Hash] The search parameters to use.
     def get_et(search, params)
       func, label, result = 'etymologies', 'Etymology', nil
-      #etymology = Lyracyst::Wordnik.new
-      #result = etymology.get_word(search, func, params, result)
-      result = get_word(search, func, params, result)
+      etymology = Lyracyst::Wordnik.new
+      result = etymology.get_word(search, func, params, result)
       if result != nil && result != '[]'
         result = MultiJson.load(result)
         a, b, cont = 0, result.length - 1, []
@@ -277,40 +257,17 @@ module Lyracyst
           xml = MultiXml.parse(xml)
           root = xml['ety']
           content, ets, er = root['__content__'], root['ets'], root['er']
-          #etymology.label(label)
-          label(label)
+          Lyracyst.label(label)
           print Rainbow("➜").bright
           print "#{content}➜"
           if ets != nil
-            c, d, etscont = 0, ets.length - 1, []
-            while c <= d
-              if d == 0
-                etsc = ets['__content__']
-                etscont.push etsc
-              else
-                etsc = ets[c]
-                etscont.push etsc['__content__']
-              end
-              c += 1
-            end
-            print "#{etscont.join('➜')}"
+            etymology.origin_extra(ets)
           else
             puts ''
           end
           if er != nil
             print '➜'
-            e, f, ercont = 0, er.length - 1, []
-            while e <= f
-              if f == 0
-                erc = er['__content__']
-                ercont.push erc
-              else
-                erc = er[e]
-                ercont.push erc['__content__']
-              end
-              e += 1
-            end
-            print "#{ercont.join('➜')}"
+            etymology.origin_extra(er)
           else
             puts ''
           end

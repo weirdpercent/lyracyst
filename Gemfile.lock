@@ -7,6 +7,7 @@ PATH
       httpi (~> 2.1)
       multi_json (~> 1.9)
       multi_xml (~> 0.5)
+      plugman (~> 1.0)
       rainbow (~> 2.0)
 
 GEM
@@ -56,6 +57,7 @@ GEM
     multi_xml (0.5.5)
     net-http-persistent (2.9.4)
     oj (2.9.3)
+    plugman (1.0.2)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)

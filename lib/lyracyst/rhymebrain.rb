@@ -4,32 +4,6 @@
 module Lyracyst
   # This class uses the Rhymebrain API to fetch rhymes, word info, and portmanteaus.
   class Rhymebrain
-    HTTPI.log = false
-
-    # Optionally sets HTTP adapter with httpi. Supports [:httpclient,
-    # :curb, :em_http, :net_http_persistent, :excon, :rack]
-    #
-    # @param http [Symbol] The http adapter to use. Smart defaults.
-    def set_http(http)
-      HTTPI.adapter = http
-    end
-
-    # Optionally sets JSON adapter with multi_json. Supports [:oj,
-    # :yajl, :json_gem, :json_pure]
-    #
-    # @param mj [Symbol] The JSON adapter to use. Smart defaults.
-    def set_json(mj)
-      MultiJson.use(mj)
-    end
-
-    # Prints colored element label.
-    #
-    # @param label [String] The label to print
-    def label(label)
-      print Rainbow("[").blue.bright
-      print Rainbow(label).green.bright
-      print Rainbow("]").blue.bright
-    end
 
     # Fetches dynamically generated URL. Functions are Rhymes,
     # WordInfo, and Portmaneaus.
@@ -104,7 +78,7 @@ module Lyracyst
         if flags =~ /a/ then fcont.push Rainbow('The word is offensive.').red.bright; end
         if flags =~ /b/ then fcont.push 'The word might be found in most dictionaries.'; end
         if flags =~ /c/ then fcont.push 'The pronunciation is known with confidence. It was not automatically generated.'; end
-          puts "#{fcont.join(Rainbow('➜').bright)}"
+        puts "#{fcont.join(Rainbow('➜').bright)}"
       end
     end
 
