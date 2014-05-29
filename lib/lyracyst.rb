@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 # coding: utf-8
+#%w(curb em-synchrony em-http eventmachine excon httpclient httpi net/http/persistent rainbow).map {|lib| require lib}
+#%w(json/ext json/pure multi_json oj yajl).map {|lib| require lib}
+#%w(libxml multi_xml ox rexml/document).map {|lib| require lib}
 require 'gli'
 require 'lyracyst/rhymebrain'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
-
 module Lyracyst
 
   HTTPI.log = false
@@ -25,7 +27,7 @@ module Lyracyst
     MultiJson.use(mj)
   end
 
-  # Optionally sets XML adapter with multi_json. Supports [:ox,
+  # Optionally sets XML adapter with multi_xml. Supports [:ox,
   # :libxml, :nokogiri, :rexml]
   #
   # @param mx [Symbol] The XML adapter to use. Smart defaults.
@@ -37,9 +39,10 @@ module Lyracyst
   #
   # @param label [String] The label to print
   def self.label(label)
-    print Rainbow("[").blue.bright
+    print Rainbow('[').blue.bright
     print Rainbow(label).green.bright
-    print Rainbow("]➜").blue.bright
+    print Rainbow(']').blue.bright
+    print Rainbow('➜').bright
   end
 end
 
@@ -336,5 +339,4 @@ on_error do |exception|
   # return false to skip default error handling
   true
 end
-
 exit run(ARGV)

@@ -11,7 +11,7 @@ Now fully wielding [Wordnik](http://developer.wordnik.com/docs.html) in one hand
 
 ### Platform
 
-Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon).
+Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon). Ruby also 2.0 added support for ANSI on Windows.
 
 ### Synopsis
 

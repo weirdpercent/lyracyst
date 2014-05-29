@@ -1,6 +1,5 @@
 # coding: utf-8
 %w{httpi multi_json rainbow}.map {|lib| require lib}
-
 module Lyracyst
   # This class uses the Rhymebrain API to fetch rhymes, word info, and portmanteaus.
   class Rhymebrain
@@ -42,8 +41,7 @@ module Lyracyst
           rcont.push rhyme
           a += 1
         end
-        rh.label(label)
-        print Rainbow('➜').bright
+        Lyracyst.label(label)
         print rcont.join(Rainbow('➜').bright)
         puts ''
       end
@@ -64,7 +62,7 @@ module Lyracyst
         ipa = result['ipa']
         flags = result['flags']
         syllables = result['syllables']
-        wi.label(label)
+        Lyracyst.label(label)
         print Rainbow('Word➜').bright
         print "#{word}"
         print Rainbow('|Pronunciation➜').bright
@@ -82,7 +80,7 @@ module Lyracyst
       end
     end
 
-    # Fetches portmaneaus using the Rhymebrain API.
+    # Fetches portmanteaus using the Rhymebrain API.
     #
     # @param search [String] The word or phrase to search for.
     # @param params [Hash] The search parameters to use.
@@ -101,8 +99,7 @@ module Lyracyst
           pmcont.push both
           a += 1
         end
-        pm.label(label)
-        print Rainbow('➜').bright
+        Lyracyst.label(label)
         puts pmcont.join(Rainbow('➜').bright)
       end
     end

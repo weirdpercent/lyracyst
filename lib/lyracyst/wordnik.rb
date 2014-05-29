@@ -1,7 +1,5 @@
 # coding: utf-8
-#%w(curb em-synchrony em-http eventmachine excon httpclient httpi net/http/persistent rainbow).map {|lib| require lib}
-#%w(json/ext json/pure multi_json oj yajl).map {|lib| require lib}
-#%w(libxml multi_xml ox rexml/document).map {|lib| require lib}
+
 %w{httpi multi_json multi_xml rainbow}.map {|lib| require lib}
 
 module Lyracyst
@@ -10,21 +8,6 @@ module Lyracyst
   # related words, pronunciations, hyphenation, phrases,
   # and etymologies.
   class Wordnik
-
-    def origin_extra(obj)
-      a, b, container = 0, obj.length - 1, []
-      while a <= b
-        if b == 0
-          content = obj['__content__']
-          container.push content
-        else
-          content = obj[a]
-          container.push content['__content__']
-        end
-      a += 1
-      end
-      print "#{container.join('➜')}"
-    end
 
     # Fetches dynamically generated URL. Functions are definitions,
     # examples, relatedWords, pronunciations, hyphenation, phrases,
@@ -86,7 +69,7 @@ module Lyracyst
           part = d['partOfSpeech']
           Lyracyst.label(label)
           print Rainbow("#{part}➜").bright
-          puts "#{text}"
+          puts "#{text}➜"
           x += 1
         end
       else
@@ -112,8 +95,8 @@ module Lyracyst
           text = ex['text']
           url = ex['url']
           Lyracyst.label(label)
-          print Rainbow("➜#{title}➜").bright
-          puts "#{text}➜#{url}"
+          print Rainbow("#{title}➜").bright
+          puts "#{text}➜#{url}➜"
           x += 1
         end
       else
@@ -140,8 +123,7 @@ module Lyracyst
           rawtype = pro['rawType']
           raw = pro['raw']
           Lyracyst.label(label)
-          print Rainbow("➜").bright
-          puts "#{raw}➜#{rawtype}"
+          puts "#{raw}➜#{rawtype}➜"
           x += 1
         end
       else
@@ -191,7 +173,6 @@ module Lyracyst
       if result != nil
         x, y, hcont = 0, result.length - 1, []
         Lyracyst.label(label)
-        print Rainbow("➜").bright
         while x <= y
           hy = result[x]
           ht = hy['text']
@@ -222,7 +203,6 @@ module Lyracyst
       if result != nil
         x, y, phcont = 0, result.length - 1, []
         Lyracyst.label(label)
-        print Rainbow("➜").bright
         while x <= y
           ph = result[x]
           one = ph['gram1']
@@ -239,6 +219,21 @@ module Lyracyst
       else
         puts 'Wordnik failed to fetch word info.'
       end
+    end
+
+    def origin_extra(obj)
+      a, b, container = 0, obj.length - 1, []
+      while a <= b
+        if b == 0
+          content = obj['__content__']
+          container.push content
+        else
+          content = obj[a]
+          container.push content['__content__']
+        end
+      a += 1
+      end
+      print "#{container.join('➜')}"
     end
 
     # Fetches etymologies from Wordnik.
@@ -258,7 +253,6 @@ module Lyracyst
           root = xml['ety']
           content, ets, er = root['__content__'], root['ets'], root['er']
           Lyracyst.label(label)
-          print Rainbow("➜").bright
           print "#{content}➜"
           if ets != nil
             etymology.origin_extra(ets)
