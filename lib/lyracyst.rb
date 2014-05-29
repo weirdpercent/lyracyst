@@ -5,6 +5,7 @@
 #%w(libxml multi_xml ox rexml/document).map {|lib| require lib}
 require 'gli'
 require 'lyracyst/rhymebrain'
+require 'lyracyst/urban'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
 module Lyracyst
@@ -289,6 +290,16 @@ arg_name 'word'
     params[:max] = max
     port = Lyracyst::Rhymebrain.new
     port.get_port(search, params)
+  end
+end
+
+desc 'Fetches definitions from Urban Dictionary'
+arg_name 'word'
+command :urban do |c|
+  c.action do |global_options,options,args|
+    search = args[0]
+    ur = Lyracyst::Urban.new
+    ur.get_def(search)
   end
 end
 

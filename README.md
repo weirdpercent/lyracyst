@@ -23,12 +23,14 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 
 ### Features
 
+- Extensible
 - JSON and XML parsing
-- Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from Wordnik
 - Rhymes, word info, and portmanteaus from rhymebrain.com
+- Definitions from Urban Dictionary
+- Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from Wordnik
 - Supports multiple HTTP clients, recommends net-http-persistent for speed and pure ruby compatibility
 - Supports multiple JSON parsers, recommends oj for speed, json_pure for pure ruby compatibility
-- Supports multiple XML parsers, recommends ox for speed, REXML for pure ruby compatibility
+- Supports multiple XML parsers, recommends REXML for speed and pure ruby compatibility
 
 ### Planned Features
 
@@ -59,9 +61,9 @@ I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, 
 
 ### Tests
 
-Lyracyst uses Aruba to test commandline features. To run the tests, just run:
+Lyracyst uses [Aruba](http://github.com/cucumber/aruba), [Methadone](http://github.com/davetron5000/methadone), and [Spinach](http://codegram.github.io/spinach/) to test commandline features. To test, just run:
 
-    cucumber
+    spinach
 
 ### Developers
 
