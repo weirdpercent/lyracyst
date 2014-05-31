@@ -88,7 +88,7 @@ command :define do |c|
     part = options[:p]
     params = {limit: 10, increl: false, canon: false, inctags: false}
     params[:defdict] = options[:defdict]
-    df = Lyracyst::Wordnik.new
+    df = Lyracyst::Wordnik::Define.new
     df.get_def(search, part, params)
   end
 end
@@ -111,7 +111,7 @@ command :example do |c|
     params = {incdups: false, canon: false}
     params[:skip] = skip
     params[:limit] = limit
-    ex = Lyracyst::Wordnik.new
+    ex = Lyracyst::Wordnik::Example.new
     ex.get_ex(search, params)
   end
 end
@@ -133,7 +133,7 @@ command :relate do |c|
     rellimit = options[:rell]
     params = {canon: false}
     params[:rellimit] = rellimit
-    ex = Lyracyst::Wordnik.new
+    ex = Lyracyst::Wordnik::Relate.new
     ex.get_rel(search, params, reltypes)
   end
 end
@@ -162,7 +162,7 @@ command :pronounce do |c|
     params = {canon: false}
     params[:source] = source
     params[:limit] = limit
-    pr = Lyracyst::Wordnik.new
+    pr = Lyracyst::Wordnik::Pronounce.new
     pr.get_pro(search, params, ptype)
   end
 end
@@ -185,7 +185,7 @@ command :hyphen do |c|
     params = {canon: false}
     if source != nil then params[:source] = source; end
     params[:limit] = limit
-    hyph = Lyracyst::Wordnik.new
+    hyph = Lyracyst::Wordnik::Hyphen.new
     hyph.get_hyph(search, params)
   end
 end
@@ -208,7 +208,7 @@ command :phrase do |c|
     params = {canon: false}
     params[:limit] = limit
     params[:wlmi] = wlmi
-    phra = Lyracyst::Wordnik.new
+    phra = Lyracyst::Wordnik::Phrase.new
     phra.get_phr(search, params)
   end
 end
@@ -219,7 +219,7 @@ command :origin do |c|
   c.action do |global_options,options,args|
     search = args[0]
     params = {canon: false}
-    orig = Lyracyst::Wordnik.new
+    orig = Lyracyst::Wordnik::Origin.new
     orig.get_et(search, params)
   end
 end
@@ -242,7 +242,7 @@ command :rhyme do |c|
     params = {}
     params[:lang] = lang
     params[:max] = max
-    rhym = Lyracyst::Rhymebrain.new
+    rhym = Lyracyst::Rhymebrain::Rhyme.new
     rhym.get_rhyme(search, params)
   end
 end
@@ -265,7 +265,7 @@ command :info do |c|
     params = {}
     params[:lang] = lang
     params[:max] = max
-    info = Lyracyst::Rhymebrain.new
+    info = Lyracyst::Rhymebrain::Info.new
     info.get_info(search, params)
   end
 end
@@ -288,7 +288,7 @@ arg_name 'word'
     params = {}
     params[:lang] = lang
     params[:max] = max
-    port = Lyracyst::Rhymebrain.new
+    port = Lyracyst::Rhymebrain::Combine.new
     port.get_port(search, params)
   end
 end
@@ -298,7 +298,7 @@ arg_name 'word'
 command :urban do |c|
   c.action do |global_options,options,args|
     search = args[0]
-    ur = Lyracyst::Urban.new
+    ur = Lyracyst::Urban::Define.new
     ur.get_def(search)
   end
 end

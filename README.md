@@ -51,8 +51,8 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 search = 'test'
 part = 'noun,verb,adjective,adverb'
 params = { canon: false, defdict: 'all', limit: 10, increl: false, inctags: false }
-wn=Lyracyst::Wordnik.new
-wn.define(search, part, params)
+df=Lyracyst::Wordnik::Define.new
+df.define(search, part, params)
 ```
 
 ### Motivation
