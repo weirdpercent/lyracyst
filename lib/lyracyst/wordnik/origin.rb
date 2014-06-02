@@ -16,20 +16,28 @@ module Lyracyst
         if result != nil && result != '[]'
           result = MultiJson.load(result)
           a, b, cont = 0, result.length - 1, []
+          if $fmt != nil
+            type = { 'type' => 'etymology'}
+            $tofile.push type
+          end
           while a <= b
             xml = result[a]
             xml = MultiXml.parse(xml)
             root = xml['ety']
             content, ets, er = root['__content__'], root['ets'], root['er']
+            if $fmt != nil
+              root = { 'root' => content }
+              $tofile.push root
+            end
             Lyracyst.label(label)
-            print "#{content}➜"
+            print "#{content}|"
             if ets != nil
               extra.origin_extra(ets)
             else
               puts ''
             end
             if er != nil
-              print '➜'
+              print '|'
               extra.origin_extra(er)
             else
               puts ''
@@ -47,13 +55,21 @@ module Lyracyst
           if b == 0
             content = obj['__content__']
             container.push content
+            if $fmt != nil
+              node = { 'node' => content }
+              $tofile.push node
+            end
           else
             content = obj[a]
             container.push content['__content__']
+            if $fmt != nil
+              node = { 'node' => content}
+              $tofile.push node
+            end
           end
         a += 1
         end
-        print "#{container.join('➜')}"
+        print "#{container.join('|')}"
       end
     end
   end

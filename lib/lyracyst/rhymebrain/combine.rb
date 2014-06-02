@@ -15,16 +15,26 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           a, b, pmcont = 0, result.length - 1, []
+          if $fmt != nil
+            type = { 'type' => 'portmanteau' }
+            $tofile.push type
+          end
           while a <= b
             match = result[a]
             roots = match['source']
             combo = match['combined']
-            both = "#{Rainbow('Root words➜').bright}#{roots}#{Rainbow('Combination➜').bright}#{combo}"
+            both = "#{Rainbow('Root words|').bright}#{roots}#{Rainbow('Combination|').bright}#{combo}"
+            if $fmt != nil
+              roots = { 'roots' => roots }
+              combo = { 'combo' => combo }
+              $tofile.push roots
+              $tofile.push combo
+            end
             pmcont.push both
             a += 1
           end
           Lyracyst.label(label)
-          puts pmcont.join(Rainbow('➜').bright)
+          puts pmcont.join(Rainbow('|').bright)
         end
       end
     end

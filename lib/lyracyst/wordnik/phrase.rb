@@ -16,10 +16,20 @@ module Lyracyst
         if result != nil
           x, y, phcont = 0, result.length - 1, []
           Lyracyst.label(label)
+          if $fmt != nil
+            type = { 'type' => 'phrase' }
+            $tofile.push type
+          end
           while x <= y
             ph = result[x]
             one = ph['gram1']
             two = ph['gram2']
+            if $fmt != nil
+              g1 = { 'gram1' => one }
+              g2 = { 'gram2' => two }
+              $tofile.push g1
+              $tofile.push g2
+            end
             if one == search
               item = "#{Rainbow(one).bright}➜#{two}"
             else

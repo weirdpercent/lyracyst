@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gemspec
 
 # My ideal setup
-gem 'bundler'
 gem 'gli'
 gem 'httpi'
 gem 'json_pure'
@@ -12,12 +11,12 @@ gem 'multi_xml'
 gem 'net-http-persistent'
 gem 'oj'
 gem 'rainbow'
+gem 'xml-fu'
 
 group :test do
   gem 'aruba'
+  gem 'bundler'
   gem 'coveralls', require: false
-  gem 'cucumber'
-  gem 'methadone'
   gem 'pry'
   gem 'rake'
   gem 'spinach'

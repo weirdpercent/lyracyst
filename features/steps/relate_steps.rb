@@ -4,7 +4,7 @@ class Spinach::Features::Relate < Spinach::FeatureSteps
   end
 
   step 'the output should contain related words' do
-    @output =~ /\[Related words\] [A-Za-z0-9 \-,'ö]*/
+    @output =~ /\[Related words\] [A-Za-z0-9 \-,'|ö]*/
   end
 
   step 'the exit status should be 0' do

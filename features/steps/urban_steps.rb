@@ -4,7 +4,7 @@ class Spinach::Features::Urban < Spinach::FeatureSteps
   end
 
   step 'the output should contain an Urban Dictionary definition' do
-    @output =~ /[A-Za-z0-9 ,'".-=?#>!\(\)\[\]➜-]*/
+    @output =~ /[A-Za-z0-9 ,'".-=?#>!\(\)\[\]|-]*/
   end
 
   step 'the exit status should be 0' do

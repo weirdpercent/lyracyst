@@ -19,11 +19,31 @@ module Lyracyst
           while x <= y
             hy = result[x]
             ht = hy['text']
+            if $fmt !=nil
+              t = { 'type' => 'hyphenation' }
+              $tofile.push t
+            end
             if hy['type'] == 'stress'
+              stress = 'primary'
+              sh = { ht => stress }
+              h = { 'syllable' => sh}
+              if $fmt != nil
+                $tofile.push h
+              end
               hcont.push Rainbow(ht).red.bright
             elsif hy['type'] == 'secondary stress'
+              stress = 'secondary'
+              sh = { ht => stress }
+              h = { 'syllable' => sh}
+              if $fmt != nil
+                $tofile.push h
+              end
               hcont.push Rainbow(ht).bright
             else
+              if $fmt != nil
+                h = { 'syllable' => ht}
+                $tofile.push h
+              end
               hcont.push ht
             end
             x += 1

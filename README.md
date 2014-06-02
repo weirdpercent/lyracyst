@@ -7,11 +7,11 @@ Constellation Lyra photo by Scott Roy Atwood
 
 [![Build Status](https://travis-ci.org/weirdpercent/lyracyst.svg?branch=master)](https://travis-ci.org/weirdpercent/lyracyst) [![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst) [![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) [![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst) [![Coverage Status](https://coveralls.io/repos/weirdpercent/lyracyst/badge.png)](https://coveralls.io/r/weirdpercent/lyracyst)
 
-Now fully wielding [Wordnik](http://developer.wordnik.com/docs.html) in one hand and [Rhymebrain](http://rhymebrain.com/api.html) in the other, Lyracyst is extremely powerful. It is multiligual. In English for example, it can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, and syllable stress and count. Inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
+Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.com/docs.html), [Rhymebrain](http://rhymebrain.com/api.html), and Urban [Dictionary](http://www.urbandictionary.com/). It can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, slang, and syllable stress and count. I was inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
 
 ### Platform
 
-Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon). Ruby also 2.0 added support for ANSI on Windows.
+Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon). Ruby 2.0 also added support for ANSI on Windows. Because it supports multiple adapters, it should run on most Ruby implementations.
 
 ### Synopsis
 
@@ -24,18 +24,18 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 ### Features
 
 - Extensible
-- JSON and XML parsing
+- JSON/XML parsing
+- JSON/XML export
 - Rhymes, word info, and portmanteaus from rhymebrain.com
-- Definitions from Urban Dictionary
-- Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from Wordnik
-- Supports multiple HTTP clients, recommends net-http-persistent for speed and pure ruby compatibility
-- Supports multiple JSON parsers, recommends oj for speed, json_pure for pure ruby compatibility
-- Supports multiple XML parsers, recommends REXML for speed and pure ruby compatibility
+- Definitions from urbandictionary.com
+- Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
+- Supports multiple HTTP clients with httpi
+- Supports multiple JSON parsers with multi_json
+- Supports multiple XML parsers with multi_xml
 
 ### Planned Features
 
 - JSON/XML schema validation
-- JSON/XML export
 - node.js version using Opal: Ruby in Javascript
 
 ### Usage
@@ -61,7 +61,7 @@ I do a lot of writing and I wanted a tool for constructing song lyrics, poetry, 
 
 ### Tests
 
-Lyracyst uses [Aruba](http://github.com/cucumber/aruba), [Methadone](http://github.com/davetron5000/methadone), and [Spinach](http://codegram.github.io/spinach/) to test commandline features. To test, just run:
+Lyracyst uses [Aruba](http://github.com/cucumber/aruba) and [Spinach](http://codegram.github.io/spinach/) to test commandline features. To test, just run:
 
     spinach
 

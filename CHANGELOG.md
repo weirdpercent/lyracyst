@@ -1,6 +1,11 @@
 Changelog
 ===
 
+Version 0.0.9 - File export, Urban Dictionary, Code Climate
+- Added definitions from Urban Dictionary
+- Added JSON & XML export
+- Restructured code to improve climate
+
 Version 0.0.8 - Major Improvements
 - The biggest milestone yet!
 - Most Wordnik search functions now work

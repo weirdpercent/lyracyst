@@ -8,6 +8,7 @@ require 'lyracyst/rhymebrain'
 require 'lyracyst/urban'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
+require 'xml-fu'
 module Lyracyst
 
   HTTPI.log = false
@@ -43,7 +44,7 @@ module Lyracyst
     print Rainbow('[').blue.bright
     print Rainbow(label).green.bright
     print Rainbow(']').blue.bright
-    print Rainbow('➜').bright
+    print Rainbow('|').bright
   end
 end
 
@@ -51,6 +52,10 @@ include GLI::App
 program_desc 'A powerful word search tool that fetches definitions, related words, rhymes, and much more. Rhymes are provided by rhymebrain.com.'
 config_file '.lyracyst.yml'
 version Lyracyst::VERSION
+
+desc 'Force overwrite'
+long_desc 'Overwrites existing JSON & XML files'
+switch [:f,:force]
 
 desc 'HTTP adapter'
 long_desc 'httpclient, curb, em_http, net_http_persistent, excon, rack'
@@ -63,6 +68,12 @@ long_desc 'oj, yajl, json_gem, json_pure'
 default_value :oj
 arg_name 'json'
 flag [:j,:json]
+
+desc 'Output file'
+long_desc 'filename.json or filename.xml'
+default_value nil
+arg_name 'outfile'
+flag [:o,:out]
 
 desc 'XML adapter'
 long_desc 'ox, libxml, nokogiri, rexml'
@@ -309,6 +320,17 @@ pre do |global,command,options,args|
   # chosen command
   # Use skips_pre before a command to skip this block
   # on that command only
+  if global[:o] != nil
+    outfile = global[:o]
+    if outfile =~ /\w*\.json/
+      $fmt = :json
+    elsif outfile =~ /\w*.xml/
+      $fmt = :xml
+    else
+      puts 'Invalid file extension.'
+    end
+    $tofile = []
+  end
   http = global[:h]
   json = global[:j]
   xml = global[:x]
@@ -340,6 +362,59 @@ post do |global,command,options,args|
   # Post logic here
   # Use skips_post before a command to skip this
   # block on that command only
+  if $fmt != nil
+    outfile = global[:o]
+    if File.exist?(outfile) && global[:f] == true
+      if $fmt == :json
+        fo = File.open(outfile, 'w+')
+        fo.print MultiJson.dump($tofile)
+        fo.close
+      elsif $fmt == :xml
+        fo = File.open(outfile, 'w+')
+        fo.print '<?xml version="1.0" encoding="utf-8"?>'
+        fo.print XmlFu.xml($tofile)
+        fo.close
+      else
+        puts 'Invalid file extension.'
+      end
+      puts Rainbow("Word search was written to #{outfile}.").bright
+    end
+    if File.exist?(outfile) && global[:f] == false
+      puts Rainbow("#{outfile} exists. Overwrite? y/n ").bright
+      ans = gets
+      if ans =~ /y/
+        if $fmt == :json
+          fo = File.open(outfile, 'w+')
+          fo.print MultiJson.dump($tofile)
+          fo.close
+        elsif $fmt == :xml
+          fo = File.open(outfile, 'w+')
+          fo.print '<?xml version="1.0" encoding="utf-8"?>'
+          fo.print XmlFu.xml($tofile)
+          fo.close
+        else
+          puts 'Invalid file extension.'
+        end
+        puts Rainbow("Word search was written to #{outfile}.").bright
+      else
+        puts 'Please try again with a different filename.'
+      end
+    else
+      if $fmt == :json
+        fo = File.open(outfile, 'w+')
+        fo.print MultiJson.dump($tofile)
+        fo.close
+      elsif $fmt == :xml
+        fo = File.open(outfile, 'w+')
+        fo.print '<?xml version="1.0" encoding="utf-8"?>'
+        fo.print XmlFu.xml($tofile)
+        fo.close
+      else
+        puts 'Invalid file extension.'
+      end
+      puts Rainbow("Word search was written to #{outfile}.").bright
+    end
+  end
   label = 'Shutdown'
   Lyracyst.label(label)
   puts ''

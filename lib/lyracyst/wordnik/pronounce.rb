@@ -18,12 +18,22 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           x, y = 0, result.length - 1
+          if $fmt != nil
+            type = { 'type' => 'pronunciation' }
+            $tofile.push type
+          end
           while x <= y
             pro = result[x]
             rawtype = pro['rawType']
             raw = pro['raw']
             Lyracyst.label(label)
-            puts "#{raw}➜#{rawtype}➜"
+            puts "#{raw}|#{rawtype}|"
+            if $fmt != nil
+              pronunciation = { 'pronunciation' => raw }
+              ptype = { 'type' => rawType }
+              $tofile.push pronunciation
+              $tofile.push ptype
+            end
             x += 1
           end
         else

@@ -29,8 +29,16 @@ module Lyracyst
             text = d['text']
             part = d['partOfSpeech']
             Lyracyst.label(label)
-            print Rainbow("#{part}➜").bright
-            puts "#{text}➜"
+            print Rainbow("#{part}|").bright
+            puts "#{text}|"
+            if $fmt != nil
+              type = { 'type' => 'definition' }
+              part = { 'part' => part }
+              text = { 'text' => text}
+              $tofile.push type
+              $tofile.push part
+              $tofile.push text
+            end
             x += 1
           end
         else

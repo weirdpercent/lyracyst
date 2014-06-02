@@ -24,6 +24,16 @@ module Lyracyst
             Lyracyst.label(label)
             print Rainbow("#{title}➜").bright
             puts "#{text}➜#{url}➜"
+            if $fmt != nil
+              ty = { 'type' => 'example' }
+              ti = { 'title' => title }
+              te = { 'text' => text }
+              u = { 'url' => url }
+              $tofile.push ty
+              $tofile.push ti
+              $tofile.push te
+              $tofile.push u
+            end
             x += 1
           end
         else
