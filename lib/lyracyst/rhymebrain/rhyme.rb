@@ -15,18 +15,14 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           a, b, rcont = 0, result.length - 1, []
-          if $fmt != nil
-            type = { 'type' => 'rhyme' }
-            $tofile.push type
-          end
+          type = { 'type' => 'rhyme' }
+          Lyracyst.tofile(type)
           while a <= b
             match = result[a]
             rhyme = match['word']
             rcont.push rhyme
-            if $fmt != nil
-              rhyme = { 'rhyme' => rhyme }
-              $tofile.push rhyme
-            end
+            rhyme = { 'rhyme' => rhyme }
+            Lyracyst.tofile(rhyme)
             a += 1
           end
           Lyracyst.label(label)

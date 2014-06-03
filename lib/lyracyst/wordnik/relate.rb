@@ -21,22 +21,18 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           x, y = 0, result.length - 1
-          if $fmt != nil
-            type = { 'type' => 'related words' }
-            $tofile.push type
-          end
+          type = { 'type' => 'related words' }
+          Lyracyst.tofile(type)
           while x <= y
             re = result[x]
             words, type = re['words'], re['relationshipType']
             Lyracyst.label(label)
             print Rainbow("#{type}|").bright
             puts "#{words.join('|')}"
-            if $fmt != nil
-              words = { 'words' => words }
-              rtype = { 'relationship type' => type }
-              $tofile.push words
-              $tofile.push rtype
-            end
+            words = { 'words' => words }
+            rtype = { 'relationship type' => type }
+            Lyracyst.tofile(words)
+            Lyracyst.tofile(rtype)
             x += 1
           end
         else

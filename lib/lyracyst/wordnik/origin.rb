@@ -16,19 +16,15 @@ module Lyracyst
         if result != nil && result != '[]'
           result = MultiJson.load(result)
           a, b, cont = 0, result.length - 1, []
-          if $fmt != nil
-            type = { 'type' => 'etymology'}
-            $tofile.push type
-          end
+          type = { 'type' => 'etymology'}
+          Lyracyst.tofile(type)
           while a <= b
             xml = result[a]
             xml = MultiXml.parse(xml)
             root = xml['ety']
             content, ets, er = root['__content__'], root['ets'], root['er']
-            if $fmt != nil
-              root = { 'root' => content }
-              $tofile.push root
-            end
+            root = { 'root' => content }
+            Lyracyst.tofile(root)
             Lyracyst.label(label)
             print "#{content}|"
             if ets != nil
@@ -55,17 +51,13 @@ module Lyracyst
           if b == 0
             content = obj['__content__']
             container.push content
-            if $fmt != nil
-              node = { 'node' => content }
-              $tofile.push node
-            end
+            node = { 'node' => content }
+            Lyracyst.tofile(node)
           else
             content = obj[a]
             container.push content['__content__']
-            if $fmt != nil
-              node = { 'node' => content}
-              $tofile.push node
-            end
+            node = { 'node' => content}
+            Lyracyst.tofile(node)
           end
         a += 1
         end

@@ -27,16 +27,14 @@ module Lyracyst
         Lyracyst.label(label)
         print Rainbow("|Tags|#{tags}|Type|#{rtype}").bright
         x, y, dcont = 0, list.length - 1, []
-        if $fmt != nil
-          type = { 'type' => 'urban' }
-          tags = { 'tags' => tags }
-          rtype = { 'result type' => rtype }
-          list = { 'list' => list }
-          $tofile.push type
-          $tofile.push tags
-          $tofile.push rtype
-          $tofile.push list
-        end
+        type = { 'type' => 'urban' }
+        tags = { 'tags' => tags }
+        rtype = { 'result type' => rtype }
+        list = { 'list' => list }
+        Lyracyst.tofile(type)
+        Lyracyst.tofile(tags)
+        Lyracyst.tofile(rtype)
+        Lyracyst.tofile(list)
         while x <= y
           obj = list[x]
           author = obj['author']
@@ -44,16 +42,14 @@ module Lyracyst
           defi = obj['definition']
           ex = obj['example']
           puts "|#{defi}|#{ex}|#{author}|#{link}"
-          if $fmt != nil
-            author = { 'author' => author }
-            link = { 'link' => link }
-            defi = { 'definition' => defi }
-            ex = { 'example' => ex }
-            $tofile.push defi
-            $tofile.push ex
-            $tofile.push author
-            $tofile.push link
-          end
+          author = { 'author' => author }
+          link = { 'link' => link }
+          defi = { 'definition' => defi }
+          ex = { 'example' => ex }
+          Lyracyst.tofile(defi)
+          Lyracyst.tofile(ex)
+          Lyracyst.tofile(author)
+          Lyracyst.tofile(link)
           x += 1
         end
       end

@@ -31,14 +31,12 @@ module Lyracyst
             Lyracyst.label(label)
             print Rainbow("#{part}|").bright
             puts "#{text}|"
-            if $fmt != nil
-              type = { 'type' => 'definition' }
-              part = { 'part' => part }
-              text = { 'text' => text}
-              $tofile.push type
-              $tofile.push part
-              $tofile.push text
-            end
+            type = { 'type' => 'definition' }
+            part = { 'part' => part }
+            text = { 'text' => text}
+            Lyracyst.tofile(type)
+            Lyracyst.tofile(part)
+            Lyracyst.tofile(text)
             x += 1
           end
         else

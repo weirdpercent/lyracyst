@@ -46,6 +46,12 @@ module Lyracyst
     print Rainbow(']').blue.bright
     print Rainbow('|').bright
   end
+
+  def self.tofile(obj)
+    if $fmt != nil
+      $tofile.push obj
+    end
+  end
 end
 
 include GLI::App

@@ -14,10 +14,8 @@ module Lyracyst
         result = wi.get_word(search, func, params, result)
         result = MultiJson.load(result)
         if result != nil
-          if $fmt != nil
-            type = { 'type' => 'word info' }
-            $tofile.push type
-          end
+          type = { 'type' => 'word info' }
+          Lyracyst.tofile(type)
           word = result['word']
           pron = result['pron']
           ipa = result['ipa']
@@ -33,37 +31,29 @@ module Lyracyst
           print Rainbow('|Syllables|').bright
           print "#{syllables}"
           print Rainbow('|Flags|').bright
-          if $fmt != nil
-            word = { 'word' => word }
-            pron = { 'pronunciation' => pron }
-            ipa = { 'IPA pronunciation' => ipa }
-            syllables = { 'syllables' => syllables}
-            $tofile.push word
-            $tofile.push pron
-            $tofile.push ipa
-            $tofile.push syllables
-          end
+          word = { 'word' => word }
+          pron = { 'pronunciation' => pron }
+          ipa = { 'IPA pronunciation' => ipa }
+          syllables = { 'syllables' => syllables}
+          Lyracyst.tofile(word)
+          Lyracyst.tofile(pron)
+          Lyracyst.tofile(ipa)
+          Lyracyst.tofile(syllables)
           fcont = []
           if flags =~ /a/
             fcont.push Rainbow('The word is offensive.').red.bright
-            if $fmt != nil
-              flag = { 'flag' => 'The word is offensive.'}
-              $tofile.push flag
-            end
+            flag = { 'flag' => 'The word is offensive.'}
+            Lyracyst.tofile(flag)
           end
           if flags =~ /b/
             fcont.push 'The word might be found in most dictionaries.'
-            if $fmt != nil
-              flag = { 'flag' => 'The word might be found in most dictionaries.'}
-              $tofile.push flag
-            end
+            flag = { 'flag' => 'The word might be found in most dictionaries.'}
+            Lyracyst.tofile(flag)
           end
           if flags =~ /c/
             fcont.push 'The pronunciation is known with confidence. It was not automatically generated.'
-            if $fmt != nil
-              flag = { 'flag' => 'The pronunciation is known with confidence. It was not automatically generated.'}
-              $tofile.push flag
-            end
+            flag = { 'flag' => 'The pronunciation is known with confidence. It was not automatically generated.'}
+            Lyracyst.tofile(flag)
           end
           puts "#{fcont.join(Rainbow('|').bright)}"
         end
