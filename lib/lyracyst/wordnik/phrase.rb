@@ -3,9 +3,8 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches bi-gram phrases from Wordnik.
     class Phrase
-      # Fetches bi-gram phrases from Wordnik.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_phr(search, params)

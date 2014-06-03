@@ -3,10 +3,9 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches pronunciations from Wordnik. Types include ['ahd'
+    # 'arpabet', 'gcide-diacritical', 'IPA']
     class Pronounce
-      # Fetches pronunciations from Wordnik. Types include ['ahd'
-      # 'arpabet', 'gcide-diacritical', 'IPA']
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       # @param ptype [String] Pronunciation type.

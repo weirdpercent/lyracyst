@@ -3,9 +3,8 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches hyphenations from Wordnik.
     class Hyphen
-      # Fetches hyphenations from Wordnik.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_hyph(search, params)

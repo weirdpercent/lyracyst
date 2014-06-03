@@ -3,9 +3,8 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches examples from Wordnik.
     class Example
-      # Fetches examples from Wordnik.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_ex(search, params)

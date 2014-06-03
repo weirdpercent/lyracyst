@@ -3,13 +3,12 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches related words from Wordnik. Types include ['synonym',
+    # 'antonym', 'variant', 'equivalent', 'cross-reference',
+    # 'related-word', 'rhyme', 'form', 'etymologically-related-term',
+    # 'hypernym', 'hyponym', 'inflected-form', 'primary', 'same-context',
+    # 'verb-form', 'verb-stem']
     class Relate
-      # Fetches related words from Wordnik. Types include ['synonym',
-      # 'antonym', 'variant', 'equivalent', 'cross-reference',
-      # 'related-word', 'rhyme', 'form', 'etymologically-related-term',
-      # 'hypernym', 'hyponym', 'inflected-form', 'primary', 'same-context',
-      # 'verb-form', 'verb-stem']
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       # @param reltypes [String] Relationship type.

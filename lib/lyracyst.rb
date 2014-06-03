@@ -47,6 +47,9 @@ module Lyracyst
     print Rainbow('|').bright
   end
 
+  # Adds an object to the outfile array.
+  #
+  # @param obj [String] The item to add
   def self.tofile(obj)
     if $fmt != nil
       $tofile.push obj

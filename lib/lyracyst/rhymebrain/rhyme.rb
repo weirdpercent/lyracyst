@@ -3,9 +3,8 @@
 
 module Lyracyst
   class Rhymebrain
+    # Fetches rhymes using the Rhymebrain API.
     class Rhyme
-      # Fetches rhymes using the Rhymebrain API.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_rhyme(search, params)

@@ -1,5 +1,6 @@
 %w{httpi multi_json rainbow}.map {|lib| require lib}
 module Lyracyst
+  # Urban Dictionary is a crowd-sourced dictionary that focuses on slang and colloquialisms.
   class Urban
     # Fetches URL.
     #
@@ -12,9 +13,8 @@ module Lyracyst
       getter = HTTPI.get(request)
       result = getter.body
     end
+    # Fetches definitions and examples from Urbandictionary.com.
     class Define
-      # Fetches definitions and examples from Urbandictionary.com.
-      #
       # @param search [String] The word or phrase to search for.
       def get_def(search)
         label, result = 'Urban Dictionary', nil

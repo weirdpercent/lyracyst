@@ -3,16 +3,15 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches definitions from Wordnik. Parts include:
+    # 'noun,adjective,verb,adverb,interjection,pronoun,
+    # preposition,abbreviation,affix,article,auxiliary-verb,
+    # conjunction,definite-article,family-name,given-name,
+    # idiom,imperative,noun-plural,noun-posessive,
+    # past-participle,phrasal-prefix,proper-noun,
+    # proper-noun-plural,proper-noun-posessive,suffix,
+    # verb-intransitive,verb-transitive'
     class Define
-      # Fetches definitions from Wordnik. Parts include:
-      # 'noun,adjective,verb,adverb,interjection,pronoun,
-      # preposition,abbreviation,affix,article,auxiliary-verb,
-      # conjunction,definite-article,family-name,given-name,
-      # idiom,imperative,noun-plural,noun-posessive,
-      # past-participle,phrasal-prefix,proper-noun,
-      # proper-noun-plural,proper-noun-posessive,suffix,
-      # verb-intransitive,verb-transitive'
-      #
       # @param search [String] The word or phrase to search for.
       # @param part [String] Comma-separated list of parts of speech.
       # @param params [Hash] The search parameters to use.

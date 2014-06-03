@@ -3,9 +3,8 @@
 
 module Lyracyst
   class Wordnik
+    # Fetches etymologies from Wordnik.
     class Origin
-      # Fetches etymologies from Wordnik.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_et(search, params)
@@ -45,6 +44,9 @@ module Lyracyst
           puts 'Wordnik failed to fetch word info.'
         end
       end
+      # Extra reptetive tasks
+      #
+      # @param obj [Hash] Object hash to process
       def origin_extra(obj)
         a, b, container = 0, obj.length - 1, []
         while a <= b
