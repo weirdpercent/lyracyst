@@ -1,6 +1,6 @@
 class Spinach::Features::Define < Spinach::FeatureSteps
-  step 'I run `lyracyst define test`' do
-    @output = `lyracyst define test`
+  step 'I run `lyracyst wordnik define test`' do
+    @output = `lyracyst wordnik define test`
   end
 
   step 'the output should contain a definition' do

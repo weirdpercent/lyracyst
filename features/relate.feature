@@ -4,6 +4,6 @@ Feature: Relate
   I run the relate command
 
   Scenario: Relate command runs
-    When I run `lyracyst relate test`
+    When I run `lyracyst wordnik relate test`
     Then the output should contain related words
     And the exit status should be 0

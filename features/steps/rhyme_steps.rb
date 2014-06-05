@@ -1,6 +1,6 @@
 class Spinach::Features::Rhyme < Spinach::FeatureSteps
-  step 'I run `lyracyst rhyme orange`' do
-    @output = `lyracyst rhyme orange`
+  step 'I run `lyracyst rbrain rhyme orange`' do
+    @output = `lyracyst rbrain rhyme orange`
   end
 
   step 'the output should contain rhymes' do

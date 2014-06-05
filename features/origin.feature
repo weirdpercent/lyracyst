@@ -4,6 +4,6 @@ Feature: Origin
   I run the origin command
 
   Scenario: Origin command runs
-    When I run `lyracyst origin test`
+    When I run `lyracyst wordnik origin test`
     Then the output should contain an etymology
     And the exit status should be 0

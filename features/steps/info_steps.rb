@@ -1,6 +1,6 @@
 class Spinach::Features::Info < Spinach::FeatureSteps
-  step 'I run `lyracyst info fuck`' do
-    @output = `lyracyst info fuck`
+  step 'I run `lyracyst rbrain info fuck`' do
+    @output = `lyracyst rbrain info fuck`
   end
 
   step 'the output should contain word information' do

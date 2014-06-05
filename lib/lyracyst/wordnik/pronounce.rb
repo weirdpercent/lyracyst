@@ -26,7 +26,7 @@ module Lyracyst
             Lyracyst.label(label)
             puts "#{raw}|#{rawtype}|"
             pronunciation = { 'pronunciation' => raw }
-            ptype = { 'type' => rawType }
+            ptype = { 'type' => rawtype }
             Lyracyst.tofile(pronunciation)
             Lyracyst.tofile(ptype)
             x += 1

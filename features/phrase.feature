@@ -4,6 +4,6 @@ Feature: Phrase
   I run the phrase command
 
   Scenario: Phrase command runs
-    When I run `lyracyst phrase test`
+    When I run `lyracyst wordnik phrase test`
     Then the output should contain a phrase
     And the exit status should be 0

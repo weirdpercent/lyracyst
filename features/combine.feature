@@ -4,6 +4,6 @@ Feature: Combine
   I run the combine command
 
   Scenario: Combine command runs
-    When I run `lyracyst combine test`
+    When I run `lyracyst rbrain combine test`
     Then the output should contain a portmanteau
     And the exit status should be 0

@@ -1,6 +1,6 @@
 class Spinach::Features::Example < Spinach::FeatureSteps
-  step 'I run `lyracyst example test`' do
-    @output = `lyracyst example test`
+  step 'I run `lyracyst wordnik example test`' do
+    @output = `lyracyst wordnik example test`
   end
 
   step 'the output should contain an example' do

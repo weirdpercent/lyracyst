@@ -1,6 +1,6 @@
 class Spinach::Features::Relate < Spinach::FeatureSteps
-  step 'I run `lyracyst relate test`' do
-    @output = `lyracyst relate test`
+  step 'I run `lyracyst wordnik relate test`' do
+    @output = `lyracyst wordnik relate test`
   end
 
   step 'the output should contain related words' do

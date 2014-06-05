@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = "weirdpercent@gmail.com"
   s.homepage    = "http://github.com/weirdpercent/lyracyst"
   s.summary     = %q{A powerful word search tool.}
-  s.description = %q{Search Wordnik, Rhymebrain and more from the command line.}
+  s.description = %q{Search multiple word APIs from the command line.}
   s.license     = "MIT"
   s.post_install_message = "Thanks for using lyracyst!\nPlease get necessary API keys as shown in:\nhttp://github.com/weirdpercent/lyracyst"
 

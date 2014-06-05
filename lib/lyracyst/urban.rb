@@ -31,6 +31,7 @@ module Lyracyst
         tags = { 'tags' => tags }
         rtype = { 'result type' => rtype }
         list = { 'list' => list }
+        list = list['list']
         Lyracyst.tofile(type)
         Lyracyst.tofile(tags)
         Lyracyst.tofile(rtype)

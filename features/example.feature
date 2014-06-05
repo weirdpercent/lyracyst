@@ -4,6 +4,6 @@ Feature: Example
   I run the example command
 
   Scenario: Example command runs
-    When I run `lyracyst example test`
+    When I run `lyracyst wordnik example test`
     Then the output should contain an example
     And the exit status should be 0

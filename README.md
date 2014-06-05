@@ -41,7 +41,9 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 ### Usage
 
     gem install lyracyst
-    lyracyst define test
+    lyracyst wordnik define test
+    lyracyst rbrain rhyme test
+    lyracyst urban test
     lyracyst --help
     lyracyst help define
 

@@ -4,6 +4,6 @@ Feature: Pronounce
   I run the pronounce command
 
   Scenario: Pronounce command runs
-    When I run `lyracyst pronounce beautiful`
+    When I run `lyracyst wordnik pronounce beautiful`
     Then the output should contain a pronunciation
     And the exit status should be 0
