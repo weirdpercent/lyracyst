@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json multi_xml rainbow}.map {|lib| require lib}
+%w{httpi multi_json multi_xml rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Wordnik
@@ -23,17 +23,17 @@ module Lyracyst
             if hy['type'] == 'stress'
               stress = 'primary'
               sh = { ht => stress }
-              h = { 'syllable' => sh}
+              h = { 'syllable' => sh }
               Lyracyst.tofile(h)
               hcont.push Rainbow(ht).red.bright
             elsif hy['type'] == 'secondary stress'
               stress = 'secondary'
               sh = { ht => stress }
-              h = { 'syllable' => sh}
+              h = { 'syllable' => sh }
               Lyracyst.tofile(h)
               hcont.push Rainbow(ht).bright
             else
-              h = { 'syllable' => ht}
+              h = { 'syllable' => ht }
               Lyracyst.tofile(h)
               hcont.push ht
             end

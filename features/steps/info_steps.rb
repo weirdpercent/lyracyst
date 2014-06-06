@@ -1,9 +1,9 @@
 class Spinach::Features::Info < Spinach::FeatureSteps
-  step 'I run `lyracyst rbrain info fuck`' do
-    @output = `lyracyst rbrain info fuck`
+  step 'I run `lyracyst rb inf fuck`' do
+    @output = `lyracyst rb inf fuck`
   end
 
-  step 'the output should contain word information' do
+  step 'the output should contain word info' do
     @output =~ /\[Word info\] - [A-Za-z0-9: |ˈfʌk\.]*/
   end
 

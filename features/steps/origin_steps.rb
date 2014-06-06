@@ -1,6 +1,6 @@
 class Spinach::Features::Origin < Spinach::FeatureSteps
-  step 'I run `lyracyst wordnik origin test`' do
-    @output = `lyracyst wordnik origin test`
+  step 'I run `lyracyst wn ori test`' do
+    @output = `lyracyst wn ori test`
   end
 
   step 'the output should contain an etymology' do

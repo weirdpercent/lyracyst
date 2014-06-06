@@ -1,11 +1,10 @@
 # coding: utf-8
-%w{httpi multi_json rainbow}.map {|lib| require lib}
+%w{httpi multi_json rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Rhymebrain
+    # Fetches word info using the Rhymebrain API.
     class Info
-      # Fetches word info using the Rhymebrain API.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_info(search, params)
@@ -34,7 +33,7 @@ module Lyracyst
           word = { 'word' => word }
           pron = { 'pronunciation' => pron }
           ipa = { 'IPA pronunciation' => ipa }
-          syllables = { 'syllables' => syllables}
+          syllables = { 'syllables' => syllables }
           Lyracyst.tofile(word)
           Lyracyst.tofile(pron)
           Lyracyst.tofile(ipa)
@@ -42,17 +41,17 @@ module Lyracyst
           fcont = []
           if flags =~ /a/
             fcont.push Rainbow('The word is offensive.').red.bright
-            flag = { 'flag' => 'The word is offensive.'}
+            flag = { 'aflag' => 'The word is offensive.' }
             Lyracyst.tofile(flag)
           end
           if flags =~ /b/
             fcont.push 'The word might be found in most dictionaries.'
-            flag = { 'flag' => 'The word might be found in most dictionaries.'}
+            flag = { 'bflag' => 'The word might be found in most dictionaries.' }
             Lyracyst.tofile(flag)
           end
           if flags =~ /c/
             fcont.push 'The pronunciation is known with confidence. It was not automatically generated.'
-            flag = { 'flag' => 'The pronunciation is known with confidence. It was not automatically generated.'}
+            flag = { 'cflag' => 'The pronunciation is known with confidence. It was not automatically generated.' }
             Lyracyst.tofile(flag)
           end
           puts "#{fcont.join(Rainbow('|').bright)}"

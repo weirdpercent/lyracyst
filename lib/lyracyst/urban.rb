@@ -1,4 +1,4 @@
-%w{httpi multi_json rainbow}.map {|lib| require lib}
+%w{httpi multi_json rainbow}.map { |lib| require lib }
 module Lyracyst
   # Urban Dictionary is a crowd-sourced dictionary that focuses on slang and colloquialisms.
   class Urban
@@ -7,7 +7,7 @@ module Lyracyst
     # @param search [String] The word or phrase to search for.
     # @param result [String] The search response.
     def get_word(search, result)
-      prefix = "http://api.urbandictionary.com/v0/define?term="
+      prefix = 'http://api.urbandictionary.com/v0/define?term='
       url = "#{prefix}#{search}"
       request = HTTPI::Request.new(url)
       getter = HTTPI.get(request)
@@ -30,12 +30,9 @@ module Lyracyst
         type = { 'type' => 'urban' }
         tags = { 'tags' => tags }
         rtype = { 'result type' => rtype }
-        list = { 'list' => list }
-        list = list['list']
         Lyracyst.tofile(type)
         Lyracyst.tofile(tags)
         Lyracyst.tofile(rtype)
-        Lyracyst.tofile(list)
         while x <= y
           obj = list[x]
           author = obj['author']

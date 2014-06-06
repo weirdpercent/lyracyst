@@ -1,12 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 require 'rake/clean'
 require "bundler/version"
-require 'cucumber'
-require 'cucumber/rake/task'
-
-Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "features --format pretty"
-end
 
 desc 'Run Spinach'
 task :spinach do
@@ -27,76 +21,82 @@ end
 
 namespace :lyracyst do
 
-  desc 'combine[searchword]'
-  task :combine, :search do |t, args|
+  desc 'comb[searchword]'
+  task :comb, :search do |t, args|
     search = args.search
-    system "lyracyst rbrain combine #{search}"
+    system "lyracyst rb comb #{search}"
   end
 
-  desc 'define[searchword]'
-  task :define, :search do |t, args|
+  desc 'def[searchword]'
+  task :def, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik define #{search}"
+    system "lyracyst wn def #{search}"
   end
 
-  desc 'example[searchword]'
-  task :example, :search do |t, args|
+  desc 'ex[searchword]'
+  task :ex, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik example #{search}"
+    system "lyracyst wn ex #{search}"
   end
 
-  desc 'hyphen[searchword]'
-  task :hyphen, :search do |t, args|
+  desc 'hyph[searchword]'
+  task :hyph, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik hyphen #{search}"
+    system "lyracyst wn hyp #{search}"
   end
 
-  desc 'info[searchword]'
-  task :info, :search do |t, args|
+  desc 'inf[searchword]'
+  task :inf, :search do |t, args|
     search = args.search
-    system "lyracyst info #{search}"
+    system "lyracyst rb inf #{search}"
   end
 
-  desc 'origin[searchword]'
-  task :origin, :search do |t, args|
+  desc 'look[searchword]'
+  task :look, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik origin #{search}"
+    system "lyracyst look #{search}"
   end
 
-  desc 'phrase[searchword]'
-  task :phrase, :search do |t, args|
+  desc 'ori[searchword]'
+  task :ori, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik phrase #{search}"
+    system "lyracyst wn ori #{search}"
   end
 
-  desc 'pronounce[searchword]'
-  task :pronounce, :search do |t, args|
+  desc 'phr[searchword]'
+  task :phr, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik pronounce #{search}"
+    system "lyracyst wn phr #{search}"
   end
 
-  desc 'relate[searchword]'
-  task :relate, :search do |t, args|
+  desc 'pro[searchword]'
+  task :pro, :search do |t, args|
     search = args.search
-    system "lyracyst wordnik wordnik relate #{search}"
+    system "lyracyst wn pro #{search}"
   end
 
-  desc 'rhyme[searchword]'
-  task :rhyme, :search do |t, args|
+  desc 'rel[searchword]'
+  task :rel, :search do |t, args|
     search = args.search
-    system "lyracyst rbrain rhyme #{search}"
+    system "lyracyst wn rel #{search}"
   end
 
-  desc 'urban[searchword]'
-  task :urban, :search do |t, args|
+  desc 'rhy[searchword]'
+  task :rhy, :search do |t, args|
     search = args.search
-    system "lyracyst urban #{search}"
+    system "lyracyst rb rhy #{search}"
+  end
+
+  desc 'urb[searchword]'
+  task :urb, :search do |t, args|
+    search = args.search
+    system "lyracyst urb #{search}"
   end
 
 end
 
 task :travis do
-  ['rake spinach', 'rake lyracyst:combine[test]', 'rake lyracyst:define[test]', 'rake lyracyst:example[test]', 'rake lyracyst:hyphen[communication]', 'rake lyracyst:info[fuck]', 'rake lyracyst:origin[test]', 'rake lyracyst:phrase[test]', 'rake lyracyst:pronounce[beautiful]', 'rake lyracyst:relate[test]', 'rake lyracyst:rhyme[test]', 'rake lyracyst:urban[hashtag]'].each do |cmd|
+  ['rake spinach', 'rake lyracyst:comb[test]', 'rake lyracyst:def[test]', 'rake lyracyst:ex[test]', 'rake lyracyst:hyph[communication]', 'rake lyracyst:inf[fuck]', 'rake lyracyst:look[test]', 'rake lyracyst:ori[test]', 'rake lyracyst:phr[test]', 'rake lyracyst:pro[beautiful]', 'rake lyracyst:rel[test]', 'rake lyracyst:rhy[test]', 'rake lyracyst:urb[hashtag]'].each do |cmd|
     puts "Starting to run #{cmd}..."
     `bundle exec #{cmd}`
     raise "#{cmd} failed!" unless $?.exitstatus == 0

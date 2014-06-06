@@ -1,6 +1,11 @@
 Changelog
 ===
 
+Version **1.0.0** - Subcommands, More options, Onelook
+- Added word info from [Onelook.com](http://www.onelook.com/?c=faq)
+- Added more CLI options
+- Shortened command names and added subcommands
+
 Version 0.0.9 - File export, Urban Dictionary, Code Climate
 - Added definitions from Urban Dictionary
 - Added JSON & XML export

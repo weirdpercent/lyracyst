@@ -7,7 +7,7 @@ Constellation Lyra photo by Scott Roy Atwood
 
 [![Build Status](https://travis-ci.org/weirdpercent/lyracyst.svg?branch=master)](https://travis-ci.org/weirdpercent/lyracyst) [![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst) [![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) [![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst) [![Coverage Status](https://coveralls.io/repos/weirdpercent/lyracyst/badge.png)](https://coveralls.io/r/weirdpercent/lyracyst)
 
-Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.com/docs.html), [Rhymebrain](http://rhymebrain.com/api.html), and [Urban Dictionary](http://www.urbandictionary.com/). It can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, slang, and syllable stress and count. I was inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
+Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.com/docs.html), [Rhymebrain](http://rhymebrain.com/api.html), [Urban Dictionary](http://www.urbandictionary.com/), and [Onelook.com](http://www.onelook.com/?c=faq). It can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, slang, and syllable stress and count. I was inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake), I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
 
 ### Platform
 
@@ -40,12 +40,15 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 
 ### Usage
 
+Please refer to the CLI documentation or the wiki for all options and defaults.
+
     gem install lyracyst
-    lyracyst wordnik define test
-    lyracyst rbrain rhyme test
-    lyracyst urban test
+    lyracyst wn def test
+    lyracyst rb rhy test
+    lyracyst urb test
+    lyracyst look test
     lyracyst --help
-    lyracyst help define
+    lyracyst help [command] [subcommand]
 
 ### Code Example
 

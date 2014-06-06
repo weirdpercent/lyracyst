@@ -1,6 +1,6 @@
 class Spinach::Features::Combine < Spinach::FeatureSteps
-  step 'I run `lyracyst rbrain combine test`' do
-    @output = `lyracyst rbrain combine test`
+  step 'I run `lyracyst rb comb test`' do
+    @output = `lyracyst rb comb test`
   end
 
   step 'the output should contain a portmanteau' do

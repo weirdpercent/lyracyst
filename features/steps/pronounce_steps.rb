@@ -1,6 +1,6 @@
 class Spinach::Features::Pronounce < Spinach::FeatureSteps
-  step 'I run `lyracyst wordnik pronounce beautiful`' do
-    @output = `lyracyst wordnik pronounce beautiful`
+  step 'I run `lyracyst wn pro beautiful`' do
+    @output = `lyracyst wn pro beautiful`
   end
 
   step 'the output should contain a pronunciation' do

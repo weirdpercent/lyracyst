@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json multi_xml rainbow}.map {|lib| require lib}
+%w{httpi multi_json multi_xml rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Wordnik
@@ -15,7 +15,7 @@ module Lyracyst
         if result != nil && result != '[]'
           result = MultiJson.load(result)
           a, b, cont = 0, result.length - 1, []
-          type = { 'type' => 'etymology'}
+          type = { 'type' => 'etymology' }
           Lyracyst.tofile(type)
           while a <= b
             xml = result[a]
@@ -58,10 +58,10 @@ module Lyracyst
           else
             content = obj[a]
             container.push content['__content__']
-            node = { 'node' => content}
+            node = { 'node' => content }
             Lyracyst.tofile(node)
           end
-        a += 1
+          a += 1
         end
         print "#{container.join('|')}"
       end

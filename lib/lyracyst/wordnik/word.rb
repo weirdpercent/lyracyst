@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json multi_xml rainbow}.map {|lib| require lib}
+%w{httpi multi_json multi_xml rainbow}.map { |lib| require lib }
 
 module Lyracyst
   # Wordnik.com's service provides definitions, examples,
@@ -17,7 +17,7 @@ module Lyracyst
     def get_word(search, func, params, result)
       prefix = 'http://api.wordnik.com:80/v4/word.json/'
       word, pcont = "#{prefix}#{search}/#{func}?", []
-      params.map { |k,v|
+      params.map { |k, v|
         if k == :canon then pcont.push "useCanonical=#{v}&"; end
         if k == :incdups then pcont.push "includeDuplicates=#{v}&"; end
         if k == :increl then pcont.push "includeRelated=#{v}&"; end

@@ -1,6 +1,6 @@
 class Spinach::Features::Urban < Spinach::FeatureSteps
-  step 'I run `lyracyst urban hashtag`' do
-    @output = `lyracyst urban hashtag`
+  step 'I run `lyracyst urb hashtag`' do
+    @output = `lyracyst urb hashtag`
   end
 
   step 'the output should contain an Urban Dictionary definition' do

@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json multi_xml rainbow}.map {|lib| require lib}
+%w{httpi multi_json multi_xml rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Wordnik
@@ -32,7 +32,7 @@ module Lyracyst
             puts "#{text}|"
             type = { 'type' => 'definition' }
             part = { 'part' => part }
-            text = { 'text' => text}
+            text = { 'text' => text }
             Lyracyst.tofile(type)
             Lyracyst.tofile(part)
             Lyracyst.tofile(text)

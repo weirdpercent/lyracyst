@@ -1,9 +1,9 @@
 class Spinach::Features::Define < Spinach::FeatureSteps
-  step 'I run `lyracyst wordnik define test`' do
-    @output = `lyracyst wordnik define test`
+  step 'I run `lyracyst wn def test`' do
+    @output = `lyracyst wn def test`
   end
 
-  step 'the output should contain a definition' do
+  step 'the output should contain definitions' do
     @output =~ /\[Definition\] [a-z-]* - [A-Za-z0-9 ,;:'"\.\(\)”-]*/
   end
 

@@ -1,6 +1,6 @@
 class Spinach::Features::Hyphenation < Spinach::FeatureSteps
-  step 'I run `lyracyst wordnik hyphen communication`' do
-    @output = `lyracyst wordnik hyphen communication`
+  step 'I run `lyracyst wn hyph communication`' do
+    @output = `lyracyst wn hyph communication`
   end
 
   step 'the output should contain a hyphenation' do

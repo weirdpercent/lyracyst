@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json rainbow}.map {|lib| require lib}
+%w{httpi multi_json rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Rhymebrain

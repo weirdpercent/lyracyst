@@ -1,11 +1,10 @@
 # coding: utf-8
-%w{httpi multi_json rainbow}.map {|lib| require lib}
+%w{httpi multi_json rainbow}.map { |lib| require lib }
 
 module Lyracyst
   class Rhymebrain
+    # Fetches portmanteaus using the Rhymebrain API.
     class Combine
-      # Fetches portmanteaus using the Rhymebrain API.
-      #
       # @param search [String] The word or phrase to search for.
       # @param params [Hash] The search parameters to use.
       def get_port(search, params)

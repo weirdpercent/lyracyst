@@ -1,5 +1,5 @@
 # coding: utf-8
-%w{httpi multi_json rainbow}.map {|lib| require lib}
+%w{httpi multi_json rainbow}.map { |lib| require lib }
 
 module Lyracyst
   # This class uses the Rhymebrain API to fetch rhymes, word info, and portmanteaus.
@@ -12,9 +12,9 @@ module Lyracyst
     # @param params [Hash] The search parameters to use.
     # @param result [String] The search response.
     def get_word(search, func, params, result)
-      prefix = "http://rhymebrain.com/talk?function=get"
+      prefix = 'http://rhymebrain.com/talk?function=get'
       word, pcont = "#{prefix}#{func}&word=#{search}&", []
-      params.map { |k,v|
+      params.map { |k, v|
         if k == :lang then pcont.push "lang=#{v}&"; end
         if k == :max && k != nil then pcont.push "maxResults=#{v}&"; end
       }
