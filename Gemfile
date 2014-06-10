@@ -4,7 +4,7 @@ gemspec
 
 # My ideal setup
 gem 'gli'
-gem 'httpi'
+gem 'httpi', '2.1.0'
 gem 'json_pure'
 gem 'multi_json'
 gem 'multi_xml'
