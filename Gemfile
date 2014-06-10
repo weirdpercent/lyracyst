@@ -11,7 +11,6 @@ gem 'multi_xml'
 gem 'net-http-persistent'
 gem 'oj'
 gem 'rainbow'
-gem 'wordnet'
 gem 'xml-fu'
 
 group :test do

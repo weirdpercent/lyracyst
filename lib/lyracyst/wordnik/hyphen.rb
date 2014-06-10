@@ -15,11 +15,13 @@ module Lyracyst
         if result != nil
           x, y, hcont = 0, result.length - 1, []
           Lyracyst.label(label)
+          t = { 'type' => 'hyphenation' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
+          Lyracyst.tofile(t)
           while x <= y
             hy = result[x]
             ht = hy['text']
-            t = { 'type' => 'hyphenation' }
-            Lyracyst.tofile(t)
             if hy['type'] == 'stress'
               stress = 'primary'
               sh = { ht => stress }

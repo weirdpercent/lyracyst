@@ -4,12 +4,15 @@
 # %w(json/ext json/pure multi_json oj yajl).map { |lib| require lib }
 # %w(libxml multi_xml ox rexml/document).map { |lib| require lib }
 require 'gli'
+require 'httpi'
 require 'lyracyst/onelook'
 require 'lyracyst/rhymebrain'
 require 'lyracyst/urban'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
+require "rexml/document"
 require 'xml-fu'
+include REXML
 
 # The Lyracyst module handles base functionality.
 module Lyracyst
@@ -229,7 +232,7 @@ pre do |global, command, options, args|
     outfile = global[:o]
     if outfile =~ /\w*\.json/
       $fmt = :json
-    elsif outfile =~ /\w*.xml/
+    elsif outfile =~ /\w*\.xml/
       $fmt = :xml
     else
       puts 'Invalid file extension.'
@@ -269,17 +272,18 @@ post do |global, command, options, args|
     if File.exist?(outfile) && global[:f] == true
       if $fmt == :json
         fo = File.open(outfile, 'w+')
-        fo.print MultiJson.dump($tofile)
+        fo.print MultiJson.dump($tofile, :pretty => true)
         fo.close
+        puts Rainbow("Word search was written to #{outfile}.").bright
       elsif $fmt == :xml
         fo = File.open(outfile, 'w+')
         fo.print '<?xml version="1.0" encoding="utf-8"?>'
         fo.print XmlFu.xml($tofile)
         fo.close
+        puts Rainbow("Word search was written to #{outfile}.").bright
       else
         puts 'Invalid file extension.'
       end
-      puts Rainbow("Word search was written to #{outfile}.").bright
     end
     if File.exist?(outfile) && global[:f] == false
       puts Rainbow("#{outfile} exists. Overwrite? y/n ").bright
@@ -287,34 +291,36 @@ post do |global, command, options, args|
       if ans =~ /y/
         if $fmt == :json
           fo = File.open(outfile, 'w+')
-          fo.print MultiJson.dump($tofile)
+          fo.print MultiJson.dump($tofile, :pretty => true)
           fo.close
+          puts Rainbow("Word search was written to #{outfile}.").bright
         elsif $fmt == :xml
           fo = File.open(outfile, 'w+')
           fo.print '<?xml version="1.0" encoding="utf-8"?>'
           fo.print XmlFu.xml($tofile)
           fo.close
+          puts Rainbow("Word search was written to #{outfile}.").bright
         else
           puts 'Invalid file extension.'
         end
-        puts Rainbow("Word search was written to #{outfile}.").bright
       else
         puts 'Please try again with a different filename.'
       end
     else
       if $fmt == :json
         fo = File.open(outfile, 'w+')
-        fo.print MultiJson.dump($tofile)
+        fo.print MultiJson.dump($tofile, :pretty => true)
         fo.close
+        puts Rainbow("Word search was written to #{outfile}.").bright
       elsif $fmt == :xml
         fo = File.open(outfile, 'w+')
         fo.print '<?xml version="1.0" encoding="utf-8"?>'
         fo.print XmlFu.xml($tofile)
         fo.close
+        puts Rainbow("Word search was written to #{outfile}.").bright
       else
         puts 'Invalid file extension.'
       end
-      puts Rainbow("Word search was written to #{outfile}.").bright
     end
   end
   if global[:v]

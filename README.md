@@ -11,11 +11,11 @@ Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.c
 
 ### Platform
 
-Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon). Ruby 2.0 also added support for ANSI on Windows. Because it supports multiple adapters, it should run on most Ruby implementations.
+Lyracyst was designed with POSIX systems in mind, though it should work on Windows with something like [ansicon](http://github.com/adoxa/ansicon). Ruby 2.0 supposedly added support for ANSI on Windows. Because it supports multiple adapters, it should run on most Ruby implementations.
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/) [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults are pretty opinionated in that they are set based on benchmarks I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi_json](http://github.com/weirdpercent/benchjson), and [multi_xml](http://github.com/weirdpercent/benchxml). Your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. Get the necessary API keys as follows:
+Search [Wordnik](http://www.wordnik.com/) [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults are pretty opinionated in that they are set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi_json](http://github.com/weirdpercent/benchjson), and [multi_xml](http://github.com/weirdpercent/benchxml). Your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. Get a Wordnik API key as follows:
 
 - Wordnik - http://developer.wordnik.com/
 
@@ -23,16 +23,16 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 
 ### Features
 
-- Extensible
+- [Extensible](http://github.com/weirdpercent/lyracyst/wiki/New-APIs)
 - JSON/XML parsing
 - JSON/XML export
 - Definitions, phrases, related words, and resource links from onelook.com
 - Rhymes, word info, and portmanteaus from rhymebrain.com
 - Definitions from urbandictionary.com
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
-- Supports multiple HTTP clients with httpi
-- Supports multiple JSON parsers with multi_json
-- Supports multiple XML parsers with multi_xml
+- Supports multiple HTTP clients with [httpi](http://github.com/savonrb/httpi)
+- Supports multiple JSON parsers with [multi_json](http://github.com/intridea/multi_json)
+- Supports multiple XML parsers with [multi_xml](http://github.com/sferik/multi_xml)
 
 ### Planned Features
 
@@ -41,7 +41,7 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 
 ### Usage
 
-Please refer to the CLI documentation or the wiki for all options and defaults.
+Please refer to the CLI documentation or the [wiki](http://github.com/weirdpercent/lyracyst/wiki) for all options and defaults.
 
     gem install lyracyst
     lyracyst wn def test

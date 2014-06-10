@@ -15,19 +15,21 @@ module Lyracyst
         result = result['examples']
         if result != nil
           x, y = 0, result.length - 1
+          st = { 'searchterm' => search }
+          ty = { 'type' => 'example' }
+          Lyracyst.tofile(st)
+          Lyracyst.tofile(ty)
           while x <= y
             ex = result[x]
             title = ex['title']
             text = ex['text']
             url = ex['url']
             Lyracyst.label(label)
-            print Rainbow("#{title}➜").bright
-            puts "#{text}➜#{url}➜"
-            ty = { 'type' => 'example' }
+            print Rainbow("#{title}|").bright
+            puts "#{text}|#{url}|"
             ti = { 'title' => title }
             te = { 'text' => text }
             u = { 'url' => url }
-            Lyracyst.tofile(ty)
             Lyracyst.tofile(ti)
             Lyracyst.tofile(te)
             Lyracyst.tofile(u)

@@ -18,6 +18,8 @@ module Lyracyst
         if result != nil
           x, y = 0, result.length - 1
           type = { 'type' => 'pronunciation' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           while x <= y
             pro = result[x]
@@ -26,7 +28,7 @@ module Lyracyst
             Lyracyst.label(label)
             puts "#{raw}|#{rawtype}|"
             pronunciation = { 'pronunciation' => raw }
-            ptype = { 'type' => rawtype }
+            ptype = { 'ptype' => rawtype }
             Lyracyst.tofile(pronunciation)
             Lyracyst.tofile(ptype)
             x += 1

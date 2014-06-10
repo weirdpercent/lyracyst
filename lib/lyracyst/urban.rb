@@ -27,6 +27,8 @@ module Lyracyst
         Lyracyst.label(label)
         print Rainbow("|Tags|#{tags}|Type|#{rtype}").bright
         x, y, dcont = 0, list.length - 1, []
+        st = { 'searchterm' => search }
+        Lyracyst.tofile(st)
         type = { 'type' => 'urban' }
         tags = { 'tags' => tags }
         rtype = { 'result type' => rtype }

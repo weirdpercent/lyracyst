@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.post_install_message = "Thanks for using lyracyst!\nPlease get necessary API keys as shown in:\nhttp://github.com/weirdpercent/lyracyst"
 
   # If you have other dependencies, add them here
-  s.add_runtime_dependency "gli", "~> 2.10"
+  s.add_runtime_dependency "gli", "~> 2.11"
   s.add_runtime_dependency "httpi", "~> 2.1"
-  s.add_runtime_dependency "multi_json", "~> 1.9"
+  s.add_runtime_dependency "multi_json", "~> 1.10"
   s.add_runtime_dependency "multi_xml", "~> 0.5"
   s.add_runtime_dependency "rainbow", "~> 2.0"
   s.add_runtime_dependency "xml-fu", "~> 0.2"

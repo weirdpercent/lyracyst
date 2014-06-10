@@ -16,6 +16,8 @@ module Lyracyst
           x, y, phcont = 0, result.length - 1, []
           Lyracyst.label(label)
           type = { 'type' => 'phrase' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           while x <= y
             ph = result[x]

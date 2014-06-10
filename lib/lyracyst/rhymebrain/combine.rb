@@ -15,6 +15,8 @@ module Lyracyst
         if result != nil
           a, b, pmcont = 0, result.length - 1, []
           type = { 'type' => 'portmanteau' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           while a <= b
             match = result[a]

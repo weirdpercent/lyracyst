@@ -16,6 +16,8 @@ module Lyracyst
           result = MultiJson.load(result)
           a, b, cont = 0, result.length - 1, []
           type = { 'type' => 'etymology' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           while a <= b
             xml = result[a]
@@ -53,17 +55,15 @@ module Lyracyst
           if b == 0
             content = obj['__content__']
             container.push content
-            node = { 'node' => content }
-            Lyracyst.tofile(node)
           else
             content = obj[a]
             container.push content['__content__']
-            node = { 'node' => content }
-            Lyracyst.tofile(node)
           end
           a += 1
         end
         print "#{container.join('|')}"
+        node = { 'node' => container.join(',') }
+        Lyracyst.tofile(node)
       end
     end
   end

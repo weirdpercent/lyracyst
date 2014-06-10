@@ -1,6 +1,11 @@
 Changelog
 ===
 
+Version 1.0.1 - Output file improvements
+- Added search term to outfile
+- Removed unnecessary duplication
+- JSON files are pretty-generated.
+
 Version **1.0.0** - Subcommands, More options, Onelook
 - Added word info from [Onelook.com](http://www.onelook.com/?c=faq)
 - Added more CLI options

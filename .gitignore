@@ -31,3 +31,7 @@ Gemfile.lock
 .rspec
 /spec/
 .project
+/json/
+/xml/
+json.sh
+xml.sh

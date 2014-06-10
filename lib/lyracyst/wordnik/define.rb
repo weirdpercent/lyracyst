@@ -23,6 +23,10 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           x, y = 0, result.length - 1
+          st = { 'searchterm' => search }
+          type = { 'type' => 'definition' }
+          Lyracyst.tofile(st)
+          Lyracyst.tofile(type)
           while x <= y
             d = result[x]
             text = d['text']
@@ -30,10 +34,8 @@ module Lyracyst
             Lyracyst.label(label)
             print Rainbow("#{part}|").bright
             puts "#{text}|"
-            type = { 'type' => 'definition' }
             part = { 'part' => part }
             text = { 'text' => text }
-            Lyracyst.tofile(type)
             Lyracyst.tofile(part)
             Lyracyst.tofile(text)
             x += 1

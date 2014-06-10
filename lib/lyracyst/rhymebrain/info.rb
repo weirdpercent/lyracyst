@@ -14,6 +14,8 @@ module Lyracyst
         result = MultiJson.load(result)
         if result != nil
           type = { 'type' => 'word info' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           word = result['word']
           pron = result['pron']
@@ -23,7 +25,7 @@ module Lyracyst
           Lyracyst.label(label)
           print Rainbow('Word|').bright
           print "#{word}"
-          print Rainbow('|Pronunciation|').bright
+          print Rainbow('|ARPABET|').bright
           print "#{pron}"
           print Rainbow('|IPA|').bright
           print "#{ipa}"
@@ -31,7 +33,7 @@ module Lyracyst
           print "#{syllables}"
           print Rainbow('|Flags|').bright
           word = { 'word' => word }
-          pron = { 'pronunciation' => pron }
+          pron = { 'ARPABET pronunciation' => pron }
           ipa = { 'IPA pronunciation' => ipa }
           syllables = { 'syllables' => syllables }
           Lyracyst.tofile(word)

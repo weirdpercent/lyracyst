@@ -1,6 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 require 'rake/clean'
-require "bundler/version"
+require 'bundler/version'
+require 'lyracyst/version'
 
 desc 'Run Spinach'
 task :spinach do
@@ -10,7 +11,21 @@ end
 desc 'Build gemspec'
 task :build do
   `gem build lyracyst.gemspec`
-  puts 'Built gemfile.'
+  if $?.exitstatus == 0
+    puts 'Built gemspec.'
+  else
+    puts 'Failed to build gemspec.'
+  end
+end
+
+desc 'Install gem'
+task :install do
+  `gem install lyracyst-#{Lyracyst::VERSION}.gem`
+  if $?.exitstatus == 0
+    puts "Installed lyracyst-#{Lyracyst::VERSION}.gem."
+  else
+    puts 'Failed to install gem file.'
+  end
 end
 
 desc 'Create executable in /bin'

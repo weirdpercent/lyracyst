@@ -21,6 +21,8 @@ module Lyracyst
         if result != nil
           x, y = 0, result.length - 1
           type = { 'type' => 'related words' }
+          st = { 'searchterm' => search }
+          Lyracyst.tofile(st)
           Lyracyst.tofile(type)
           while x <= y
             re = result[x]
