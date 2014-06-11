@@ -1,5 +1,5 @@
 # coding: utf-8
 module Lyracyst
   # Semantic program version
-  VERSION = '1.0.1'
+  VERSION = '1.0.2'
 end

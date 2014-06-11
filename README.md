@@ -15,7 +15,7 @@ Lyracyst was designed with POSIX systems in mind, though it should work on Windo
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults are pretty opinionated in that they are set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi_json](http://github.com/weirdpercent/benchjson), and [multi_xml](http://github.com/weirdpercent/benchxml). Your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. Get a Wordnik API key as follows:
+Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults used to be pretty opinionated in that they were set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi_json](http://github.com/weirdpercent/benchjson), and [multi_xml](http://github.com/weirdpercent/benchxml). All three multi-adapter libraries automatically select the best available adapter. My defaults are based on the benchmarks, your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. Get a Wordnik API key as follows:
 
 - Wordnik - http://developer.wordnik.com/
 

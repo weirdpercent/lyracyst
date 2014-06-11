@@ -13,23 +13,29 @@ module Lyracyst
         result = rh.get_word(search, func, params, result)
         result = MultiJson.load(result)
         if result != nil
-          a, b, rcont = 0, result.length - 1, []
+          Lyracyst.label(label)
           type = { 'type' => 'rhyme' }
           st = { 'searchterm' => search }
           Lyracyst.tofile(st)
           Lyracyst.tofile(type)
-          while a <= b
-            match = result[a]
-            rhyme = match['word']
-            rcont.push rhyme
-            rhyme = { 'rhyme' => rhyme }
-            Lyracyst.tofile(rhyme)
-            a += 1
-          end
-          Lyracyst.label(label)
-          print rcont.join(Rainbow('|').bright)
-          puts ''
+          e = Lyracyst::Rhymebrain::Rhyme.new
+          e.rhyme_extra(result)
         end
+      end
+      # Extra repetitive tasks.
+      #
+      # @param result [Array] List of hashes to process.
+      def rhyme_extra(result)
+        a, b, rcont = 0, result.length - 1, []
+        while a <= b
+          match = result[a]
+          rhyme = match['word']
+          rcont.push rhyme
+          rhyme = { 'rhyme' => rhyme }
+          Lyracyst.tofile(rhyme)
+          a += 1
+        end
+        puts rcont.join(Rainbow('|').bright)
       end
     end
   end

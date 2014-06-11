@@ -26,7 +26,6 @@ module Lyracyst
         list = result['list']
         Lyracyst.label(label)
         print Rainbow("|Tags|#{tags}|Type|#{rtype}").bright
-        x, y, dcont = 0, list.length - 1, []
         st = { 'searchterm' => search }
         Lyracyst.tofile(st)
         type = { 'type' => 'urban' }
@@ -35,6 +34,14 @@ module Lyracyst
         Lyracyst.tofile(type)
         Lyracyst.tofile(tags)
         Lyracyst.tofile(rtype)
+        e = Lyracyst::Urban::Define.new
+        e.urban_extra(list)
+      end
+      # Extra reptitive tasks.
+      #
+      # @param list [Array] List of hashes to process.
+      def urban_extra(list)
+        x, y = 0, list.length - 1
         while x <= y
           obj = list[x]
           author = obj['author']

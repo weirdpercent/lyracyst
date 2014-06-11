@@ -13,31 +13,38 @@ module Lyracyst
       # @param params [Hash] The search parameters to use.
       # @param reltypes [String] Relationship type.
       def get_rel(search, params, reltypes)
-        func, label, result = 'relatedWords', 'Related words', nil
+        func, result = 'relatedWords', nil
         if reltypes != nil then params[:reltypes] = reltypes; end
         rel = Lyracyst::Wordnik.new
         result = rel.get_word(search, func, params, result)
         result = MultiJson.load(result)
         if result != nil
-          x, y = 0, result.length - 1
           type = { 'type' => 'related words' }
           st = { 'searchterm' => search }
           Lyracyst.tofile(st)
           Lyracyst.tofile(type)
-          while x <= y
-            re = result[x]
-            words, type = re['words'], re['relationshipType']
-            Lyracyst.label(label)
-            print Rainbow("#{type}|").bright
-            puts "#{words.join('|')}"
-            words = { 'words' => words }
-            rtype = { 'relationship type' => type }
-            Lyracyst.tofile(words)
-            Lyracyst.tofile(rtype)
-            x += 1
-          end
+          e = Lyracyst::Wordnik::Relate.new
+          e.rel_extra(result)
         else
           puts 'Wordnik failed to fetch word info.'
+        end
+      end
+      # Extra repetitive tasks.
+      #
+      # @param result [Array] List of hashes to process.
+      def rel_extra(result)
+        x, y, label = 0, result.length - 1, 'Related words'
+        while x <= y
+          re = result[x]
+          words, type = re['words'], re['relationshipType']
+          Lyracyst.label(label)
+          print Rainbow("#{type}|").bright
+          puts "#{words.join('|')}"
+          words = { 'words' => words }
+          rtype = { 'relationship type' => type }
+          Lyracyst.tofile(words)
+          Lyracyst.tofile(rtype)
+          x += 1
         end
       end
     end

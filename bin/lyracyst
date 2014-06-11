@@ -67,24 +67,23 @@ program_desc 'A powerful word search tool that fetches definitions, related word
 config_file '.lyracyst.yml'
 version Lyracyst::VERSION
 
-flag [:f, :format], :default_value => nil, :arg_name => 'fmt', :desc => 'File format', :long_desc => 'json or xml'
-flag [:h, :http], :default_value => :net_http_persistent, :arg_name => 'http', :desc => 'HTTP adapter', :long_desc => 'httpclient, curb, em_http, net_http_persistent, excon, rack'
-flag [:j, :json], :default_value => :oj, :arg_name => 'json', :desc => 'JSON adapter', :long_desc => 'oj, yajl, json_gem, json_pure'
-flag [:o, :out], :default_value => nil, :arg_name => 'outfile', :desc => 'Output file', :long_desc => 'filename.json or filename.xml'
-flag [:x, :xml], :default_value => :rexml, :arg_name => 'xml', :desc => 'XML adapter', :long_desc => 'ox, libxml, nokogiri, rexml'
+flag [:f, :format], :default_value => nil, :arg_name => 'string', :desc => 'File format', :long_desc => 'json or xml'
+flag [:h, :http], :default_value => nil, :arg_name => 'string', :desc => 'HTTP adapter', :long_desc => 'httpclient, curb, em_http, net_http_persistent, excon, rack'
+flag [:j, :json], :default_value => nil, :arg_name => 'string', :desc => 'JSON adapter', :long_desc => 'oj, yajl, json_gem, json_pure'
+flag [:o, :out], :default_value => nil, :arg_name => 'filename', :desc => 'Output file', :long_desc => 'filename.json or filename.xml'
+flag [:x, :xml], :default_value => nil, :arg_name => 'string', :desc => 'XML adapter', :long_desc => 'ox, libxml, nokogiri, rexml'
 switch [:fo, :force], :default_value => false, :desc => 'Force overwrite', :long_desc => 'Overwrites existing JSON & XML files'
 switch [:v, :verbose], :default_value => false, :desc => 'Prints parameters and options'
 
 desc 'Wordnik operations'
-arg_name 'wordnik'
 command :wn do |nik|
   nik.switch :canon, :default_value => false, :desc => 'Use canonical', :long_desc => "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
-  nik.flag :limit, :default_value => 5, :arg_name => 'limit', :desc => 'Maximum number of results to return'
+  nik.flag :limit, :default_value => 5, :arg_name => 'integer', :desc => 'Maximum number of results to return'
   nik.desc 'Fetch definitions from Wordnik'
-  nik.arg_name 'define'
+  nik.arg_name 'word'
   nik.command :def do |define|
-    define.flag :defdict, :default_value => 'all', :arg_name => 'defdict', :desc => "CSV list. Source dictionaries to return definitions from. If 'all' is received, results are returned from all sources. If multiple values are received (e.g. 'century,wiktionary'), results are returned from the first specified dictionary that has definitions. If left blank, results are returned from the first dictionary that has definitions. By default, dictionaries are searched in this order: ahd, wiktionary, webster, century, wordnet"
-    define.flag [:p, :part], :default_value => nil, :arg_name => 'part', :desc => 'Comma-separated list of parts of speech. See http://developer.wordnik.com/docs.html#!/word/getDefinitions_get_2 for list of parts.'
+    define.flag :defdict, :default_value => 'all', :arg_name => 'string', :desc => "CSV list. Source dictionaries to return definitions from. If 'all' is received, results are returned from all sources. If multiple values are received (e.g. 'century,wiktionary'), results are returned from the first specified dictionary that has definitions. If left blank, results are returned from the first dictionary that has definitions. By default, dictionaries are searched in this order: ahd, wiktionary, webster, century, wordnet"
+    define.flag [:p, :part], :default_value => nil, :arg_name => 'csv', :desc => 'Comma-separated list of parts of speech. See http://developer.wordnik.com/docs.html#!/word/getDefinitions_get_2 for list of parts.'
     define.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], defdict: options[:defdict], increl: false, inctags: false, limit: options[:limit] }
@@ -93,9 +92,9 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetch examples from Wordnik'
-  nik.arg_name 'example'
+  nik.arg_name 'word'
   nik.command :ex do |example|
-    example.flag [:s, :skip], :default_value => 0, :arg_name => 'skip', :desc => 'Results to skip'
+    example.flag [:s, :skip], :default_value => 0, :arg_name => 'integer', :desc => 'Results to skip'
     example.switch :incdups, :default_value => false, :desc => 'Show duplicate examples from different sources'
     example.action do |global_options, options, args|
       search = args[0]
@@ -105,10 +104,10 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetches related words from Wordnik'
-  nik.arg_name 'relate'
+  nik.arg_name 'word'
   nik.command :rel do |relate|
-    relate.flag :relt, :default_value => nil, :arg_name => 'reltypes', :desc => 'Limits the total results per type of relationship type'
-    relate.flag :rell, :default_value => 10, :arg_name => 'rell', :desc => 'Restrict to the supplied relationship types'
+    relate.flag :relt, :default_value => nil, :arg_name => 'integer', :desc => 'Limits the total results per type of relationship type'
+    relate.flag :rell, :default_value => 10, :arg_name => 'integer', :desc => 'Restrict to the supplied relationship types'
     relate.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], rellimit: options[:rell] }
@@ -117,10 +116,10 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetches pronunciations from Wordnik'
-  nik.arg_name 'pronounce'
+  nik.arg_name 'word'
   nik.command :pro do |pronounce|
-    pronounce.flag :src, :default_value => nil, :arg_name => 'source', :desc =>'Get from a single dictionary. Valid options: ahd, century, cmu, macmillan, wiktionary, webster, or wordnet'
-    pronounce.flag :pt, :default_value => nil, :arg_name => 'ptype', :desc => 'Text pronunciation type', :long_desc => 'ahd, arpabet, gcide-diacritical, IPA'
+    pronounce.flag :src, :default_value => nil, :arg_name => 'string', :desc =>'Get from a single dictionary. Valid options: ahd, century, cmu, macmillan, wiktionary, webster, or wordnet'
+    pronounce.flag :pt, :default_value => nil, :arg_name => 'string', :desc => 'Text pronunciation type', :long_desc => 'ahd, arpabet, gcide-diacritical, IPA'
     pronounce.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], limit: options[:limit], source: options[:src] }
@@ -129,9 +128,9 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetches hyphenation and syllable stresses from Wordnik. Primary stress is red, secondary stress is bright white.'
-  nik.arg_name 'hyphen'
+  nik.arg_name 'word'
   nik.command :hyph do |hyphen|
-    hyphen.flag :source, :default_value => nil, :arg_name => 'source', :desc => "Get from a single dictionary. Valid options: ahd, century, wiktionary, webster, and wordnet."
+    hyphen.flag :source, :default_value => nil, :arg_name => 'string', :desc => "Get from a single dictionary. Valid options: ahd, century, wiktionary, webster, and wordnet."
     hyphen.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], limit: options[:limit] }
@@ -141,9 +140,9 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetches bi-gram phrases from Wordnik'
-  nik.arg_name 'phrase'
+  nik.arg_name 'word'
   nik.command :phr do |phrase|
-    phrase.flag :wlmi, :default_value => 13, :arg_name => 'wlmi', :desc => 'Minimum WLMI(weighted mutual info) for the phrase.'
+    phrase.flag :wlmi, :default_value => 13, :arg_name => 'integer', :desc => 'Minimum WLMI(weighted mutual info) for the phrase.'
     phrase.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], limit: options[:limit], wlmi: options[:wlmi] }
@@ -152,7 +151,7 @@ command :wn do |nik|
     end
   end
   nik.desc 'Fetches etymologies from Wordnik'
-  nik.arg_name 'origin'
+  nik.arg_name 'word'
   nik.command :ori do |origin|
     origin.action do |global_options, options, args|
       search = args[0]
@@ -164,12 +163,11 @@ command :wn do |nik|
 end
 
 desc 'Rhymebrain operations'
-arg_name 'rhymebrain'
 command :rb do |rb|
-  rb.flag :lang, :default_value => 'en', :arg_name => 'lang', :desc => 'ISO639-1 language code (optional). Eg. en, de, es, fr, ru'
-  rb.flag :max, :default_value => nil, :arg_name => 'max', :desc => '(optional) The number of results to return. If you do not include this parameter, RhymeBrain will choose how many words to show based on how many good sounding rhymes there are for the word.'
+  rb.flag :lang, :default_value => 'en', :arg_name => 'string', :desc => 'ISO639-1 language code (optional). Eg. en, de, es, fr, ru'
+  rb.flag :max, :default_value => nil, :arg_name => 'integer', :desc => '(optional) The number of results to return. If you do not include this parameter, RhymeBrain will choose how many words to show based on how many good sounding rhymes there are for the word.'
   rb.desc 'Fetches rhymes from Rhymebrain.com'
-  rb.arg_name 'rhyme'
+  rb.arg_name 'word'
   rb.command :rhy do |rhyme|
     rhyme.action do |global_options, options, args|
       search = args[0]
@@ -179,7 +177,7 @@ command :rb do |rb|
     end
   end
   rb.desc 'Fetches word info from Rhymebrain.com'
-  rb.arg_name 'info'
+  rb.arg_name 'word'
   rb.command :inf do |info|
     info.action do |global_options, options, args|
       search = args[0]
@@ -189,7 +187,7 @@ command :rb do |rb|
     end
   end
   rb.desc 'Fetches combined words (portmanteaus) from Rhymebrain.com'
-  rb.arg_name 'combine'
+  rb.arg_name 'word'
   rb.command :comb do |combine|
     combine.action do |global_options, options, args|
       search = args[0]
@@ -242,12 +240,18 @@ pre do |global, command, options, args|
   http = global[:h]
   json = global[:j]
   xml = global[:x]
-  if http.class != Symbol then http = http.to_sym; end
-  Lyracyst.http(http)
-  if json.class != Symbol then json = json.to_sym; end
-  Lyracyst.json(json)
-  if xml.class != Symbol then xml = xml.to_sym; end
-  Lyracyst.xml(xml)
+  if http != nil
+    if http.class != Symbol then http = http.to_sym; end
+    Lyracyst.http(http)
+  end
+  if json != nil
+    if json.class != Symbol then json = json.to_sym; end
+    Lyracyst.json(json)
+  end
+  if xml != nil
+    if xml.class != Symbol then xml = xml.to_sym; end
+    Lyracyst.xml(xml)
+  end
   if global[:v]
     Lyracyst.label('Global options')
     print "#{global}"

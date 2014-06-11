@@ -1,9 +1,9 @@
 %w{httpi multi_xml rainbow}.map { |lib| require lib }
 module Lyracyst
-  # Fetches definitions, phrases, similar words, and resource links from Onelook
+  # Fetches definitions, phrases, similar words, and resource links from Onelook.
   class Onelook
-    # @param search [String] The term to search for
-    # @param search [String] The XML response
+    # @param search [String] The term to search for.
+    # @param search [String] The XML response.
     def get_word(search, result)
       prefix = 'http://www.onelook.com/?xml=1&w='
       url = "#{prefix}#{search}"
@@ -11,12 +11,12 @@ module Lyracyst
       getter = HTTPI.get(request)
       result = getter.body
     end
-    # Fetches and processes URL
+    # Fetches and processes URL.
     class Fetch
       # Main operations. Resource links are off by default.
       #
-      # @param search [String] The term to search for
-      # @param source [Boolean] Whether to print resource links (verbose)
+      # @param search [String] The term to search for.
+      # @param source [Boolean] Whether to print resource links (verbose).
       def fetch(search, source)
         label, result = 'Onelook', nil
         Lyracyst.label(label)
@@ -53,7 +53,7 @@ module Lyracyst
       end
       # Get resource links.
       #
-      # @param re [Array] Array of resource hashes
+      # @param re [Array] Array of resource hashes.
       def get_src(re)
         x, y = 0, re.length - 1
         while x <= y

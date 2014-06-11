@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 1.0.2 - Code climate & defaults
+- Methodized more code blocks to improve climate
+- Now using smart defaults for httpi, multi_json & multi_xml
+
 Version 1.0.1 - Output file improvements
 - Added search term to outfile
 - Removed unnecessary duplication

@@ -13,38 +13,45 @@ module Lyracyst
         result = hyph.get_word(search, func, params, result)
         result = MultiJson.load(result)
         if result != nil
-          x, y, hcont = 0, result.length - 1, []
           Lyracyst.label(label)
           t = { 'type' => 'hyphenation' }
           st = { 'searchterm' => search }
           Lyracyst.tofile(st)
           Lyracyst.tofile(t)
-          while x <= y
-            hy = result[x]
-            ht = hy['text']
-            if hy['type'] == 'stress'
-              stress = 'primary'
-              sh = { ht => stress }
-              h = { 'syllable' => sh }
-              Lyracyst.tofile(h)
-              hcont.push Rainbow(ht).red.bright
-            elsif hy['type'] == 'secondary stress'
-              stress = 'secondary'
-              sh = { ht => stress }
-              h = { 'syllable' => sh }
-              Lyracyst.tofile(h)
-              hcont.push Rainbow(ht).bright
-            else
-              h = { 'syllable' => ht }
-              Lyracyst.tofile(h)
-              hcont.push ht
-            end
-            x += 1
-          end
-          puts hcont.join('-')
+          e = Lyracyst::Wordnik::Hyphen.new
+          e.hyphen_extra(result)
         else
           puts 'Wordnik failed to fetch word info.'
         end
+      end
+      # Extra repetitive tasks.
+      #
+      # @param result [Array] List of hashes to process.
+      def hyphen_extra(result)
+        x, y, hcont = 0, result.length - 1, []
+        while x <= y
+          hy = result[x]
+          ht = hy['text']
+          if hy['type'] == 'stress'
+            stress = 'primary'
+            sh = { ht => stress }
+            h = { 'syllable' => sh }
+            Lyracyst.tofile(h)
+            hcont.push Rainbow(ht).red.bright
+          elsif hy['type'] == 'secondary stress'
+            stress = 'secondary'
+            sh = { ht => stress }
+            h = { 'syllable' => sh }
+            Lyracyst.tofile(h)
+            hcont.push Rainbow(ht).bright
+          else
+            h = { 'syllable' => ht }
+            Lyracyst.tofile(h)
+            hcont.push ht
+          end
+          x += 1
+        end
+        puts hcont.join('-')
       end
     end
   end
