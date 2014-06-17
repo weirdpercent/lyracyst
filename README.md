@@ -15,7 +15,7 @@ Lyracyst was designed with POSIX systems in mind, though it should work on Windo
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults used to be pretty opinionated in that they were set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi_json](http://github.com/weirdpercent/benchjson), and [multi_xml](http://github.com/weirdpercent/benchxml). All three multi-adapter libraries automatically select the best available adapter. My defaults are based on the benchmarks, your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. Get a Wordnik API key as follows:
+Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults used to be opinionated in that they were set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi _ json](http://github.com/weirdpercent/benchjson), and [multi _ xml](http://github.com/weirdpercent/benchxml). All three multi-adapter libraries automatically try to select the 'best' available adapter. My defaults are currently based on the benchmarks, your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. See [Defaults](http://github.com/weirdpercent/lyracyst/wiki/Defaults) for more information. Get a Wordnik API key as follows:
 
 - Wordnik - http://developer.wordnik.com/
 
@@ -31,8 +31,8 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 - Definitions from urbandictionary.com
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
 - Supports multiple HTTP clients with [httpi](http://github.com/savonrb/httpi)
-- Supports multiple JSON parsers with [multi_json](http://github.com/intridea/multi_json)
-- Supports multiple XML parsers with [multi_xml](http://github.com/sferik/multi_xml)
+- Supports multiple JSON parsers with [multi _ json](http://github.com/intridea/multi_json)
+- Supports multiple XML parsers with [multi _ xml](http://github.com/sferik/multi_xml)
 
 ### Planned Features
 
@@ -58,7 +58,7 @@ search = 'test'
 part = 'noun,verb,adjective,adverb'
 params = { canon: false, defdict: 'all', limit: 10, increl: false, inctags: false }
 df=Lyracyst::Wordnik::Define.new
-df.define(search, part, params)
+df.get_def(search, part, params)
 ```
 
 ### Motivation
@@ -118,4 +118,4 @@ SOFTWARE.**
 
 ### Gratitude
 
-Many thanks to all contributors to the gems used in this project! Even more thanks to the creators and maintainers of the APIs that this tool consumes. Onelook, Rhymebrain, Urban Dictionary, and Wordnik are awesome!
+Many thanks to all contributors to the gems used in this project! And thanks to the creators and maintainers of the APIs that this tool consumes. Onelook, Rhymebrain, Urban Dictionary, and Wordnik are awesome!
