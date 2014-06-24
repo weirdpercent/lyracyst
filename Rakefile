@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 require 'rake/clean'
 require 'bundler/version'
-require 'lyracyst/version'
+require 'lib/lyracyst/version'
 
 desc 'Run Spinach'
 task :spinach do

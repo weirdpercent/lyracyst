@@ -32,9 +32,9 @@ module Lyracyst
           rhyme = match['word']
           rcont.push rhyme
           rhyme = { 'rhyme' => rhyme }
-          Lyracyst.tofile(rhyme)
           a += 1
         end
+        Lyracyst.tofile("#{rcont.join(',')}")
         puts rcont.join(Rainbow('|').bright)
       end
     end

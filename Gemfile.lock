@@ -42,8 +42,9 @@ GEM
     gherkin-ruby (0.3.1)
       racc
     gli (2.11.0)
-    httpi (2.2.1)
+    httpi (2.1.0)
       rack
+      rubyntlm (~> 0.3.2)
     json (1.8.1)
     json_pure (1.8.1)
     method_source (0.8.2)
@@ -64,10 +65,11 @@ GEM
     rake (10.3.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rspec-expectations (3.0.1)
+    rspec-expectations (3.0.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.0.0)
-    rspec-support (3.0.0)
+    rspec-support (3.0.2)
+    rubyntlm (0.3.4)
     rubysl (2.0.15)
       rubysl-abbrev (~> 2.0)
       rubysl-base64 (~> 2.0)
@@ -296,7 +298,7 @@ DEPENDENCIES
   bundler
   coveralls
   gli
-  httpi
+  httpi (= 2.1.0)
   json_pure
   lyracyst!
   multi_json

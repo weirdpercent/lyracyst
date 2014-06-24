@@ -1,6 +1,11 @@
 Changelog
 ===
 
+Version 1.1.0 - Major cleanup
+- Dropped redundant format flag, autodetects format based on file extension.
+- Split up the command blocks into separate files
+- Fixed rhyme outfile
+
 Version 1.0.2 - Code climate & defaults
 - Methodized more code blocks to improve climate
 - Now using smart defaults for httpi, multi_json & multi_xml
