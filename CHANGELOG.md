@@ -1,6 +1,9 @@
 Changelog
 ===
 
+Version 1.2.0 - Anagrams
+- Added webscraper for wordsmith.org's anagram generator
+
 Version 1.1.0 - Major cleanup
 - Dropped redundant format flag, autodetects format based on file extension.
 - Split up the command blocks into separate files

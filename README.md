@@ -7,7 +7,7 @@ Constellation Lyra photo by Scott Roy Atwood
 
 [![Build Status](https://travis-ci.org/weirdpercent/lyracyst.svg?branch=master)](https://travis-ci.org/weirdpercent/lyracyst) [![Gem Version](https://badge.fury.io/rb/lyracyst.svg)](http://badge.fury.io/rb/lyracyst) [![Dependency Status](https://gemnasium.com/weirdpercent/lyracyst.png)](https://gemnasium.com/weirdpercent/lyracyst) [![Code Climate](https://codeclimate.com/github/weirdpercent/lyracyst.png)](https://codeclimate.com/github/weirdpercent/lyracyst) [![Coverage Status](https://coveralls.io/repos/weirdpercent/lyracyst/badge.png)](https://coveralls.io/r/weirdpercent/lyracyst)
 
-Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.com/docs.html), [Rhymebrain](http://rhymebrain.com/api.html), [Urban Dictionary](http://www.urbandictionary.com/), and [Onelook.com](http://www.onelook.com/?c=faq). It can fetch 16 kinds of related words, 27 parts of speech definitions, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, slang, and syllable stress and count. See the [wiki](http://github.com/weirdpercent/lyracyst/wiki) for more info. I was partially inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake); I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
+Lyracyst is extremely powerful. It talks to [Wordnik](http://developer.wordnik.com/docs.html), [Rhymebrain](http://rhymebrain.com/api.html), [Urban Dictionary](http://www.urbandictionary.com/), [Wordsmith](http://www.wordsmith.org/anagram/advanced.html), and [Onelook.com](http://www.onelook.com/?c=faq). It can fetch 16 kinds of related words, 27 parts of speech definitions, anagrams, ARPABET pronunciations, bi-gram phrases, etymologies, example uses, hyphenation, IPA pronunciations, multiple dictionaries, offensive word flags, portmanteaus, rhymes, slang, and syllable stress and count. See the [wiki](http://github.com/weirdpercent/lyracyst/wiki) for more info. I was partially inspired by [Finnegans Wake](http://en.wikipedia.org/wiki/Finnegans_Wake); I believed I could create a tool that could be used to write a book like Finnegans Wake in a very short time. James Joyce dedicated 17 years of his life to this novel, and as a tribute to him, I've tried to accelerate the process.
 
 ### Platform
 
@@ -15,7 +15,7 @@ Lyracyst was designed with POSIX systems in mind, though it should work on Windo
 
 ### Synopsis
 
-Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults used to be opinionated in that they were set based on the following benchmark links I ran on [HTTPI](http://github.com/weirdpercent/benchhttp), [MultiJSON](http://github.com/weirdpercent/benchjson), and [MultiXML](http://github.com/weirdpercent/benchxml). All three multi-adapter libraries automatically try to select the 'best' available adapter. My defaults are currently based on the benchmarks, your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. See [Defaults](http://github.com/weirdpercent/lyracyst/wiki/Defaults) for more information. Get a Wordnik API key as follows:
+Search [Wordnik](http://www.wordnik.com/), [Rhymebrain](http://rhymebrain.com), [Onelook](http://www.onelook.com), [Wordsmith](http://www.wordsmith.org/anagram/advanced.html), and [Urban Dictionary](http://www.urbandictionary.com) from the command line. Lyracyst defaults used to be opinionated in that they were set based on the following benchmark links I ran on [httpi](http://github.com/weirdpercent/benchhttp), [multi _ json](http://github.com/weirdpercent/benchjson), and [multi _ xml](http://github.com/weirdpercent/benchxml). All three multi-adapter libraries automatically try to select the 'best' available adapter. My defaults are currently based on the benchmarks, your optimal setup may differ. Remember, the config file in ~/.lyracyst.yml can be used to override the defaults. See [Defaults](http://github.com/weirdpercent/lyracyst/wiki/Defaults) for more information. Get a Wordnik API key as follows:
 
 - Wordnik - http://developer.wordnik.com/
 
@@ -30,9 +30,10 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 - Rhymes, word info, and portmanteaus from rhymebrain.com
 - Definitions from urbandictionary.com
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
-- Supports multiple HTTP clients with [HTTPI](http://github.com/savonrb/httpi)
-- Supports multiple JSON parsers with [MultiJSON](http://github.com/intridea/multi_json)
-- Supports multiple XML parsers with [MultiXML](http://github.com/sferik/multi_xml)
+- Anagrams from wordsmith.org
+- Supports multiple HTTP clients with [httpi](http://github.com/savonrb/httpi)
+- Supports multiple JSON parsers with [multi _ json](http://github.com/intridea/multi_json)
+- Supports multiple XML parsers with [multi _ xml](http://github.com/sferik/multi_xml)
 
 ### Planned Features
 
@@ -48,6 +49,7 @@ Please refer to the CLI documentation or the [wiki](http://github.com/weirdperce
     lyracyst rb rhy test
     lyracyst urb test
     lyracyst look test
+    lyracyst ana yankeedoodledandy
     lyracyst --help
     lyracyst help [command] [subcommand]
 
