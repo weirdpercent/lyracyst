@@ -10,6 +10,7 @@ require 'lyracyst/rhymebrain'
 require 'lyracyst/urban'
 require 'lyracyst/version'
 require 'lyracyst/wordnik'
+require 'lyracyst/wordsmith'
 require 'xml-fu'
 
 # The Lyracyst module handles base functionality.
@@ -76,6 +77,7 @@ require 'lyracyst/cli/onelook'
 require 'lyracyst/cli/rhymebrain'
 require 'lyracyst/cli/urban'
 require 'lyracyst/cli/wordnik'
+require 'lyracyst/cli/wordsmith'
 
 pre do |global, command, options, args|
   # Pre logic here
@@ -132,12 +134,12 @@ post do |global, command, options, args|
     outfile = global[:o]
     if File.exist?(outfile) && global[:fo] == true
       if $fmt == :json
-        fo = File.open(outfile, 'w+')
+        fo = File.new(outfile, 'w+')
         fo.print MultiJson.dump($tofile, :pretty => true)
         fo.close
         puts Rainbow("Word search was written to #{outfile}.").bright
       elsif $fmt == :xml
-        fo = File.open(outfile, 'w+')
+        fo = File.new(outfile, 'w+')
         fo.print '<?xml version="1.0" encoding="utf-8"?>'
         fo.print XmlFu.xml($tofile)
         fo.close
@@ -151,12 +153,12 @@ post do |global, command, options, args|
       ans = gets
       if ans =~ /y/
         if $fmt == :json
-          fo = File.open(outfile, 'w+')
+          fo = File.new(outfile, 'w+')
           fo.print MultiJson.dump($tofile, :pretty => true)
           fo.close
           puts Rainbow("Word search was written to #{outfile}.").bright
         elsif $fmt == :xml
-          fo = File.open(outfile, 'w+')
+          fo = File.new(outfile, 'w+')
           fo.print '<?xml version="1.0" encoding="utf-8"?>'
           fo.print XmlFu.xml($tofile)
           fo.close

@@ -1,9 +1,10 @@
 PATH
   remote: .
   specs:
-    lyracyst (1.1.0)
+    lyracyst (1.2.0)
       gli (~> 2.11)
       httpi (~> 2.1)
+      metainspector (~> 2.2)
       multi_json (~> 1.10)
       multi_xml (~> 0.5)
       rainbow (~> 2.0)
@@ -12,6 +13,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.3.6)
     aruba (0.5.4)
       childprocess (>= 0.3.6)
       cucumber (>= 1.1.1)
@@ -47,13 +49,21 @@ GEM
       rubyntlm (~> 0.3.2)
     json (1.8.1)
     json_pure (1.8.1)
+    metainspector (2.2.1)
+      addressable (~> 2.3.5)
+      nokogiri (~> 1.6)
+      open_uri_redirections (~> 0.1.4)
     method_source (0.8.2)
     mime-types (2.3)
+    mini_portile (0.6.0)
     multi_json (1.10.1)
     multi_test (0.1.1)
     multi_xml (0.5.5)
     net-http-persistent (2.9.4)
-    oj (2.9.6)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
+    oj (2.9.8)
+    open_uri_redirections (0.1.4)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -301,6 +311,7 @@ DEPENDENCIES
   httpi (= 2.1.0)
   json_pure
   lyracyst!
+  metainspector
   multi_json
   multi_xml
   net-http-persistent

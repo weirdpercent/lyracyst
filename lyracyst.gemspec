@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   # If you have other dependencies, add them here
   s.add_runtime_dependency "gli", "~> 2.11"
   s.add_runtime_dependency "httpi", "~> 2.1"
+  s.add_runtime_dependency "metainspector", "~> 2.2"
   s.add_runtime_dependency "multi_json", "~> 1.10"
   s.add_runtime_dependency "multi_xml", "~> 0.5"
   s.add_runtime_dependency "rainbow", "~> 2.0"

@@ -6,6 +6,7 @@ gemspec
 gem 'gli'
 gem 'httpi', '2.1.0'
 gem 'json_pure'
+gem 'metainspector'
 gem 'multi_json'
 gem 'multi_xml'
 gem 'net-http-persistent'

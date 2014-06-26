@@ -12,7 +12,7 @@ desc 'Build gemspec'
 task :build do
   `gem build lyracyst.gemspec`
   if $?.exitstatus == 0
-    puts 'Built gemspec.'
+    puts "Built lyracyst-#{Lyracyst::VERSION}.gem."
   else
     puts 'Failed to build gemspec.'
   end
@@ -35,79 +35,66 @@ task :bin do
 end
 
 namespace :lyracyst do
-
   desc 'comb[searchword]'
   task :comb, :search do |t, args|
     search = args.search
     system "lyracyst rb comb #{search}"
   end
-
   desc 'def[searchword]'
   task :def, :search do |t, args|
     search = args.search
     system "lyracyst wn def #{search}"
   end
-
   desc 'ex[searchword]'
   task :ex, :search do |t, args|
     search = args.search
     system "lyracyst wn ex #{search}"
   end
-
   desc 'hyph[searchword]'
   task :hyph, :search do |t, args|
     search = args.search
     system "lyracyst wn hyp #{search}"
   end
-
   desc 'inf[searchword]'
   task :inf, :search do |t, args|
     search = args.search
     system "lyracyst rb inf #{search}"
   end
-
   desc 'look[searchword]'
   task :look, :search do |t, args|
     search = args.search
     system "lyracyst look #{search}"
   end
-
   desc 'ori[searchword]'
   task :ori, :search do |t, args|
     search = args.search
     system "lyracyst wn ori #{search}"
   end
-
   desc 'phr[searchword]'
   task :phr, :search do |t, args|
     search = args.search
     system "lyracyst wn phr #{search}"
   end
-
   desc 'pro[searchword]'
   task :pro, :search do |t, args|
     search = args.search
     system "lyracyst wn pro #{search}"
   end
-
   desc 'rel[searchword]'
   task :rel, :search do |t, args|
     search = args.search
     system "lyracyst wn rel #{search}"
   end
-
   desc 'rhy[searchword]'
   task :rhy, :search do |t, args|
     search = args.search
     system "lyracyst rb rhy #{search}"
   end
-
   desc 'urb[searchword]'
   task :urb, :search do |t, args|
     search = args.search
     system "lyracyst urb #{search}"
   end
-
 end
 
 task :travis do
