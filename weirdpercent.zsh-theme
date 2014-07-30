@@ -3,7 +3,7 @@
 
 # Get the current ruby version in use with RVM:
 if [ -e ~/.rvm/bin/rvm-prompt ]; then
-    RUBY_PROMPT_="%{$fg_bold[blue]%}[%{$fg[green]%}\$(~/.rvm/bin/rvm-prompt s i v g)%{$fg_bold[blue]%}]|%{$reset_color%}"
+    RUBY_PROMPT_="%{$fg_bold[blue]%}[%{$fg[red]%}⭓ %{$fg[green]%}\$(~/.rvm/bin/rvm-prompt s i v g)%{$fg_bold[blue]%}]|%{$reset_color%}"
 fi
 ZSH_THEME_NVM_PROMPT_PREFIX="%B⬡%b "
 ZSH_THEME_NVM_PROMPT_SUFFIX=""

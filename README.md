@@ -30,7 +30,7 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 - Rhymes, word info, and portmanteaus from rhymebrain.com
 - Definitions from urbandictionary.com
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
-- Anagrams from wordsmith.org
+- Anagrams from [wordsmith.org](http://www.wordsmith.org/anagram/advanced.html)
 - Supports multiple HTTP clients with [httpi](http://github.com/savonrb/httpi)
 - Supports multiple JSON parsers with [multi_json](http://github.com/intridea/multi_json)
 - Supports multiple XML parsers with [multi_xml](http://github.com/sferik/multi_xml)
@@ -53,16 +53,6 @@ Please refer to the CLI documentation or the [wiki](http://github.com/weirdperce
     lyracyst ana yankeedoodledandy
     lyracyst --help
     lyracyst help [command] [subcommand]
-
-### Code Example
-
-```ruby
-search = 'test'
-part = 'noun,verb,adjective,adverb'
-params = { canon: false, defdict: 'all', limit: 10, increl: false, inctags: false }
-df=Lyracyst::Wordnik::Define.new
-df.get_def(search, part, params)
-```
 
 ### Motivation
 

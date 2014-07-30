@@ -4,7 +4,7 @@ gemspec
 
 # My ideal setup
 gem 'gli'
-gem 'httpi', '2.1.0'
+gem 'httpi'
 gem 'json_pure'
 gem 'metainspector'
 gem 'multi_json'
@@ -12,6 +12,7 @@ gem 'multi_xml'
 gem 'net-http-persistent'
 gem 'oj'
 gem 'rainbow'
+gem 'rubyntlm'
 gem 'xml-fu'
 
 group :test do

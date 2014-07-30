@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 1.2.1 - Dependencies & docs
+- Fixed dependency issues with gli, httpi and rubyntlm
+- A few documenation changes
+
 Version 1.2.0 - Anagrams
 - Added webscraper for wordsmith.org's anagram generator
 
