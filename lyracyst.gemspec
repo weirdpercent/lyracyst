@@ -16,17 +16,18 @@ Gem::Specification.new do |s|
 
   # If you have other dependencies, add them here
   s.add_runtime_dependency "gli", "~> 2.12"
-  s.add_runtime_dependency "httpi", "~> 2.2"
-  s.add_runtime_dependency "metainspector", "~> 2.2"
+  s.add_runtime_dependency "httpi", "~> 2.3"
+  s.add_runtime_dependency "metainspector", "~> 4.0"
   s.add_runtime_dependency "multi_json", "~> 1.10"
   s.add_runtime_dependency "multi_xml", "~> 0.5"
+	s.add_runtime_dependency "nokogiri", "~> 1.6"
   s.add_runtime_dependency "rainbow", "~> 2.0"
   s.add_runtime_dependency "rubyntlm", "~> 0.4"
   s.add_runtime_dependency "xml-fu", "~> 0.2"
-  s.add_development_dependency "aruba", "~> 0.5"
-  s.add_development_dependency "bundler", "~> 1.6"
+  s.add_development_dependency "aruba", "~> 0.6"
+  s.add_development_dependency "bundler", "~> 1.7"
   s.add_development_dependency "coveralls", "~> 0.7"
-  s.add_development_dependency "rake", "~> 10.3"
+  s.add_development_dependency "rake", "~> 10.4"
   s.add_development_dependency "spinach", "~> 0.8"
   s.add_development_dependency "yard", "~> 0.8"
 
