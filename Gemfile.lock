@@ -328,8 +328,8 @@ DEPENDENCIES
   httpi
   json_pure
   lyracyst!
-  metainspector (~> 4.0)
-  mini_portile (= 0.6.0)
+  metainspector
+  mini_portile (~> 0.6)
   multi_json
   multi_xml
   net-http-persistent
