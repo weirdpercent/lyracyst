@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 # My ideal setup
+gem 'cinch'
 gem 'gli'
 gem 'httpi'
 gem 'json_pure'
@@ -10,6 +11,8 @@ gem 'metainspector'
 gem 'multi_json'
 gem 'multi_xml'
 gem 'net-http-persistent'
+gem 'nokogiri', '1.6.3.1'
+gem 'mini_portile', '0.6.0'
 gem 'oj'
 gem 'rainbow'
 gem 'rubyntlm'

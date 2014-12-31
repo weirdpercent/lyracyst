@@ -34,6 +34,12 @@ task :bin do
   puts 'Built binstub.'
 end
 
+desc 'Connect to IRC'
+task :irc do
+  puts 'Connecting to IRC'
+  require 'lib/lyracyst/irc/bot'
+end
+
 namespace :lyracyst do
   desc 'comb[searchword]'
   task :comb, :search do |t, args|
