@@ -17,7 +17,7 @@ Lyracyst is tested on the following Ruby versions:
 
 - MRI 1.9.2
 - MRI 1.9.3
-- MRI 2.1.2
+- MRI 2.1.4
 - Rubinius 2.2.10
 
 ### Synopsis
@@ -96,7 +96,7 @@ by automatically forking the project and prompting to send a pull request too.
 
 The MIT License (MIT)
 
-**Copyright (c) 2014 Drew Prentice**
+**Copyright (c) 2015 Drew Prentice**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -118,4 +118,4 @@ SOFTWARE.**
 
 ### Gratitude
 
-Many thanks to all contributors to the gems used in this project! And thanks to the creators and maintainers of the APIs that this tool consumes. Onelook, Rhymebrain, Urban Dictionary, and Wordnik are awesome!
+Many thanks to all contributors to the gems used in this project! And thanks to the creators and maintainers of the APIs that this tool consumes. Onelook, Rhymebrain, Urban Dictionary, Wordnik, and Wordsmith are awesome!
