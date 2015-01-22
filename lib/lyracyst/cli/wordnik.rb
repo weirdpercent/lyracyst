@@ -34,8 +34,8 @@ command :wn do |nik|
     relate.action do |global_options, options, args|
       search = args[0]
       params = { canon: options[:canon], rellimit: options[:rell] }
-      ex = Lyracyst::Wordnik::Relate.new
-      ex.get_rel(search, params, options[:relt])
+			rel = Lyracyst::Wordnik::Relate.new
+			rel.get_rel(search, params, options[:relt])
     end
   end
   nik.desc 'Fetches pronunciations from Wordnik'
