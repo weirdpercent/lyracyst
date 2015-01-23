@@ -1,6 +1,9 @@
 Changelog
 ===
 
+Version 1.2.3 - Improve anagrams
+- Fixed anagram output by stripping whitespace.
+
 Version 1.2.2 - Minor updates & fixes
 - Rakefile, gem versions, Copyright year 2015, Omniref badge, etc.
 

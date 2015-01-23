@@ -40,7 +40,7 @@ module Lyracyst
       Lyracyst.tofile(search)
       Lyracyst.tofile(anagrams)
       Lyracyst.label('Anagrams')
-      puts "Found #{found}. Displaying #{display}:\n#{astring}"
+      puts "Found #{found}. Displaying #{display}:\n#{astring.strip}"
     end
   end
 end
