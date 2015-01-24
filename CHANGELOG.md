@@ -1,6 +1,15 @@
 Changelog
 ===
 
+Version 1.3.0 - Wordmaps
+- Runs each command in succession with default options
+
+Version 1.2.3 - Improve anagrams
+- Fixed anagram output by stripping whitespace.
+
+Version 1.2.2 - Minor updates & fixes
+- Rakefile, gem versions, Copyright year 2015, Omniref badge, etc.
+
 Version 1.2.1 - Dependencies & docs
 - Fixed dependency issues with gli, httpi and rubyntlm
 - A few documenation changes

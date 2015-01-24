@@ -101,10 +101,25 @@ namespace :lyracyst do
     search = args.search
     system "lyracyst urb #{search}"
   end
+	desc 'ana[searchword]'
+  task :ana, :search do |t, args|
+    search = args.search
+    system "lyracyst ana #{search}"
+  end
+	desc 'wmap[searchword]'
+  task :wmap, :search do |t, args|
+    search = args.search
+    system "lyracyst wmap #{search}"
+  end
 end
 
 task :travis do
-  ['rake spinach', 'rake lyracyst:comb[test]', 'rake lyracyst:def[test]', 'rake lyracyst:ex[test]', 'rake lyracyst:hyph[communication]', 'rake lyracyst:inf[fuck]', 'rake lyracyst:look[test]', 'rake lyracyst:ori[test]', 'rake lyracyst:phr[test]', 'rake lyracyst:pro[beautiful]', 'rake lyracyst:rel[test]', 'rake lyracyst:rhy[test]', 'rake lyracyst:urb[hashtag]'].each do |cmd|
+  ['rake spinach', 'rake lyracyst:comb[test]', 'rake lyracyst:def[test]',
+		'rake lyracyst:ex[test]', 'rake lyracyst:hyph[communication]',
+		'rake lyracyst:inf[fuck]', 'rake lyracyst:look[test]', 'rake lyracyst:ori[test]',
+		'rake lyracyst:phr[test]', 'rake lyracyst:pro[beautiful]',
+		'rake lyracyst:rel[test]', 'rake lyracyst:rhy[test]', 'rake lyracyst:urb[hashtag]',
+		'rake lyracyst:ana[yankeedoodledandy]', 'rake lyracyst:wmap[ubiquity]'].each do |cmd|
     puts "Starting to run #{cmd}..."
     `bundle exec #{cmd}`
     raise "#{cmd} failed!" unless $?.exitstatus == 0

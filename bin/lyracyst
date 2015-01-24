@@ -76,6 +76,7 @@ switch [:v, :verbose], :default_value => false, :desc => 'Prints parameters and 
 require 'lyracyst/cli/onelook'
 require 'lyracyst/cli/rhymebrain'
 require 'lyracyst/cli/urban'
+require 'lyracyst/cli/wordmap'
 require 'lyracyst/cli/wordnik'
 require 'lyracyst/cli/wordsmith'
 
