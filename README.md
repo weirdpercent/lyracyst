@@ -59,7 +59,7 @@ Please refer to the CLI documentation or the [wiki](http://github.com/weirdperce
     lyracyst urb test
     lyracyst look test
     lyracyst ana yankeedoodledandy
-		lyracyst wmap ubiquity
+    lyracyst wmap ubiquity
     lyracyst --help
     lyracyst help [command] [subcommand]
 
