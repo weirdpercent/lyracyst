@@ -18,7 +18,7 @@ Lyracyst is tested on the following Ruby versions:
 - MRI 1.9.2
 - MRI 1.9.3
 - MRI 2.1.4
-- Rubinius 2.2.10
+- ~~Rubinius 2.2.10~~
 
 ### Synopsis
 
@@ -38,6 +38,7 @@ Put it in an environment variable WORDNIK. Add it to .bashrc, .zshrc, Windows en
 - Definitions from urbandictionary.com
 - Definitions, examples, related words, pronunciations, hyphenation, phrases, and etymologies from wordnik.com
 - Anagrams from [wordsmith.org](http://www.wordsmith.org/anagram/advanced.html)
+- [Maps of word info](http://github.com/weirdpercent/lyracyst/wiki/Wordmap)
 - Supports multiple HTTP clients with [httpi](http://github.com/savonrb/httpi)
 - Supports multiple JSON parsers with [multi_json](http://github.com/intridea/multi_json)
 - Supports multiple XML parsers with [multi_xml](http://github.com/sferik/multi_xml)
@@ -58,6 +59,7 @@ Please refer to the CLI documentation or the [wiki](http://github.com/weirdperce
     lyracyst urb test
     lyracyst look test
     lyracyst ana yankeedoodledandy
+		lyracyst wmap ubiquity
     lyracyst --help
     lyracyst help [command] [subcommand]
 
