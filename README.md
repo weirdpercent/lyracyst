@@ -1,6 +1,8 @@
 lyracyst
 ===
 
+**NOTICE** Lyracyst is no longer maintained. I may do bug fixes if requested but honestly I prefer my @drawnepicenter account and Lyracyst's successor [Leximaven](https://github.com/drawnepicenter/leximaven). So long (for now) Ruby, hello Node.js and other languages/platforms.
+
 [![lyracyst](lyra.jpg)](http://raw.githubusercontent.com/weirdpercent/lyracyst/master/lyra.jpg)
 
 Constellation Lyra photo by Scott Roy Atwood

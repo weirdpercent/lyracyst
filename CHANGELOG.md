@@ -1,6 +1,8 @@
 Changelog
 ===
 
+Version 1.3.1 - Official deprecation by [Leximaven](https://github.com/drawnepicenter/leximaven), update dependencies.
+
 Version 1.3.0 - Wordmaps
 - Runs each command in succession with default options
 
