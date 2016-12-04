@@ -1,10 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-- ruby-1.9.2
-- ruby-1.9.3
-- ruby-2.1.4
-# - rbx-2.2.10
+- ruby-2.2
 env:
   global:
   - secure: Vj686G0kiLW7u17aFVA289fyvPnx1GKKpHwOEf3Ch6LFtLs9F8TjoS4yA+EprrnAZnVGtV796O0+wDbnnr8vmlALTv5zYb7YH2aH4XGGlWpeFJ9r7N5V1cV0h8AD1Qys6v6QHhp72SS04W0dH7g38jffD8witoupxJj2Xm0r9Hs=
